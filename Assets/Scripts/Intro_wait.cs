@@ -17,6 +17,6 @@ public class Intro_wait : MonoBehaviour
     {
         yield return new WaitForSeconds(wait_time);
 
-        SceneManager.LoadScene("Game Menu");
+        SceneManager.LoadScene("1 User Selection");
     }
 }
