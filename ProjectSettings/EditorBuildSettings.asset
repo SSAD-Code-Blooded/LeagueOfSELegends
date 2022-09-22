@@ -6,9 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Introduction.unity
+    path: Assets/Scenes/0 Introduction.unity
     guid: 4ca8e71c3c0934187b3e5369186a74cc
   - enabled: 1
-    path: Assets/Scenes/Game Menu.unity
+    path: Assets/Scenes/1 User Selection.unity
+    guid: e8b56da5e9ddf4bdea6a89390061306c
+  - enabled: 1
+    path: Assets/Scenes/1.1 Student Login.unity
+    guid: 1bd8c8bdfc2884a309890a2710aadea6
+  - enabled: 1
+    path: Assets/Scenes/1.2 Teacher Login.unity
+    guid: f25ab6f18999246a9a7b9e9950f9162e
+  - enabled: 1
+    path: Assets/Scenes/2 Student Register.unity
+    guid: aca288369735d4f58b26c7af1deea37a
+  - enabled: 1
+    path: Assets/Scenes/3 Main Menu.unity
     guid: d11fc2576dd7043b68da19272023a95f
+  - enabled: 1
+    path: Assets/Scenes/Leaderboard.unity
+    guid: c897fdc8ba11440cc922e15bb702b272
+  - enabled: 1
+    path: Assets/Scenes/Profile.unity
+    guid: f1a8d1f052e2d4ae983fa8f14b3c5e64
   m_configObjects: {}
