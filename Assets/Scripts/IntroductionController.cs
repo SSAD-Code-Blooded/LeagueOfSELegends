@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Intro_wait : MonoBehaviour
+public class IntroductionController : MonoBehaviour
 {
     public float wait_time = 3f;
     // Start is called before the first frame update
@@ -17,6 +17,6 @@ public class Intro_wait : MonoBehaviour
     {
         yield return new WaitForSeconds(wait_time);
 
-        SceneManager.LoadScene("1 User Selection");
+        SceneManager.LoadScene("0.1 Game Title");
     }
 }

@@ -17,8 +17,6 @@ public class UserSelectionController : MonoBehaviour
 
     public void CloseButton()
     {
-        Application.Quit();
-        Debug.Log("quitting program now");
-        
+        SceneManager.LoadScene("0.1 Game Title");
     }
 }
