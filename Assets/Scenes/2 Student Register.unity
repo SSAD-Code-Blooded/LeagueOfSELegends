@@ -1096,6 +1096,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   email: {fileID: 1640086316}
   password: {fileID: 1719061038}
+  username: {fileID: 1652525248}
+  matricNumber: {fileID: 1096598013}
   signInButton: {fileID: 0}
   registerButton: {fileID: 1413580012}
 --- !u!1 &834023578

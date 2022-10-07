@@ -7,11 +7,30 @@ using Firebase.Auth;
 using Firebase.Extensions;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
+using Firebase.Firestore;
 
+
+[FirestoreData]
+
+public struct UserData
+{
+    [FirestoreProperty]
+    public string UserName {get; set;}
+
+    [FirestoreProperty]
+    public string EmailAddress {get; set;}
+
+    [FirestoreProperty]
+    public string MatriculationNo {get;set;}
+
+    [FirestoreProperty]
+    public string Character {get;set;}
+}
 
 public class LoginManager : MonoBehaviour
-{
- public TMP_InputField email, password;
+{   
+
+    public TMP_InputField email, password,username,matricNumber;
     public Button signInButton,registerButton;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +46,18 @@ public class LoginManager : MonoBehaviour
                     "Could not resolve all Firebase dependencies: " + DependencyStatus
                 );
             }
+        });
+
+        registerButton.onClick.AddListener(()=>
+        {
+            var userData = new UserData{
+                UserName = username.text,
+                EmailAddress = email.text,
+                MatriculationNo = matricNumber.text,
+                Character = "Default"
+            };
+            var firestore = FirebaseFirestore.DefaultInstance;
+            firestore.Document("Users/"+email.text).SetAsync(userData);
         });
     }
 
