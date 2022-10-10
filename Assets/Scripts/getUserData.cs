@@ -24,12 +24,12 @@ public class getUserData : MonoBehaviour
             // Assert.IsNull(task.Exception);
             var userData = snapshot.ConvertTo<UserData>();
 
-            userInformation.text=$"Username: {userData.UserName}\nEmail: {userData.EmailAddress}\nMatriculation No. : {userData.MatriculationNo}\nCharacter: {userData.Character}";
+            userInformation.text=$"Username: {userData.UserName}\nEmail: {userData.EmailAddress}\nMatriculation No. : {userData.MatriculationNo}";
             
     });}
 
     void OnDestroy(){
-        _listener.Stop();
+        // _listener.Stop();
     }
 
     // Update is called once per frame
