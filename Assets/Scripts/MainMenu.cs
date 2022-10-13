@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void storyMode()
     {
-        SceneManager.LoadScene("Storymode");
+        SceneManager.LoadScene("Story Mode");
     }
 
     public void challenge()
