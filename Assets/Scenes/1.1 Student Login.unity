@@ -504,7 +504,9 @@ MonoBehaviour:
   password: {fileID: 203527929}
   username: {fileID: 0}
   matricNumber: {fileID: 0}
-  errorUI: {fileID: 591618516}
+  errorUI: {fileID: 591618512}
+  errorMessageToShow: {fileID: 1107389334}
+  errorMessage: 
   signInButton: {fileID: 1881002783}
   registerButton: {fileID: 0}
 --- !u!1 &347625903
@@ -1179,7 +1181,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 742061860}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 323347342}
+        m_TargetAssemblyTypeName: LoginManager, Assembly-CSharp
+        m_MethodName: onClickToCloseErrorUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &742061860
 MonoBehaviour:
   m_ObjectHideFlags: 0

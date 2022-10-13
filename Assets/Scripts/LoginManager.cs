@@ -31,13 +31,15 @@ public class LoginManager : MonoBehaviour
 {   
 
     public TMP_InputField email, password,username,matricNumber;
-    public Canvas errorUI;
+    public GameObject errorUI;
+    public TMP_Text errorMessageToShow;
+    public string errorMessage;
     public Button signInButton,registerButton;
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Started");
-        errorUI.enabled = false;
+    
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task=>{
             Firebase.DependencyStatus DependencyStatus = task.Result;
             if(DependencyStatus ==  Firebase.DependencyStatus.Available){
@@ -73,12 +75,11 @@ public class LoginManager : MonoBehaviour
                     if (task.IsCanceled) {
                         Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
                         Debug.Log("SignIn cancelled");
-                        errorUI.enabled = true;
+    
                         return;
                     }
                     if (task.IsFaulted) {
                         Debug.Log("SignIn Failed");
-                        errorUI.enabled = true;
                         Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
                         
                         return;
@@ -91,14 +92,15 @@ public class LoginManager : MonoBehaviour
             }
         );
         if (loginStatus){
-        
             SceneManager.LoadScene("3 Main Menu"); 
+        }
+        else{
+            errorUI.SetActive(true);
+            errorMessage = "insert error for log in";
+            errorMessageToShow.text = errorMessage; 
         }
         return;
         }
-        
-        
-
     }
     public void OnClickSignUp(){
         Debug.Log("Clicked Signup");
@@ -129,5 +131,12 @@ public class LoginManager : MonoBehaviour
         SceneManager.LoadScene("2 Student Register");
     }
 
+    public void onClickToCloseErrorUI(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void onClickToStudentLoginScene(){
+        SceneManager.LoadScene("1.1 Student Login");
+    }
     
 }
