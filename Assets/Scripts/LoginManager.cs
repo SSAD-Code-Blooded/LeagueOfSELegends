@@ -117,5 +117,13 @@ public class LoginManager : MonoBehaviour
         );
     }
 
+    public void onClickBackToUserSelection(){
+        SceneManager.LoadScene("1 User Selection");
+    }
+
+    public void onClickToSignupScene(){
+        SceneManager.LoadScene("2 Student Register");
+    }
+
     
 }
