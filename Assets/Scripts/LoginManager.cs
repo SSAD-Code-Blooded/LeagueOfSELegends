@@ -31,12 +31,13 @@ public class LoginManager : MonoBehaviour
 {   
 
     public TMP_InputField email, password,username,matricNumber;
+    public Canvas errorUI;
     public Button signInButton,registerButton;
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Started");
-
+        errorUI.enabled = false;
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task=>{
             Firebase.DependencyStatus DependencyStatus = task.Result;
             if(DependencyStatus ==  Firebase.DependencyStatus.Available){
@@ -45,6 +46,7 @@ public class LoginManager : MonoBehaviour
                 Debug.LogError(
                     "Could not resolve all Firebase dependencies: " + DependencyStatus
                 );
+                
             }
         });
 
@@ -71,12 +73,14 @@ public class LoginManager : MonoBehaviour
                     if (task.IsCanceled) {
                         Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
                         Debug.Log("SignIn cancelled");
-
+                        errorUI.enabled = true;
                         return;
                     }
                     if (task.IsFaulted) {
                         Debug.Log("SignIn Failed");
+                        errorUI.enabled = true;
                         Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+                        
                         return;
                     }else{
                         loginStatus=true;
