@@ -28,7 +28,15 @@ public class ChallengeManager : MonoBehaviour
     }
 
 
+    public void onClickCreateRoom()
+    {
+        SceneManager.LoadScene("4.3 Challenge Room");
+    }
 
+    public void onClickJoinARoom()
+    {
+        SceneManager.LoadScene("4.3 Challenge Room");
+    }
 
 
 }
