@@ -38,4 +38,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World.unity
     guid: 1585cdeb31d2896429438bc612761a97
+  - enabled: 1
+    path: Assets/Scenes/4 Challenge Menu.unity
+    guid: c9deb995709b04666ba52bd8cc27268c
+  - enabled: 1
+    path: Assets/Scenes/4.1 Challenge Create Room Menu.unity
+    guid: ca5791b2d32214a8ebc9e7435eb67712
+  - enabled: 1
+    path: Assets/Scenes/4.2 Challenge Join Room Menu.unity
+    guid: 1a5df94547c874d15b8e7a95a7f996ba
   m_configObjects: {}
