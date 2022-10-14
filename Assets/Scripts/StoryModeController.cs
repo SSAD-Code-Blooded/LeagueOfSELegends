@@ -10,4 +10,8 @@ public class StoryModeController :MonoBehaviour
         SceneManager.LoadScene("World");
     }
     
+    public void onClickBackToMainMenu()
+    {
+        SceneManager.LoadScene("3 Main Menu");
+    }
 }
