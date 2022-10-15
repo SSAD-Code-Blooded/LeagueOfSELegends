@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Firebase.Firestore;
+using Firebase.Extensions;
 
 public class QuizManager : MonoBehaviour
 {
@@ -20,11 +22,14 @@ public class QuizManager : MonoBehaviour
    public GameObject Quizpanel;
    public GameObject GoPanel;
 
+//    public QuestionDAO questionDAO;
+
    private void Start()
    {
     totalQuestions = QnA.Count;
     currScore.text = score + "";
     GoPanel.SetActive(false);
+    dataFetch();
     generateQuestion();
 
    }
@@ -33,6 +38,27 @@ public class QuizManager : MonoBehaviour
    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
    }
+
+       public void dataFetch(){
+        FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+        UnityEngine.Debug.Log("Connection established");
+        Query questionQuery = db.Collection("/QnA/Planning/Sections/Requirement Analysis/Difficulty").WhereEqualTo("Easy",true); 
+        //Subsequently 'Easy' should be made into a variable
+        questionQuery.GetSnapshotAsync().ContinueWithOnMainThread(task => {
+        QuerySnapshot questionQuery = task.Result;
+        foreach (DocumentSnapshot documentSnapshot in questionQuery.Documents) {
+            UnityEngine.Debug.Log(System.String.Format("Document data for {0} document:", documentSnapshot.Id));
+            Dictionary<string, object> question = documentSnapshot.ToDictionary();
+            foreach (KeyValuePair<string, object> pair in question) {
+            UnityEngine.Debug.Log(System.String.Format("{0}: {1}", pair.Key, pair.Value));
+            }
+ 
+    UnityEngine.Debug.Log("");
+  };
+});
+        
+        
+    }
 
     void GameOver()
    {
