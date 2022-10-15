@@ -86,7 +86,6 @@ public class LoginManager : MonoBehaviour
                         return;
                     }else{
                         loginStatus=true;
-                        // SceneManager.LoadScene("3 Main Menu");
                     }
                     Firebase.Auth.FirebaseUser newUser = task.Result;
                     Debug.LogFormat("User signed in successfully: {0} ({1})", newUser.DisplayName, newUser.UserId);
