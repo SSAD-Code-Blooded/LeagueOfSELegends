@@ -135,7 +135,6 @@ public class LoginManager : MonoBehaviour
                         return;
                     }else{
                         signupStatus=true;
-                        SceneManager.LoadScene("3 Main Menu");
                     }
                     // Firebase user has been created.
                     Debug.Log("Signup Successful");
