@@ -71,6 +71,7 @@ public class LoginManager : MonoBehaviour
         Login();
         async Task Login(){
             bool loginStatus=false;
+            string errorMessage="";
             await FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task => {
                     if (task.IsCanceled) {
                         Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
@@ -80,11 +81,12 @@ public class LoginManager : MonoBehaviour
                     }
                     if (task.IsFaulted) {
                         Debug.Log("SignIn Failed");
-                        Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
-                        
+                        Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception.InnerExceptions[0].Message);
+                        errorMessage = task.Exception.InnerExceptions[0].Message;
                         return;
                     }else{
                         loginStatus=true;
+                        SceneManager.LoadScene("3 Main Menu");
                     }
                     Firebase.Auth.FirebaseUser newUser = task.Result;
                     Debug.LogFormat("User signed in successfully: {0} ({1})", newUser.DisplayName, newUser.UserId);
@@ -96,7 +98,6 @@ public class LoginManager : MonoBehaviour
         }
         else{
             errorUI.SetActive(true);
-            errorMessage = "insert error for log in";
             errorMessageToShow.text = errorMessage; 
         }
         return;
@@ -104,23 +105,90 @@ public class LoginManager : MonoBehaviour
     }
     public void OnClickSignUp(){
         Debug.Log("Clicked Signup");
-        FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task => {
-            if (task.IsCanceled) {
-                Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
-                return;
-            }
-            if (task.IsFaulted) {
-                Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
-                return;
-            }
+        SignUp();
+        async Task SignUp(){
+            bool signupStatus=false;
+            string errorMessage="";
+            await FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task => {
+                    //Add checks for signup here
+                    if(username.text==""){
+                        Debug.Log("invalid Username");
+                        errorMessage = "Invalid Username!";
+                        return;
+                    }
 
-            // Firebase user has been created.
-            Debug.Log("Signup Successful");
-            Firebase.Auth.FirebaseUser newUser = task.Result;
-            Debug.LogFormat("User signed up successfully: {0} ({1})",
-                newUser.DisplayName, newUser.UserId);
+                    if(matricNumber.text.Length<9){
+                        Debug.Log("invalid matric number");
+                        errorMessage = "Matriculation Number should have 9 characters!";
+                        return;
+                    }
+                    
+                    if (task.IsCanceled) {
+                        Debug.LogError("SignUpWithEmailAndPasswordAsync was canceled.");
+                        Debug.Log("SignUp cancelled");
+    
+                        return;
+                    }
+                    if (task.IsFaulted) {
+                        Debug.Log("SignUp Failed");
+                        Debug.LogError("SignUpWithEmailAndPasswordAsync encountered an error: " + task.Exception.InnerExceptions[0].Message);
+                        errorMessage = task.Exception.InnerExceptions[0].Message;
+                        return;
+                    }else{
+                        signupStatus=true;
+                        SceneManager.LoadScene("3 Main Menu");
+                    }
+                    // Firebase user has been created.
+                    Debug.Log("Signup Successful");
+                    Firebase.Auth.FirebaseUser newUser = task.Result;
+                    Debug.LogFormat("User signed up successfully: {0} ({1})",
+                    newUser.DisplayName, newUser.UserId);
+                
             }
         );
+        if (signupStatus){
+            SceneManager.LoadScene("3 Main Menu"); 
+        }
+        else{
+            errorUI.SetActive(true);
+            errorMessageToShow.text = errorMessage; 
+        }
+        return;
+        }
+
+
+
+
+        // bool signupStatus=true;
+        // string errorMessage="";
+        // FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task => {
+        //     if (task.IsCanceled) {
+        //         Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
+        //         signupStatus=false;
+        //         errorMessage = task.Exception.InnerExceptions[0].Message;
+        //     }
+        //     if (task.IsFaulted) {
+        //         Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+        //         signupStatus=false;
+        //         errorMessage = task.Exception.InnerExceptions[0].Message;
+        //     }
+        //     if (signupStatus){
+        //         // Firebase user has been created.
+        //         Debug.Log("Signup Successful");
+        //         Firebase.Auth.FirebaseUser newUser = task.Result;
+        //         Debug.LogFormat("User signed up successfully: {0} ({1})",
+        //         newUser.DisplayName, newUser.UserId);
+        //     }else{
+        //         Debug.LogError("error: "+errorMessage);
+        //         errorUI.SetActive(true);
+        //         errorMessageToShow.text = errorMessage;
+        //     }
+
+
+        //     }
+        // );
+        
+        // return;
     }
 
     public void onClickBackToUserSelection(){
