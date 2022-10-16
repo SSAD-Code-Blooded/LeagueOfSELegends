@@ -1229,28 +1229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dac0a7cc4323bf41a552de23a711c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QnA:
-  - Question: What is the most important stage of SDLC?
-    Answers:
-    - Testing
-    - Evaluation
-    - Implementation
-    - Requirement Analysis
-    CorrectAnswer: 4
-  - Question: What does SDLC stand for?
-    Answers:
-    - System development life cycle
-    - Software development litigation cycle
-    - System development life conditions
-    - Software development life cycle
-    CorrectAnswer: 4
-  - Question: What document is created in this phase?
-    Answers:
-    - Design Document Specification (DDS)
-    - Release Plan
-    - Software Requirement Specification (SRS)
-    - Test Plan
-    CorrectAnswer: 4
+  QnA: []
   options:
   - {fileID: 134334453}
   - {fileID: 476408821}
@@ -2082,7 +2061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -233, y: -14.001}
+  m_AnchoredPosition: {x: -233.00006, y: -14.000977}
   m_SizeDelta: {x: -539.428, y: -153.902}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1691228293
