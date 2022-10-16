@@ -1229,7 +1229,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dac0a7cc4323bf41a552de23a711c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QnA: []
+  QnA:
+  - Question: What does SDLC stand for?
+    Answers:
+    - Software Development Life Cycle
+    - Software Developing Life Cycle
+    - Software Development Live Cycle
+    - Software Developing Live Cycle
+    CorrectAnswer: 1
   options:
   - {fileID: 134334453}
   - {fileID: 476408821}

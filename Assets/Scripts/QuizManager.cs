@@ -48,7 +48,7 @@ public class QuizManager : MonoBehaviour
     public void dataFetch(){
     FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
     UnityEngine.Debug.Log("Connection established");
-    Query questionQuery = db.Collection("QnA/Planning/Sections/Requirement Analysis/Difficulty/Easy/Questions");
+    Query questionQuery = db.Collection("QnA/Testing/Sections/Functional Testing/difficulty/Easy/Questions");
     //Subsequently 'Easy' should be made into a variable
     questionQuery.GetSnapshotAsync().ContinueWithOnMainThread(task => {
         QuerySnapshot questionQuery = task.Result;
