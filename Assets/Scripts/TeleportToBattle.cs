@@ -7,7 +7,6 @@ public class TeleportToBattle : MonoBehaviour
 {
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("On point");
         SceneManager.LoadScene("Battle");       
     }
 
