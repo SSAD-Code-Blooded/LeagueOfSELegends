@@ -1,8 +1,13 @@
+
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Firebase.Firestore;
+using Firebase.Extensions;
+using System.Linq;
 
 public class QuizManager : MonoBehaviour
 {
@@ -20,11 +25,17 @@ public class QuizManager : MonoBehaviour
    public GameObject Quizpanel;
    public GameObject GoPanel;
 
+   public Dictionary<string, object> questionBank;
+
+//    public QuestionDAO questionDAO;
+
    private void Start()
    {
     totalQuestions = QnA.Count;
     currScore.text = score + "";
     GoPanel.SetActive(false);
+    dataFetch();
+    
     generateQuestion();
 
    }
@@ -33,6 +44,51 @@ public class QuizManager : MonoBehaviour
    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
    }
+
+    public void dataFetch(){
+    FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+    UnityEngine.Debug.Log("Connection established");
+    Query questionQuery = db.Collection("QnA/Testing/Sections/Functional Testing/difficulty/Easy/Questions");
+    //Subsequently 'Easy' should be made into a variable
+    questionQuery.GetSnapshotAsync().ContinueWithOnMainThread(task => {
+        QuerySnapshot questionQuery = task.Result;
+        foreach (DocumentSnapshot documentSnapshot in questionQuery.Documents) {
+            QuestionsAndAnswers questionsAndAnswers = new QuestionsAndAnswers();
+            UnityEngine.Debug.Log(System.String.Format("Document data for {0} document:", documentSnapshot.Id));
+            // var test=documentSnapshot.ToDictionary()["Answers"] as object[];
+            // UnityEngine.Debug.Log(test);
+            Dictionary<string, object> question = documentSnapshot.ToDictionary();
+            // UnityEngine.Debug.Log(question["Answers"] as List<object>);
+            // UnityEngine.Debug.Log("here;"+ questionsAndAnswers.Answers[0]);
+            foreach (KeyValuePair<string, object> pair in question) {   
+                if (pair.Key.Equals("CorrectAnswer")){
+                    UnityEngine.Debug.Log("Correct Answer If");
+                    questionsAndAnswers.CorrectAnswer=System.Convert.ToInt32(pair.Value);
+                    UnityEngine.Debug.Log(questionsAndAnswers.CorrectAnswer);
+                }
+                else if(pair.Key.Equals("Answers")){
+                    UnityEngine.Debug.Log("Answers If");
+                    questionsAndAnswers.Answers=((IEnumerable)pair.Value).Cast<string>().Select(x => x.ToString()).ToArray(); 
+                    UnityEngine.Debug.Log(questionsAndAnswers.Answers[0]);
+                    UnityEngine.Debug.Log(questionsAndAnswers.Answers[1]);
+        
+                    }
+        
+                else if (pair.Key.Equals("Question")){
+                    UnityEngine.Debug.Log("Question If");
+                    questionsAndAnswers.Question=pair.Value.ToString();
+                }
+            UnityEngine.Debug.Log(System.String.Format("{0}: {1}", pair.Key, pair.Value));
+            }
+                QnA.Add(questionsAndAnswers);
+                //questionBank=question;
+            };
+        
+        }
+    );
+        
+        
+    }
 
     void GameOver()
    {
@@ -83,7 +139,7 @@ public class QuizManager : MonoBehaviour
 
     else
     {
-        Debug.Log("Out of Questions");
+        UnityEngine.Debug.Log("Out of Questions");
         GameOver();
     }
     
