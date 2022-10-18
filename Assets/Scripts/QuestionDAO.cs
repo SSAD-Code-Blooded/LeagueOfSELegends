@@ -10,8 +10,6 @@ using System;
 
 [FirestoreData]
 
-
-
 public struct QuestionModel
 {
     [FirestoreProperty]

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Firebase.Auth;
 
 public class MainMenu : MonoBehaviour
 {
@@ -26,8 +27,10 @@ public class MainMenu : MonoBehaviour
     }
 
     public void CloseButton()
-    {
+    {   
         SceneManager.LoadScene("1.1 Student Login");
+        Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+        auth.SignOut();
     }
 
 
