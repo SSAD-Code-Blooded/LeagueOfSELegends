@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public void challenge()
     {
-        SceneManager.LoadScene("4 Challenge Menu");
+        SceneManager.LoadScene("4.1 Challenge Create Room Menu");
     }
 
     public void displayProfile()
