@@ -24,7 +24,7 @@ public struct UserData
     public string MatriculationNo {get;set;}
 
     [FirestoreProperty]
-    public string Character {get;set;}
+    public string UserProgressLevel {get;set;}
 }
 
 public class LoginManager : MonoBehaviour
@@ -35,6 +35,8 @@ public class LoginManager : MonoBehaviour
     public TMP_Text errorMessageToShow;
     public string errorMessage;
     public Button signInButton,registerButton;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -58,7 +60,7 @@ public class LoginManager : MonoBehaviour
                 UserName = username.text,
                 EmailAddress = email.text,
                 MatriculationNo = matricNumber.text,
-                Character = "Default"
+                UserProgressLevel = "Easy",
             };
             var firestore = FirebaseFirestore.DefaultInstance;
             firestore.Document("Users/"+email.text).SetAsync(userData);

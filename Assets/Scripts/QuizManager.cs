@@ -31,10 +31,11 @@ public class QuizManager : MonoBehaviour
 
    private void Start()
    {
+    dataFetch();
     totalQuestions = QnA.Count;
     currScore.text = score + "";
     GoPanel.SetActive(false);
-    dataFetch();
+    
     
     generateQuestion();
 
@@ -45,7 +46,7 @@ public class QuizManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
    }
 
-    public void dataFetch(){
+    public async void dataFetch(){
     FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
     UnityEngine.Debug.Log("Connection established");
     Query questionQuery = db.Collection("QnA/Testing/Sections/Functional Testing/difficulty/Easy/Questions");
