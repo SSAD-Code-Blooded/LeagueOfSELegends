@@ -24,7 +24,7 @@ public class getUserData : MonoBehaviour
             // Assert.IsNull(task.Exception);
             var userData = snapshot.ConvertTo<UserData>();
 
-            userInformation.text=$"Username: {userData.UserName}\nEmail: {userData.EmailAddress}\nMatriculation No. : {userData.MatriculationNo}";
+            userInformation.text=$"Username: {userData.UserName}\nEmail: {userData.EmailAddress}\nMatriculation No. : {userData.MatriculationNo}\nUser Progress Level: {userData.UserProgressLevel} ";
             
     });}
 
