@@ -25,6 +25,8 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
     public static string player1matric;
     public static string player2matric;
     private bool p2notyet;
+    public GameObject join_room_error_canvas;
+    public TMP_Text join_room_error_text;
 
     private int MaxPlayersPerRoom = 2;
     // private string user1Email = "jova0002@e.ntu.edu.sg"; // remove hardcode and call from database
@@ -114,16 +116,18 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
 
     public void OnClick_EnterRoom()
     {
-
         if (PhotonNetwork.JoinRoom(roomNameInput.text))
         {
-            Debug.Log("Player Joined in the Room " + roomNameInput.text);
+                Debug.Log("Player Joined in the Room " + roomNameInput.text);
         }
         else
-        {
-            Debug.Log("Failed to join in the room, please fix the error!");
+        {   
+            join_room_error_canvas.SetActive(true);
+            join_room_error_text.text=$"Invalid Room ID! Please try again!";
+            Debug.Log("Invalid Room ID! Please try again!");
         }
-    }
+    } 
+
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
