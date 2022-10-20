@@ -26,12 +26,14 @@ public class QuizManager : MonoBehaviour
    public Text ScoreTxt;
    public Text currScore;
    public Text countdownText;
+   public Text ResultText;
 
    float currentTime = 0f;
    float startingTime = 30f;
 
    int totalQuestions= 0;
    public int score = 0;
+   public int win_game;
 
    public GameObject Quizpanel;
    public GameObject GoPanel;
@@ -72,7 +74,7 @@ public class QuizManager : MonoBehaviour
 
         if(currentTime <= 0){
             currentTime = 0;
-            GameOver();
+            GameOver('T');
         }
         
     }
@@ -128,11 +130,29 @@ public class QuizManager : MonoBehaviour
         
     }
 
-    void GameOver()
+    void GameOver(char Result)
    {
     Quizpanel.SetActive(false);
     GoPanel.SetActive(true);
     ScoreTxt.text = score.ToString();
+
+    if(Result == 'W')
+    {
+        ResultText.text = "You Win. Good job!";
+        win_game = 1;
+    }
+
+    else if(Result == 'L')
+    {
+        ResultText.text = "You Lost. Try Again!";
+        win_game = 0;
+    }
+
+    else if(Result == 'T')
+    {
+        ResultText.text = "Time's Up. Try Again!";
+        win_game = 0;
+    }
 
 
    }
@@ -171,9 +191,14 @@ public class QuizManager : MonoBehaviour
 
     }
 
-    if(currentPlayerHealth == 0 || currentMonsterHealth == 0)
+    if(currentPlayerHealth == 0)
     {
-        GameOver();
+        GameOver('L');
+    }
+
+    if(currentMonsterHealth == 0)
+    {
+        GameOver('W');
     }
    }
 
@@ -203,7 +228,6 @@ public class QuizManager : MonoBehaviour
     else
     {
         UnityEngine.Debug.Log("Out of Questions");
-        GameOver();
     }
     
 
