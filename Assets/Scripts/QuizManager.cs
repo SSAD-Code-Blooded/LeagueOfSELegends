@@ -31,6 +31,7 @@ public class QuizManager : MonoBehaviour
    float currentTime = 0f;
    float startingTime = 30f;
 
+
    int totalQuestions= 0;
    public int score = 0;
    public int win_game;
@@ -62,6 +63,7 @@ public class QuizManager : MonoBehaviour
 
    }
 
+
     void Update()
     {
         currentTime -= 1 * Time.deltaTime;
@@ -73,11 +75,11 @@ public class QuizManager : MonoBehaviour
         }
 
         if(currentTime <= 0){
-            currentTime = 0;
             GameOver('T');
         }
         
     }
+
    public void retry()
    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -138,20 +140,17 @@ public class QuizManager : MonoBehaviour
 
     if(Result == 'W')
     {
-        ResultText.text = "You Win. Good job!";
-        win_game = 1;
+        ResultText.text = "You Won. Good job!";
+    }
+
+    else if(Result == 'T')
+    {
+        ResultText.text = "You ran out of time!";
     }
 
     else if(Result == 'L')
     {
         ResultText.text = "You Lost. Try Again!";
-        win_game = 0;
-    }
-
-    else if(Result == 'T')
-    {
-        ResultText.text = "Time's Up. Try Again!";
-        win_game = 0;
     }
 
 
@@ -175,6 +174,7 @@ public class QuizManager : MonoBehaviour
         generateQuestion();
    }
 
+
    void TakeDamage(int damage, char character)
    {
     if (character == 'M')
@@ -191,16 +191,20 @@ public class QuizManager : MonoBehaviour
 
     }
 
-    if(currentPlayerHealth == 0)
+    if(currentMonsterHealth == 0 )
     {
-        GameOver('L');
-    }
-
-    if(currentMonsterHealth == 0)
-    {
+        win_game = 1;
         GameOver('W');
     }
+
+    else if(currentPlayerHealth == 0 )
+    {
+        win_game = 0;
+        GameOver('L');
+    }
    }
+
+
 
    void SetAnswers()
    {
@@ -228,6 +232,7 @@ public class QuizManager : MonoBehaviour
     else
     {
         UnityEngine.Debug.Log("Out of Questions");
+        GameOver('W');
     }
     
 
