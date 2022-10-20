@@ -11,6 +11,13 @@ using System.Linq;
 
 public class QuizManager : MonoBehaviour
 {
+   public int maxHealth = 100;
+   public int currentPlayerHealth;
+   public int currentMonsterHealth;
+   public HealthBar playerHealthBar;
+   public HealthBar monsterHealthBar;
+
+
    public List<QuestionsAndAnswers> QnA;
    public GameObject[] options;
    public int currentQuestion;
@@ -18,14 +25,12 @@ public class QuizManager : MonoBehaviour
    public Text QuestionTxt;
    public Text ScoreTxt;
    public Text currScore;
-<<<<<<< Updated upstream
-=======
    public Text countdownText;
    public Text ResultText;
 
    float currentTime = 0f;
    float startingTime = 30f;
->>>>>>> Stashed changes
+
 
    int totalQuestions= 0;
    public int score = 0;
@@ -40,6 +45,14 @@ public class QuizManager : MonoBehaviour
 
    private void Start()
    {
+
+    currentPlayerHealth = maxHealth;
+    currentMonsterHealth = maxHealth;
+    playerHealthBar.SetMaxHealth(maxHealth);
+    monsterHealthBar.SetMaxHealth(maxHealth);
+
+    currentTime = startingTime;
+
     dataFetch();
     totalQuestions = QnA.Count;
     currScore.text = score + "";
@@ -50,8 +63,7 @@ public class QuizManager : MonoBehaviour
 
    }
 
-<<<<<<< Updated upstream
-=======
+
     void Update()
     {
         currentTime -= 1 * Time.deltaTime;
@@ -67,18 +79,20 @@ public class QuizManager : MonoBehaviour
         }
         
     }
->>>>>>> Stashed changes
+
    public void retry()
    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
    }
 
-    public async void dataFetch(){
-    FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
-    UnityEngine.Debug.Log("Connection established");
-    Query questionQuery = db.Collection("QnA/Testing/Sections/Functional Testing/difficulty/Easy/Questions");
-    //Subsequently 'Easy' should be made into a variable
-    questionQuery.GetSnapshotAsync().ContinueWithOnMainThread(task => {
+    public async void dataFetch()
+    {
+
+     FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+     UnityEngine.Debug.Log("Connection established");
+        Query questionQuery = db.Collection("QnA/Testing/Sections/Functional Testing/difficulty/Easy/Questions");
+        //Subsequently 'Easy' should be made into a variable
+        questionQuery.GetSnapshotAsync().ContinueWithOnMainThread(task => {
         QuerySnapshot questionQuery = task.Result;
         foreach (DocumentSnapshot documentSnapshot in questionQuery.Documents) {
             QuestionsAndAnswers questionsAndAnswers = new QuestionsAndAnswers();
@@ -122,7 +136,7 @@ public class QuizManager : MonoBehaviour
    {
     Quizpanel.SetActive(false);
     GoPanel.SetActive(true);
-    ScoreTxt.text = score + "/" + totalQuestions;
+    ScoreTxt.text = score.ToString();
 
     if(Result == 'W')
     {
@@ -147,18 +161,20 @@ public class QuizManager : MonoBehaviour
         score += 1;
         QnA.RemoveAt(currentQuestion);
         currScore.text = score + "";
+        TakeDamage(20, 'M');
         generateQuestion();
 
    }
 
    public void wrong()
    {
+        
         QnA.RemoveAt(currentQuestion);
+        TakeDamage(20, 'P');
         generateQuestion();
    }
 
-<<<<<<< Updated upstream
-=======
+
    void TakeDamage(int damage, char character)
    {
     if (character == 'M')
@@ -188,7 +204,8 @@ public class QuizManager : MonoBehaviour
     }
    }
 
->>>>>>> Stashed changes
+
+
    void SetAnswers()
    {
     for (int i = 0; i < options.Length; i++)
