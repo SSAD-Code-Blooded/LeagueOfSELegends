@@ -11,6 +11,13 @@ using System.Linq;
 
 public class QuizManager : MonoBehaviour
 {
+   public int maxHealth = 100;
+   public int currentPlayerHealth;
+   public int currentMonsterHealth;
+   public HealthBar playerHealthBar;
+   public HealthBar monsterHealthBar;
+
+
    public List<QuestionsAndAnswers> QnA;
    public GameObject[] options;
    public int currentQuestion;
@@ -18,6 +25,10 @@ public class QuizManager : MonoBehaviour
    public Text QuestionTxt;
    public Text ScoreTxt;
    public Text currScore;
+   public Text countdownText;
+
+   float currentTime = 0f;
+   float startingTime = 30f;
 
    int totalQuestions= 0;
    public int score = 0;
@@ -31,6 +42,14 @@ public class QuizManager : MonoBehaviour
 
    private void Start()
    {
+
+    currentPlayerHealth = maxHealth;
+    currentMonsterHealth = maxHealth;
+    playerHealthBar.SetMaxHealth(maxHealth);
+    monsterHealthBar.SetMaxHealth(maxHealth);
+
+    currentTime = startingTime;
+
     dataFetch();
     totalQuestions = QnA.Count;
     currScore.text = score + "";
@@ -41,17 +60,35 @@ public class QuizManager : MonoBehaviour
 
    }
 
+    void Update()
+    {
+        currentTime -= 1 * Time.deltaTime;
+        countdownText.text = currentTime.ToString("0");
+
+        if(currentTime <= 10)
+        {
+            countdownText.color = Color.red;
+        }
+
+        if(currentTime <= 0){
+            currentTime = 0;
+            GameOver();
+        }
+        
+    }
    public void retry()
    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
    }
 
-    public async void dataFetch(){
-    FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
-    UnityEngine.Debug.Log("Connection established");
-    Query questionQuery = db.Collection("QnA/Testing/Sections/Functional Testing/difficulty/Easy/Questions");
-    //Subsequently 'Easy' should be made into a variable
-    questionQuery.GetSnapshotAsync().ContinueWithOnMainThread(task => {
+    public async void dataFetch()
+    {
+
+     FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+     UnityEngine.Debug.Log("Connection established");
+        Query questionQuery = db.Collection("QnA/Testing/Sections/Functional Testing/difficulty/Easy/Questions");
+        //Subsequently 'Easy' should be made into a variable
+        questionQuery.GetSnapshotAsync().ContinueWithOnMainThread(task => {
         QuerySnapshot questionQuery = task.Result;
         foreach (DocumentSnapshot documentSnapshot in questionQuery.Documents) {
             QuestionsAndAnswers questionsAndAnswers = new QuestionsAndAnswers();
@@ -95,7 +132,7 @@ public class QuizManager : MonoBehaviour
    {
     Quizpanel.SetActive(false);
     GoPanel.SetActive(true);
-    ScoreTxt.text = score + "/" + totalQuestions;
+    ScoreTxt.text = score.ToString();
 
 
    }
@@ -105,14 +142,39 @@ public class QuizManager : MonoBehaviour
         score += 1;
         QnA.RemoveAt(currentQuestion);
         currScore.text = score + "";
+        TakeDamage(20, 'M');
         generateQuestion();
 
    }
 
    public void wrong()
    {
+        
         QnA.RemoveAt(currentQuestion);
+        TakeDamage(20, 'P');
         generateQuestion();
+   }
+
+   void TakeDamage(int damage, char character)
+   {
+    if (character == 'M')
+    {
+        currentMonsterHealth -= damage;
+        monsterHealthBar.SetHealth(currentMonsterHealth);
+
+    }
+
+    else if (character == 'P')
+    {
+        currentPlayerHealth -= damage;
+        playerHealthBar.SetHealth(currentPlayerHealth);
+
+    }
+
+    if(currentPlayerHealth == 0 || currentMonsterHealth == 0)
+    {
+        GameOver();
+    }
    }
 
    void SetAnswers()
