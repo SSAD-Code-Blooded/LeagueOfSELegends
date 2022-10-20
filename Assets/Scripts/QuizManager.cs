@@ -65,6 +65,11 @@ public class QuizManager : MonoBehaviour
         currentTime -= 1 * Time.deltaTime;
         countdownText.text = currentTime.ToString("0");
 
+        if(currentTime <= 10)
+        {
+            countdownText.color = Color.red;
+        }
+
         if(currentTime <= 0){
             currentTime = 0;
             GameOver();
@@ -76,12 +81,14 @@ public class QuizManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
    }
 
-    public async void dataFetch(){
-    FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
-    UnityEngine.Debug.Log("Connection established");
-    Query questionQuery = db.Collection("QnA/Testing/Sections/Functional Testing/difficulty/Easy/Questions");
-    //Subsequently 'Easy' should be made into a variable
-    questionQuery.GetSnapshotAsync().ContinueWithOnMainThread(task => {
+    public async void dataFetch()
+    {
+
+     FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+     UnityEngine.Debug.Log("Connection established");
+        Query questionQuery = db.Collection("QnA/Testing/Sections/Functional Testing/difficulty/Easy/Questions");
+        //Subsequently 'Easy' should be made into a variable
+        questionQuery.GetSnapshotAsync().ContinueWithOnMainThread(task => {
         QuerySnapshot questionQuery = task.Result;
         foreach (DocumentSnapshot documentSnapshot in questionQuery.Documents) {
             QuestionsAndAnswers questionsAndAnswers = new QuestionsAndAnswers();
@@ -125,7 +132,7 @@ public class QuizManager : MonoBehaviour
    {
     Quizpanel.SetActive(false);
     GoPanel.SetActive(true);
-    ScoreTxt.text = score + "/" + totalQuestions;
+    ScoreTxt.text = score.ToString();
 
 
    }
