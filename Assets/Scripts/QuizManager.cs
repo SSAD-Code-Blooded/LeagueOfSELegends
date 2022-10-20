@@ -18,9 +18,18 @@ public class QuizManager : MonoBehaviour
    public Text QuestionTxt;
    public Text ScoreTxt;
    public Text currScore;
+<<<<<<< Updated upstream
+=======
+   public Text countdownText;
+   public Text ResultText;
+
+   float currentTime = 0f;
+   float startingTime = 30f;
+>>>>>>> Stashed changes
 
    int totalQuestions= 0;
    public int score = 0;
+   public int win_game;
 
    public GameObject Quizpanel;
    public GameObject GoPanel;
@@ -41,6 +50,24 @@ public class QuizManager : MonoBehaviour
 
    }
 
+<<<<<<< Updated upstream
+=======
+    void Update()
+    {
+        currentTime -= 1 * Time.deltaTime;
+        countdownText.text = currentTime.ToString("0");
+
+        if(currentTime <= 10)
+        {
+            countdownText.color = Color.red;
+        }
+
+        if(currentTime <= 0){
+            GameOver('T');
+        }
+        
+    }
+>>>>>>> Stashed changes
    public void retry()
    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -91,11 +118,26 @@ public class QuizManager : MonoBehaviour
         
     }
 
-    void GameOver()
+    void GameOver(char Result)
    {
     Quizpanel.SetActive(false);
     GoPanel.SetActive(true);
     ScoreTxt.text = score + "/" + totalQuestions;
+
+    if(Result == 'W')
+    {
+        ResultText.text = "You Won. Good job!";
+    }
+
+    else if(Result == 'T')
+    {
+        ResultText.text = "You ran out of time!";
+    }
+
+    else if(Result == 'L')
+    {
+        ResultText.text = "You Lost. Try Again!";
+    }
 
 
    }
@@ -115,6 +157,38 @@ public class QuizManager : MonoBehaviour
         generateQuestion();
    }
 
+<<<<<<< Updated upstream
+=======
+   void TakeDamage(int damage, char character)
+   {
+    if (character == 'M')
+    {
+        currentMonsterHealth -= damage;
+        monsterHealthBar.SetHealth(currentMonsterHealth);
+
+    }
+
+    else if (character == 'P')
+    {
+        currentPlayerHealth -= damage;
+        playerHealthBar.SetHealth(currentPlayerHealth);
+
+    }
+
+    if(currentMonsterHealth == 0 )
+    {
+        win_game = 1;
+        GameOver('W');
+    }
+
+    else if(currentPlayerHealth == 0 )
+    {
+        win_game = 0;
+        GameOver('L');
+    }
+   }
+
+>>>>>>> Stashed changes
    void SetAnswers()
    {
     for (int i = 0; i < options.Length; i++)
@@ -141,7 +215,7 @@ public class QuizManager : MonoBehaviour
     else
     {
         UnityEngine.Debug.Log("Out of Questions");
-        GameOver();
+        GameOver('W');
     }
     
 
