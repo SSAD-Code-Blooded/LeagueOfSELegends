@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Firebase.Auth;
 
 public class ChallengeRoom : MonoBehaviourPunCallbacks
 {
@@ -26,12 +27,17 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
     private bool p2notyet;
 
     private int MaxPlayersPerRoom = 2;
-    private string user1Email = "jova0002@e.ntu.edu.sg"; // remove hardcode and call from database
-    private string user2Email = "jhtc98@hotmail.com"; // remove hardcode and call from database
+    // private string user1Email = "jova0002@e.ntu.edu.sg"; // remove hardcode and call from database
+    private string user1Email; // remove hardcode and call from database
+    private string user2Email; //"jhtc98@hotmail.com"; // remove hardcode and call from database
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        FirebaseUser currentuser = Firebase.Auth.FirebaseAuth.DefaultInstance.CurrentUser;
+        var userEmail=currentuser.Email;
+        user1Email=userEmail;
+        user2Email=userEmail;
         waitingpanel.SetActive(false);
         if (!PhotonNetwork.IsConnected)
         {
