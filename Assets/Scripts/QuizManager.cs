@@ -11,6 +11,13 @@ using System.Linq;
 
 public class QuizManager : MonoBehaviour
 {
+   public int maxHealth = 100;
+   public int currentPlayerHealth;
+   public int currentMonsterHealth;
+   public HealthBar playerHealthBar;
+   public HealthBar monsterHealthBar;
+
+
    public List<QuestionsAndAnswers> QnA;
    public GameObject[] options;
    public int currentQuestion;
@@ -31,6 +38,13 @@ public class QuizManager : MonoBehaviour
 
    private void Start()
    {
+
+    currentPlayerHealth = maxHealth;
+    currentMonsterHealth = maxHealth;
+    playerHealthBar.SetMaxHealth(maxHealth);
+    monsterHealthBar.SetMaxHealth(maxHealth);
+
+
     dataFetch();
     totalQuestions = QnA.Count;
     currScore.text = score + "";
@@ -105,14 +119,39 @@ public class QuizManager : MonoBehaviour
         score += 1;
         QnA.RemoveAt(currentQuestion);
         currScore.text = score + "";
+        TakeDamage(20, 'M');
         generateQuestion();
 
    }
 
    public void wrong()
    {
+        
         QnA.RemoveAt(currentQuestion);
+        TakeDamage(20, 'P');
         generateQuestion();
+   }
+
+   void TakeDamage(int damage, char character)
+   {
+    if (character == 'M')
+    {
+        currentMonsterHealth -= damage;
+        monsterHealthBar.SetHealth(currentMonsterHealth);
+
+    }
+
+    else if (character == 'P')
+    {
+        currentPlayerHealth -= damage;
+        playerHealthBar.SetHealth(currentPlayerHealth);
+
+    }
+
+    if(currentPlayerHealth == 0 || currentMonsterHealth == 0)
+    {
+        GameOver();
+    }
    }
 
    void SetAnswers()
