@@ -41,7 +41,10 @@ public class LoginManager : MonoBehaviour
     void Start()
     {
         Debug.Log("Started");
-    
+        
+        FirebaseFirestoreSettings Settings=FirebaseFirestore.DefaultInstance.Settings;  
+        Settings.PersistenceEnabled = false;
+
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task=>{
             Firebase.DependencyStatus DependencyStatus = task.Result;
             if(DependencyStatus ==  Firebase.DependencyStatus.Available){
