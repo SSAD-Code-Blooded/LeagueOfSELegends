@@ -38,6 +38,7 @@ public class QuizManager : MonoBehaviour
 
    public GameObject Quizpanel;
    public GameObject GoPanel;
+   public GameObject Timer;
 
    public Dictionary<string, object> questionBank;
 
@@ -134,6 +135,7 @@ public class QuizManager : MonoBehaviour
 
     void GameOver(char Result)
    {
+    Timer.SetActive(false);
     Quizpanel.SetActive(false);
     GoPanel.SetActive(true);
     ScoreTxt.text = score.ToString();
