@@ -1706,6 +1706,7 @@ MonoBehaviour:
   win_game: 0
   Quizpanel: {fileID: 1287997005}
   GoPanel: {fileID: 879756052}
+  Timer: {fileID: 1005285271}
 --- !u!4 &725526939
 Transform:
   m_ObjectHideFlags: 0
