@@ -20,26 +20,22 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
     public static string challengeLevel;
     public static Vector3 position;
     public static int playerID;
-    // public static string player1char;
-    // public static string player2char;
-    public static string player1matric;
-    public static string player2matric;
+    public static string player1email;
+    public static string player2email;
     private bool p2notyet;
     public GameObject join_room_error_canvas;
     public TMP_Text join_room_error_text;
 
     private int MaxPlayersPerRoom = 2;
-    // private string user1Email = "jova0002@e.ntu.edu.sg"; // remove hardcode and call from database
-    private string user1Email; // remove hardcode and call from database
-    private string user2Email; //"jhtc98@hotmail.com"; // remove hardcode and call from database
+    private string user1Email;
 
     // Start is called before the first frame update
     void Start()
     {   
+        // Firebase.Firestore.DefaultInstance.Settings.PersistenceEnabled = false;
         FirebaseUser currentuser = Firebase.Auth.FirebaseAuth.DefaultInstance.CurrentUser;
         var userEmail=currentuser.Email;
         user1Email=userEmail;
-        user2Email=userEmail;
         waitingpanel.SetActive(false);
         if (!PhotonNetwork.IsConnected)
         {
@@ -174,38 +170,29 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
             challengeinfo.Add("world", challengeWorld);
             challengeinfo.Add("section", challengeSection);
             challengeinfo.Add("level", challengeLevel);
-            // challengeinfo.Add("player1char", ProgramStateController.characterType);
-            // challengeinfo.Add("player1matric",ProgramStateController.matricNo);
-            challengeinfo.Add("player1matric", user1Email);
-            // player1char = ProgramStateController.characterType;
-            // player1matric = ProgramStateController.matricNo;
-            player1matric = user1Email;
+            challengeinfo.Add("player1email", user1Email);
+
+            // player1email = user1Email;
+            
             PhotonNetwork.CurrentRoom.SetCustomProperties(challengeinfo);
             playerID = 1;
-            // position = ProgramStateController.player1Pos;
         }
         else
         {
             challengeLevel = PhotonNetwork.CurrentRoom.CustomProperties["level"].ToString();
             challengeSection = PhotonNetwork.CurrentRoom.CustomProperties["section"].ToString();
             challengeWorld = PhotonNetwork.CurrentRoom.CustomProperties["world"].ToString();
-            // player1char = PhotonNetwork.CurrentRoom.CustomProperties["player1char"].ToString();
-            player1matric = PhotonNetwork.CurrentRoom.CustomProperties["player1matric"].ToString();
+            player1email = PhotonNetwork.CurrentRoom.CustomProperties["player1email"].ToString();
 
             ExitGames.Client.Photon.Hashtable challengeinfo = new ExitGames.Client.Photon.Hashtable();
             challengeinfo.Add("world", challengeWorld);
             challengeinfo.Add("section", challengeSection);
             challengeinfo.Add("level", challengeLevel);
-            // challengeinfo.Add("player1char", player1char);
-            // challengeinfo.Add("player2char", ProgramStateController.characterType);
-            challengeinfo.Add("player1matric",player1matric);
+            challengeinfo.Add("player1email",player1email);
 
-            // challengeinfo.Add("player2matric", ProgramStateController.matricNo); 
-            challengeinfo.Add("player2matric", user2Email);
-
-            // player2char = ProgramStateController.characterType;
-            player2matric = user2Email;
-
+            challengeinfo.Add("player2email", user1Email);
+            player2email = user1Email;  
+            
             PhotonNetwork.CurrentRoom.SetCustomProperties(challengeinfo);
             Debug.Log("After Join, " + challengeLevel + " " + challengeSection + " " + challengeWorld);
             playerID = 2;
@@ -225,8 +212,7 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
         {
             Debug.Log("Matching is ready");
             if(playerID==1){
-                // player2char = PhotonNetwork.CurrentRoom.CustomProperties["player2char"].ToString();
-                player2matric = PhotonNetwork.CurrentRoom.CustomProperties["player2matric"].ToString();}
+                player2email = PhotonNetwork.CurrentRoom.CustomProperties["player2email"].ToString();}
         }
     }
 
@@ -237,7 +223,7 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
             PhotonNetwork.CurrentRoom.IsOpen = false;
             Debug.Log("Match is ready to begin");
 
-            PhotonNetwork.LoadLevel("ChallengeFriendsBattle");
+            PhotonNetwork.LoadLevel("Challenge Mode Quiz");
         }
         else
         {

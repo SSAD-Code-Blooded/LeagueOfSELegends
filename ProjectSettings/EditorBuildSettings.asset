@@ -54,6 +54,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Battle.unity
     guid: 9ce0abf2e9c33f941821ce03507aef7e
   - enabled: 1
-    path: Assets/Scenes/4.1 Challenge Create Room Menu.unity
+    path: Assets/Scenes/archive scenes/4.1 Challenge Create Room Menu.unity
     guid: e096ad02eedee49c2bfa8d48f8e07fb9
+  - enabled: 1
+    path: Assets/Scenes/Challenge Mode Quiz.unity
+    guid: 2ea62655956d04260a7c6576d6717b87
   m_configObjects: {}
