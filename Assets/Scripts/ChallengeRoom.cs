@@ -32,7 +32,6 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {   
-        // Firebase.Firestore.DefaultInstance.Settings.PersistenceEnabled = false;
         FirebaseUser currentuser = Firebase.Auth.FirebaseAuth.DefaultInstance.CurrentUser;
         var userEmail=currentuser.Email;
         user1Email=userEmail;
@@ -65,16 +64,14 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
 
     public void onBackButtonToCreateRoomLobby() 
     {
-        // PhotonNetwork.LeaveLobby();
         PhotonNetwork.LeaveRoom();
-        Debug.Log("Player has left room to main menu.");
+        Debug.Log("Player has left room to create room lobby.");
     }
 
     public override void OnConnectedToMaster()
     {
         // means if the MasterClient loads Scene B, all other clients will load Scene B as well
         PhotonNetwork.AutomaticallySyncScene = true; 
-        // PhotonNetwork.NickName = ProgramStateController.matricNo;
         PhotonNetwork.NickName = user1Email;
 
         PhotonNetwork.JoinLobby(TypedLobby.Default);
@@ -95,7 +92,6 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
             IsVisible = true, IsOpen = true, MaxPlayers = 2 
         };
 
-        // if (PhotonNetwork.CreateRoom(ProgramStateController.matricNo, roomOptions, TypedLobby.Default))
         if (PhotonNetwork.CreateRoom(user1Email, roomOptions, TypedLobby.Default))
         {
             Debug.Log("Create room successfully");
@@ -142,7 +138,6 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
     private void OnCreatedRoom(short returnCode, string message)
     {
         Debug.Log("Room Created Successfully");
-        // PhotonNetwork.JoinRoom(ProgramStateController.matricNo);
         PhotonNetwork.JoinRoom(user1Email);
     }
 
@@ -171,8 +166,7 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
             challengeinfo.Add("section", challengeSection);
             challengeinfo.Add("level", challengeLevel);
             challengeinfo.Add("player1email", user1Email);
-
-            // player1email = user1Email;
+            player1email = user1Email;
             
             PhotonNetwork.CurrentRoom.SetCustomProperties(challengeinfo);
             playerID = 1;
@@ -196,7 +190,6 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
             PhotonNetwork.CurrentRoom.SetCustomProperties(challengeinfo);
             Debug.Log("After Join, " + challengeLevel + " " + challengeSection + " " + challengeWorld);
             playerID = 2;
-            // position = ProgramStateController.player2Pos;
 
         }
 
@@ -211,6 +204,7 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
         else
         {
             Debug.Log("Matching is ready");
+            roomN.SetText("Room No.: " + PhotonNetwork.CurrentRoom.Name + " Players: " + PhotonNetwork.CurrentRoom.PlayerCount.ToString() + "/" + MaxPlayersPerRoom);
             if(playerID==1){
                 player2email = PhotonNetwork.CurrentRoom.CustomProperties["player2email"].ToString();}
         }
@@ -231,6 +225,7 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
         }
     }
 
+    // when leaveRoom() is called
     public override void OnLeftRoom()
     {
         SceneManager.LoadScene(sceneName:"4.1 Challenge Create Or Join Room Menu");
