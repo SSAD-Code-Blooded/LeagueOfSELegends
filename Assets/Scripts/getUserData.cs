@@ -23,8 +23,7 @@ public class getUserData : MonoBehaviour
         var _listener=firestore.Document("Users/"+userEmail).Listen(snapshot=>{
             // Assert.IsNull(task.Exception);
             var userData = snapshot.ConvertTo<UserData>();
-
-            userInformation.text=$"Username: {userData.UserName}\nEmail: {userData.EmailAddress}\nMatriculation No. : {userData.MatriculationNo}\nUser Progress Level: {userData.UserProgressLevel} ";
+            userInformation.text=$"Username: {userData.UserName}\nEmail: {userData.EmailAddress}\nMatriculation No. : {userData.MatriculationNo}\nChallenge Mode Wins: {userData.ChallengeModeWins} ";
             
     });}
 

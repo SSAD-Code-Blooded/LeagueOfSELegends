@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Firebase.Firestore;
 using Firebase.Extensions;
+using Firebase.Auth;
 using System.Linq;
 
 public class QuizManager : MonoBehaviour
@@ -17,6 +18,7 @@ public class QuizManager : MonoBehaviour
    public HealthBar playerHealthBar;
    public HealthBar monsterHealthBar;
 
+   public int userScore;
 
    public List<QuestionsAndAnswers> QnA;
    public GameObject[] options;
@@ -30,6 +32,7 @@ public class QuizManager : MonoBehaviour
 
    float currentTime = 0f;
    float startingTime = 30f;
+   bool flag=true;
 
 
    int totalQuestions= 0;
@@ -54,10 +57,13 @@ public class QuizManager : MonoBehaviour
 
     currentTime = startingTime;
 
-    dataFetch();
+    
+    string userProfileLevel = userDAO.getUserProgressLevel();
+    dataFetch(userProfileLevel);
     totalQuestions = QnA.Count;
     currScore.text = score + "";
     GoPanel.SetActive(false);
+    
     
     
     generateQuestion();
@@ -83,15 +89,17 @@ public class QuizManager : MonoBehaviour
 
    public void retry()
    {
+        string userProfileLevel = userDAO.getUserProgressLevel();
+        dataFetch(userProfileLevel);
+        generateQuestion();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
    }
 
-    public async void dataFetch()
+    public async void dataFetch(string userProfileLevel)
     {
-
      FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
      UnityEngine.Debug.Log("Connection established");
-        Query questionQuery = db.Collection("QnA/Testing/Sections/Functional Testing/difficulty/Easy/Questions");
+        Query questionQuery = db.Collection($"QnA/Testing/Sections/Functional Testing/difficulty/{userProfileLevel}/Questions");
         //Subsequently 'Easy' should be made into a variable
         questionQuery.GetSnapshotAsync().ContinueWithOnMainThread(task => {
         QuerySnapshot questionQuery = task.Result;
@@ -139,20 +147,34 @@ public class QuizManager : MonoBehaviour
     Quizpanel.SetActive(false);
     GoPanel.SetActive(true);
     ScoreTxt.text = score.ToString();
+    
 
     if(Result == 'W')
     {
         ResultText.text = "You Won. Good job!";
+        while (flag){
+            flag=false;
+            QuestionService.storyModeUpdate(Result);
+            }
+        
     }
 
     else if(Result == 'T')
     {
         ResultText.text = "You ran out of time!";
+        while (flag){
+            flag=false;
+            QuestionService.storyModeUpdate(Result);
+        }
     }
 
     else if(Result == 'L')
     {
         ResultText.text = "You Lost. Try Again!";
+        while (flag){
+            flag=false;
+            QuestionService.storyModeUpdate(Result);
+        }
     }
 
 

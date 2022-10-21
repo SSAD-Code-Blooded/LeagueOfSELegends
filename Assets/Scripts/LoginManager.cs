@@ -25,6 +25,12 @@ public struct UserData
 
     [FirestoreProperty]
     public string UserProgressLevel {get;set;}
+
+    [FirestoreProperty]
+    public int ChallengeModeWins {get;set;}
+
+    [FirestoreProperty]
+    public int StoryModeScore {get;set;}
 }
 
 public class LoginManager : MonoBehaviour
@@ -56,18 +62,20 @@ public class LoginManager : MonoBehaviour
                 
             }
         });
+        userDAO.setUserProgressLevel();
 
-        registerButton.onClick.AddListener(()=>
-        {
-            var userData = new UserData{
-                UserName = username.text,
-                EmailAddress = email.text,
-                MatriculationNo = matricNumber.text,
-                UserProgressLevel = "Easy",
-            };
-            var firestore = FirebaseFirestore.DefaultInstance;
-            firestore.Document("Users/"+email.text).SetAsync(userData);
-        });
+        // registerButton.onClick.AddListener(()=>
+        // {
+        //     var userData = new UserData{
+        //         UserName = username.text,
+        //         EmailAddress = email.text,
+        //         MatriculationNo = matricNumber.text,
+        //         UserProgressLevel = "Easy",
+        //         ChallengeModeWins = 0
+        //     };
+        //     var firestore = FirebaseFirestore.DefaultInstance;
+        //     firestore.Document("Users/"+email.text).SetAsync(userData);
+        // });
     }
 
     public void OnClickSignIn(){
@@ -142,6 +150,18 @@ public class LoginManager : MonoBehaviour
                         signupStatus=true;
                     }
                     // Firebase user has been created.
+
+                    var userData = new UserData{
+                        UserName = username.text,
+                        EmailAddress = email.text,
+                        MatriculationNo = matricNumber.text,
+                        UserProgressLevel = "Easy",
+                        ChallengeModeWins = 0,
+                        StoryModeScore =0
+                    };
+                    var firestore = FirebaseFirestore.DefaultInstance;
+                    firestore.Document("Users/"+email.text).SetAsync(userData);
+
                     Debug.Log("Signup Successful");
                     Firebase.Auth.FirebaseUser newUser = task.Result;
                     Debug.LogFormat("User signed up successfully: {0} ({1})",
