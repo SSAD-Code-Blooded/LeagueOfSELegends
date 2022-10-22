@@ -156,7 +156,8 @@ public class ChallengeQuizManager : MonoBehaviourPun
                 {
                     GameOver('W');
                     // PhotonNetwork.CurrentRoom.CustomProperties["player2email"].ToString(); // add one win to this email
-                    QuestionService.challengeModeUpdate(player2emailtext);
+                    Debug.Log(PhotonNetwork.CurrentRoom.CustomProperties["player2email"].ToString() + "won!");
+                    QuestionService.challengeModeUpdate(PhotonNetwork.CurrentRoom.CustomProperties["player2email"].ToString());
                 }
             }
             // player 1 won:
@@ -170,7 +171,8 @@ public class ChallengeQuizManager : MonoBehaviourPun
                 {
                     GameOver('W');
                     // ChallengeRoom.player1email; // add one win to this email
-                    QuestionService.challengeModeUpdate(player1emailtext);      
+                    Debug.Log(ChallengeRoom.player1email + "won!");
+                    QuestionService.challengeModeUpdate(ChallengeRoom.player1email);      
                 }
             }
             // player 1 and 2 draw
@@ -181,8 +183,9 @@ public class ChallengeQuizManager : MonoBehaviourPun
                 {
                     //ChallengeRoom.player1email; // add one win to this email      
                     //ChallengeRoom.player2email; // add one win to this email
-                    QuestionService.challengeModeUpdate(player1emailtext);
-                    QuestionService.challengeModeUpdate(player2emailtext);   
+                    Debug.Log("both won!");
+                    QuestionService.challengeModeUpdate(ChallengeRoom.player1email);
+                    QuestionService.challengeModeUpdate(ChallengeRoom.player2email);   
                 }
     
             }
