@@ -95,4 +95,13 @@ public static class userDAO
             UnityEngine.Debug.Log($"Updated storyModeScore to {storyModeScore}!");
         });    
     }
+    public static void setChallengeModeWins(string email,int score){ 
+        
+        FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+        DocumentReference docRef = db.Document("Users/"+email);
+
+        docRef.UpdateAsync("ChallengeModeWins", score).ContinueWith(task => {
+            UnityEngine.Debug.Log($"Updated ChallengeModeWins to {score}!");
+        }); 
+    }
 }
