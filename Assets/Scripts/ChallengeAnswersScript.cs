@@ -4,25 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class AnswersScript : MonoBehaviour
+public class ChallengeAnswersScript : MonoBehaviour
 {
     public bool isCorrect = false;
-    public QuizManager quizManager;
+    public ChallengeQuizManager challengeQuizManager;
     public GameObject thisbutton;
-    
     IEnumerator CExecuteAfterTime(float time)
     {
      yield return new WaitForSeconds(time);
      thisbutton.GetComponent<Image>().color = Color.white;
-     quizManager.correct();
-     }
-
+     challengeQuizManager.correct();
+    }
+    
     IEnumerator WExecuteAfterTime(float time)
     {
      yield return new WaitForSeconds(time);
      thisbutton.GetComponent<Image>().color = Color.white;
-     quizManager.wrong();
-     }
+     challengeQuizManager.wrong();
+    }
     public void Answer()
     {
         if(isCorrect)
