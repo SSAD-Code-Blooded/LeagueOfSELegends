@@ -60,4 +60,30 @@ public static class QuestionService
         });
         return;
     }
+
+    public static void challengeModeUpdate(string email){  
+        FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+        DocumentReference docRef = db.Document("Users/"+email);
+
+        docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
+        {
+        var snapshot = task.Result;
+        if (snapshot.Exists)
+        {
+            var userData = snapshot.ConvertTo<UserData>();
+            // UnityEngine.Debug.Log(userData.UserProgressLevel);
+            int userChallengeScore=userData.ChallengeModeWins;
+            userDAO.setChallengeModeWins(email,userChallengeScore+1);
+        }
+        else
+        {
+            UnityEngine.Debug.Log(System.String.Format("Document {0} does not exist!", snapshot.Id));
+            return;
+        }
+        });
+        return;
+    }
+
+
+    
 }

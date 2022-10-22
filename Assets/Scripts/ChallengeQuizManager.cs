@@ -78,7 +78,7 @@ public class ChallengeQuizManager : MonoBehaviourPun
         currentTime = startingTime;
         
         // get data from firebase
-        dataFetch();
+        dataFetch(world,level);
 
         totalQuestions = QnA.Count; // no idea what is this for
 
@@ -128,6 +128,7 @@ public class ChallengeQuizManager : MonoBehaviourPun
 
     void Update()
     {
+        dataFetch(world,level);
         // initialise char's email on 
         if (ChallengeRoom.playerID == 1)
         {
@@ -155,7 +156,7 @@ public class ChallengeQuizManager : MonoBehaviourPun
                 {
                     GameOver('W');
                     // PhotonNetwork.CurrentRoom.CustomProperties["player2email"].ToString(); // add one win to this email
-                    
+                    QuestionService.challengeModeUpdate(player2emailtext);
                 }
             }
             // player 1 won:
@@ -168,7 +169,8 @@ public class ChallengeQuizManager : MonoBehaviourPun
                 else // player 1
                 {
                     GameOver('W');
-                    // ChallengeRoom.player1email; // add one win to this email      
+                    // ChallengeRoom.player1email; // add one win to this email
+                    QuestionService.challengeModeUpdate(player1emailtext);      
                 }
             }
             // player 1 and 2 draw
@@ -178,7 +180,9 @@ public class ChallengeQuizManager : MonoBehaviourPun
                 if (ChallengeRoom.playerID == 2)
                 {
                     //ChallengeRoom.player1email; // add one win to this email      
-                    //ChallengeRoom.player2email; // add one win to this email   
+                    //ChallengeRoom.player2email; // add one win to this email
+                    QuestionService.challengeModeUpdate(player1emailtext);
+                    QuestionService.challengeModeUpdate(player2emailtext);   
                 }
     
             }
@@ -212,11 +216,12 @@ public class ChallengeQuizManager : MonoBehaviourPun
         SceneManager.LoadScene(sceneName:"4.1 Challenge Create Or Join Room Menu");
     }
 
-    public async void dataFetch()
+    public async void dataFetch(string world, string difficulty)
     {
+        int count=0;
         FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
         UnityEngine.Debug.Log("Connection established");
-        Query questionQuery = db.Collection("QnA/Testing/Sections/Functional Testing/difficulty/Easy/Questions");
+        Query questionQuery = db.Collection($"QnA/{world}/Sections/Functional Testing/difficulty/{difficulty}/Questions");
         //Subsequently 'Easy' should be made into a variable
         questionQuery.GetSnapshotAsync().ContinueWithOnMainThread(task => {
         QuerySnapshot questionQuery = task.Result;
@@ -253,7 +258,10 @@ public class ChallengeQuizManager : MonoBehaviourPun
                 }
             UnityEngine.Debug.Log(System.String.Format("{0}: {1}", pair.Key, pair.Value));
             }
-                QnA.Add(questionsAndAnswers);
+                if (count<5){
+                    QnA.Add(questionsAndAnswers);
+                    count=count+1;
+                }
                 //questionBank=question;
             };
         
