@@ -181,11 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Username:
-
-    Email:
-
-    Matriculation No.:'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 794d938d455c94e25b270f36ef0fbcd9, type: 2}
   m_sharedMaterial: {fileID: 4523076596157905483, guid: 794d938d455c94e25b270f36ef0fbcd9,
