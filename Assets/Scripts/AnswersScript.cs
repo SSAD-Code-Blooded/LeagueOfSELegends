@@ -9,13 +9,15 @@ public class AnswersScript : MonoBehaviour
     public bool isCorrect = false;
     public QuizManager quizManager;
     public GameObject thisbutton;
-     IEnumerator CExecuteAfterTime(float time)
+    
+    IEnumerator CExecuteAfterTime(float time)
     {
      yield return new WaitForSeconds(time);
      thisbutton.GetComponent<Image>().color = Color.white;
      quizManager.correct();
      }
-     IEnumerator WExecuteAfterTime(float time)
+
+    IEnumerator WExecuteAfterTime(float time)
     {
      yield return new WaitForSeconds(time);
      thisbutton.GetComponent<Image>().color = Color.white;
