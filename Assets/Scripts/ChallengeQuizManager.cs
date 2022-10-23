@@ -67,6 +67,9 @@ public class ChallengeQuizManager : MonoBehaviourPun
 
     public Dictionary<string, object> questionBank;
 
+    private bool finishUpdate = false;
+    
+
     private void Start()
     {
         // initialise Health. Char already initialised.
@@ -74,6 +77,7 @@ public class ChallengeQuizManager : MonoBehaviourPun
         player2Health = maxHealth;
         player1HealthBar.SetMaxHealth(maxHealth);
         player2HealthBar.SetMaxHealth(maxHealth);
+        finishUpdate = true;
     
         currentTime = startingTime;
         
@@ -150,6 +154,7 @@ public class ChallengeQuizManager : MonoBehaviourPun
                 if (ChallengeRoom.playerID == 1) // player 1
                 {
                     GameOver('L');
+                    PhotonNetwork.LeaveRoom();
                     
                 }
                 else // player 2
@@ -157,7 +162,13 @@ public class ChallengeQuizManager : MonoBehaviourPun
                     GameOver('W');
                     // PhotonNetwork.CurrentRoom.CustomProperties["player2email"].ToString(); // add one win to this email
                     Debug.Log(PhotonNetwork.CurrentRoom.CustomProperties["player2email"].ToString() + "won!");
-                    QuestionService.challengeModeUpdate(PhotonNetwork.CurrentRoom.CustomProperties["player2email"].ToString());
+                    if (finishUpdate)
+                    {
+                        QuestionService.challengeModeUpdate(PhotonNetwork.CurrentRoom.CustomProperties["player2email"].ToString());
+                        finishUpdate = false;
+                    }
+                    
+                    PhotonNetwork.LeaveRoom();
                 }
             }
             // player 1 won:
@@ -166,26 +177,41 @@ public class ChallengeQuizManager : MonoBehaviourPun
                 if (ChallengeRoom.playerID == 2) // player 2
                 {
                     GameOver('L');
+                    PhotonNetwork.LeaveRoom();
                 }
                 else // player 1
                 {
                     GameOver('W');
                     // ChallengeRoom.player1email; // add one win to this email
                     Debug.Log(ChallengeRoom.player1email + "won!");
-                    QuestionService.challengeModeUpdate(ChallengeRoom.player1email);      
+                    if (finishUpdate)
+                    {
+                        QuestionService.challengeModeUpdate(ChallengeRoom.player1email);  
+                        finishUpdate = false;
+                    }
+                       
+                    PhotonNetwork.LeaveRoom(); 
                 }
             }
             // player 1 and 2 draw
             else if ((int)PhotonNetwork.CurrentRoom.CustomProperties["player1score"] == (int)PhotonNetwork.CurrentRoom.CustomProperties["player2score"])
             {
                 GameOver('D'); // for player 1 and 2
+                PhotonNetwork.LeaveRoom();
                 if (ChallengeRoom.playerID == 2)
                 {
                     //ChallengeRoom.player1email; // add one win to this email      
                     //ChallengeRoom.player2email; // add one win to this email
-                    Debug.Log("both won!");
-                    QuestionService.challengeModeUpdate(ChallengeRoom.player1email);
-                    QuestionService.challengeModeUpdate(ChallengeRoom.player2email);   
+                    Debug.Log("draw!");
+                    
+                    if (finishUpdate)
+                    {
+                        QuestionService.challengeModeUpdate(ChallengeRoom.player1email);
+                        QuestionService.challengeModeUpdate(ChallengeRoom.player2email);  
+                        finishUpdate = false;
+                    }
+                    
+                    
                 }
     
             }
@@ -215,7 +241,6 @@ public class ChallengeQuizManager : MonoBehaviourPun
     
     public void onClickButtonToBackAfterCompletingChallenge()
     { 
-        PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene(sceneName:"4.1 Challenge Create Or Join Room Menu");
     }
 
