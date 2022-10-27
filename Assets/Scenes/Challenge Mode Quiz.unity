@@ -3542,6 +3542,8 @@ GameObject:
   - component: {fileID: 1687455443}
   - component: {fileID: 1687455445}
   - component: {fileID: 1687455444}
+  - component: {fileID: 1687455447}
+  - component: {fileID: 1687455446}
   m_Layer: 5
   m_Name: Player2Image
   m_TagString: Untagged
@@ -3607,6 +3609,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687455442}
   m_CullTransparentMesh: 1
+--- !u!114 &1687455446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687455442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f818c4388398bfb499c1adead24f7a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 9100000, guid: 45746afce47bd724a8bb9900a6207120, type: 2}
+  sprite: {fileID: 0}
+--- !u!114 &1687455447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687455442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2446110285f79414ba874807a95ed134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites: []
+  spritePerFrame: 6
+  loop: 1
+  destroyOnEnd: 0
 --- !u!1 &1691228291
 GameObject:
   m_ObjectHideFlags: 0
@@ -3643,7 +3675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -302.78217, y: -14.001038}
+  m_AnchoredPosition: {x: -302.78217, y: -14.001068}
   m_SizeDelta: {x: -678.992, y: -153.902}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1691228294
@@ -4886,6 +4918,8 @@ GameObject:
   - component: {fileID: 2065785542}
   - component: {fileID: 2065785544}
   - component: {fileID: 2065785543}
+  - component: {fileID: 2065785546}
+  - component: {fileID: 2065785545}
   m_Layer: 5
   m_Name: Player1Image
   m_TagString: Untagged
@@ -4951,6 +4985,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065785541}
   m_CullTransparentMesh: 1
+--- !u!114 &2065785545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065785541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f818c4388398bfb499c1adead24f7a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 9100000, guid: 45746afce47bd724a8bb9900a6207120, type: 2}
+  sprite: {fileID: 0}
+--- !u!114 &2065785546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065785541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2446110285f79414ba874807a95ed134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites: []
+  spritePerFrame: 6
+  loop: 1
+  destroyOnEnd: 0
 --- !u!1 &2081449847
 GameObject:
   m_ObjectHideFlags: 0
