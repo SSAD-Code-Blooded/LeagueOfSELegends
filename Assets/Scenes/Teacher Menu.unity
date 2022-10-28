@@ -269,8 +269,9 @@ GameObject:
   m_Component:
   - component: {fileID: 420270197}
   - component: {fileID: 420270196}
+  - component: {fileID: 420270198}
   m_Layer: 0
-  m_Name: UserSelectionController
+  m_Name: TeacherMenuController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,6 +304,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &420270198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420270195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4df2b6eaf06ac94b9c3f76a00fb7900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &465054008
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,9 +560,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 420270196}
-        m_TargetAssemblyTypeName: UserSelectionController, Assembly-CSharp
-        m_MethodName: selectTeacher
+      - m_Target: {fileID: 420270198}
+        m_TargetAssemblyTypeName: TeacherMenuController, Assembly-CSharp
+        m_MethodName: addQuestion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -821,7 +834,7 @@ GameObject:
   - component: {fileID: 918031494}
   - component: {fileID: 918031495}
   m_Layer: 5
-  m_Name: Select User
+  m_Name: Select Option
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1090,9 +1103,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 420270196}
-        m_TargetAssemblyTypeName: UserSelectionController, Assembly-CSharp
-        m_MethodName: CloseButton
+      - m_Target: {fileID: 420270198}
+        m_TargetAssemblyTypeName: TeacherMenuController, Assembly-CSharp
+        m_MethodName: backButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1465,9 +1478,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 420270196}
-        m_TargetAssemblyTypeName: UserSelectionController, Assembly-CSharp
-        m_MethodName: selectStudent
+      - m_Target: {fileID: 420270198}
+        m_TargetAssemblyTypeName: TeacherMenuController, Assembly-CSharp
+        m_MethodName: viewQuestion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
