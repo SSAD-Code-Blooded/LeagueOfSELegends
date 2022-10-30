@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,18 @@ using Firebase.Auth;
 using Firebase.Extensions;
 using Firebase.Firestore;
 using TMPro;
+using UnityEngine.SceneManagement;
+
+public static class QuestionChoice{
+    static string difficulty = " ";
+    
+    public static void setDifficulty(string setDifficulty){
+        difficulty = setDifficulty;
+    }
+    public static string getDifficulty(){
+       return difficulty;
+    }
+}
 
 public class QuestionBoardDAO : MonoBehaviour
 {
@@ -13,55 +26,58 @@ public class QuestionBoardDAO : MonoBehaviour
     public TMP_Dropdown worldDD;
     public TMP_Dropdown sectionDD;
     public TMP_Dropdown levelDD;
-    public static string questionWorld;
-    public static string questionSection;
-    public static string questionLevel;
     private int height_offset = -275;
     private int margin = 555;
-    private int limit = 10;
-    private bool done = true;
+    private int limit = 20;
+    public bool done = false;
+    private string questionLevel="empty";
+
+    
+    
     void Start()
     {
+        questionLevel = QuestionChoice.getDifficulty();
+        
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (done)
-        {
+    {   
+        var ansMap = new Dictionary<int,string>(){
+            {1,"A"},
+            {2,"B"},
+            {3,"C"},
+            {4,"D"}
+        };
+        
+        if (done==true)
+        {   
+            Debug.Log("level: " + questionLevel);
+            QuestionBoardContainerPrefab = new GameObject[limit];
             FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
-            var colRef = db.Collection("Users");
-            Query query = colRef.OrderByDescending("ChallengeModeWins").Limit(limit);
+            var colRef = db.Collection("/QnA/Testing/Sections/Functional Testing/difficulty/"+questionLevel+"/Questions");
+            Query query = colRef.Limit(limit);
             
-            // questionWorld = worldDD.options[worldDD.value].text;
-            // questionSection = sectionDD.options[sectionDD.value].text;
-            // questionLevel = levelDD.options[levelDD.value].text;
+            
+            
             // UnityEngine.Debug.Log(System.String.Format("World:{0} | Section:{1} | Level:{2}", questionWorld, questionSection, questionLevel));
 
-            QuestionBoardContainerPrefab = new GameObject[10];
+            QuestionBoardContainerPrefab = new GameObject[limit];
             query.GetSnapshotAsync().ContinueWithOnMainThread(task => {
             QuerySnapshot query = task.Result;
             int i=0;
             foreach (DocumentSnapshot documentSnapshot in query.Documents) {
                 QuestionBoardContainerPrefab[i] = Instantiate(Resources.Load<GameObject>("QuestionBoardBox"));
                 TextMeshProUGUI textMesh = QuestionBoardContainerPrefab[i].GetComponentInChildren<TextMeshProUGUI>();
-                // textMesh.text="(RANK " + (i+1).ToString() + ") ";
-                
-                // if(i<=2){
-                //     textMesh.color = new Color(0.9686275f,0.7960785f,0.09803922f,1);
-                // }
+            
     
-                Dictionary<string, object> student = documentSnapshot.ToDictionary();
-                foreach (KeyValuePair<string, object> pair in student) {   
-                    textMesh.text="(ID) Question:  " + "\n\n\n\n"; // \n to give more space for question
-                    textMesh.text=textMesh.text+ "Option A:  " + "             ";
-                    textMesh.text=textMesh.text+ "Option B:  " + "\n";
-                    textMesh.text=textMesh.text+ "Option C:  " + "             ";
-                    textMesh.text=textMesh.text+ "Option D:  " + "\n";
-                    textMesh.text=textMesh.text+ "Correct Answer: ___ " +"\n";
-                
-                UnityEngine.Debug.Log(System.String.Format("{0}: {1}", pair.Key, pair.Value));
-                }
+                QuestionModel questionData = documentSnapshot.ConvertTo<QuestionModel>();
+                textMesh.text="(ID) Question:  " + questionData.Question+"\n"; // \n to give more space for question
+                textMesh.text=textMesh.text+ "Option A:  " + questionData.Answers[0]+"\n";
+                textMesh.text=textMesh.text+ "Option B:  " + questionData.Answers[1]+"\n";
+                textMesh.text=textMesh.text+ "Option C:  " + questionData.Answers[2]+"\n";
+                textMesh.text=textMesh.text+ "Option D:  " + questionData.Answers[3]+"\n";
+                textMesh.text=textMesh.text+ "Correct Answer: "+ansMap[questionData.CorrectAnswer] +"\n";
                 
                 i=i+1;    
                 };
@@ -75,9 +91,24 @@ public class QuestionBoardDAO : MonoBehaviour
                     Debug.Log("height_offset: " + height_offset);
                 }
             });
-            
+            done = false;
         }
-        done = false;
+        
+    }
+
+    public void fetchQuestions(){
+            SceneManager.LoadScene("View Questions");
+            QuestionChoice.setDifficulty(levelDD.options[levelDD.value].text);
+            Debug.Log("level: " + questionLevel);
+    }
+
+    public void setDone(){
+        done=true;
+    }
+
+    public void testButton(){
+        Debug.Log("Delete Button");
+
     }
 
 }

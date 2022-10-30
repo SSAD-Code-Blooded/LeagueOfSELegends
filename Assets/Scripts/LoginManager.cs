@@ -159,6 +159,7 @@ public class LoginManager : MonoBehaviour
                         ChallengeModeWins = 0,
                         StoryModeScore =0
                     };
+                    //setting up firestore document for user
                     var firestore = FirebaseFirestore.DefaultInstance;
                     firestore.Document("Users/"+email.text).SetAsync(userData);
 
