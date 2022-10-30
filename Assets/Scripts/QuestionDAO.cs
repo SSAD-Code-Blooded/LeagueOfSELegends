@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+// using System.Reflection.PortableExecutable;
 using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,23 +24,30 @@ public struct QuestionModel
     public int CorrectAnswer{get;set;}
 }
 
-public class QuestionDAO : MonoBehaviour
+public static class QuestionDAO
 {
     // Start is called before the first frame update
-    void Start()
-    {   
-        Dictionary<string,string> questionDict;
-        // String question1=getQuestion("Planning","Requirement Analysis","Easy","Q1");
-        // UnityEngine.Debug.Log(question1);
-        // UnityEngine.Debug.Log(question1.CorrectAnswer);
+    // void Start()
+    // {   
+    //     Dictionary<string,string> questionDict;
+    //     // String question1=getQuestion("Planning","Requirement Analysis","Easy","Q1");
+    //     // UnityEngine.Debug.Log(question1);
+    //     // UnityEngine.Debug.Log(question1.CorrectAnswer);
         
 
-    }
+    // }
 
-    // Update is called once per frame
-    void Update()
-    {
+    // // Update is called once per frame
+    // void Update()
+    // {
         
+    // }
+
+    public static void setAnswers(QuestionModel questionData, String world, String section, String difficulty){
+        string question = questionData.Question;
+        var firestore = FirebaseFirestore.DefaultInstance;
+        firestore.Document("QnA/"+world+"/Sections/"+section+"/difficulty/"+difficulty+"/Questions/"+question).SetAsync(questionData);
+        UnityEngine.Debug.Log("Question write succesfully!");
     }
 
     // public String getQuestion(String world, String section, String difficulty,String question){
