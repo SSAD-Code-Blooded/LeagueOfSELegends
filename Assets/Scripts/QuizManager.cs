@@ -41,6 +41,7 @@ public class QuizManager : MonoBehaviour
 
    public GameObject Quizpanel;
    public GameObject GoPanel;
+   public GameObject StartPanel;
    public GameObject Timer;
 
    public Dictionary<string, object> questionBank;
@@ -63,9 +64,6 @@ public class QuizManager : MonoBehaviour
     totalQuestions = QnA.Count;
     currScore.text = score + "";
     GoPanel.SetActive(false);
-    
-    
-    
     generateQuestion();
 
    }
@@ -85,6 +83,12 @@ public class QuizManager : MonoBehaviour
             GameOver('T');
         }
         
+    }
+
+    public void startquiz()
+    {
+        StartPanel.SetActive(false);
+
     }
 
    public void retry()
@@ -145,6 +149,7 @@ public class QuizManager : MonoBehaviour
    {
     Timer.SetActive(false);
     Quizpanel.SetActive(false);
+    StartPanel.SetActive(false);
     GoPanel.SetActive(true);
     ScoreTxt.text = score.ToString();
     
