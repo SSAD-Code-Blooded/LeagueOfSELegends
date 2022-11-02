@@ -1,3 +1,5 @@
+using System.Diagnostics.Tracing;
+using System.Collections.ObjectModel;
 using System.Linq.Expressions;
 // using System.Reflection.PortableExecutable;
 using System.Diagnostics;
@@ -24,8 +26,9 @@ public struct QuestionModel
     public int CorrectAnswer{get;set;}
 }
 
-public static class QuestionDAO
+public class QuestionDAO
 {
+    public int counterValue;
     // Start is called before the first frame update
     // void Start()
     // {   
@@ -43,11 +46,37 @@ public static class QuestionDAO
         
     // }
 
+    public int retrieveCounter(String world, String section, String difficulty){
+        UnityEngine.Debug.Log("Retrieving Counter");
+        FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+        DocumentReference docRef = db.Collection("QnA/"+world+"/Sections/"+section+"/difficulty").Document(difficulty);
+        docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
+        {
+        DocumentSnapshot snapshot = task.Result;
+        if (snapshot.Exists) {
+        //counter=snapshot.GetValue();
+
+        } else {
+            UnityEngine.Debug.Log(String.Format("Retrieving Counter Failed"));
+        }
+        });
+
+    return counterValue;
+
+
+    }
     public static void setAnswers(QuestionModel questionData, String world, String section, String difficulty){
         string question = questionData.Question;
         var firestore = FirebaseFirestore.DefaultInstance;
         firestore.Document("QnA/"+world+"/Sections/"+section+"/difficulty/"+difficulty+"/Questions/"+question).SetAsync(questionData);
         UnityEngine.Debug.Log("Question write succesfully!");
+    }
+
+    public static void deleteQuestion(String questionid, String world, String section, String difficulty){
+        var firestore = FirebaseFirestore.DefaultInstance;
+        firestore.Document("QnA/"+world+"/Sections/"+section+"/difficulty/"+difficulty+"/Questions/"+questionid).DeleteAsync();
+        UnityEngine.Debug.Log("Question deleted succesfully!");
+
     }
 
     // public String getQuestion(String world, String section, String difficulty,String question){
