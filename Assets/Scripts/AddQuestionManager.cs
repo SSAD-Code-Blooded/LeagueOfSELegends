@@ -44,6 +44,8 @@ public class AddQuestionManager : MonoBehaviour
         string worldSelection= worldDD.options[worldDD.value].text;
         string sectionSelection= sectionDD.options[sectionDD.value].text;
         string levelSelection= levelDD.options[levelDD.value].text;
+        //int counterValue=QuestionDAO.retrieveCounter(worldSelection, sectionSelection,levelSelection);
+        //UnityEngine.Debug.Log(String.Format("Retrieved: ",counterValue));
 
         if (worldSelection=="SELECT WORLD"){
             writeData=false;

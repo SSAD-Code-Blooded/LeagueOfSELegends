@@ -71,4 +71,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Add Question.unity
     guid: 54e80dc83e449e44ebfacb0c4e1ae382
+  - enabled: 1
+    path: Assets/Scenes/Delete Question.unity
+    guid: 84a196ab2b2da034286ec1760dd293f2
   m_configObjects: {}
