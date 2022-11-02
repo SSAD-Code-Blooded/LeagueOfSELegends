@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Firebase.Auth;
 using Firebase.Extensions;
 using Firebase.Firestore;
@@ -68,6 +69,12 @@ public class QuestionBoardDAO : MonoBehaviour
             int i=0;
             foreach (DocumentSnapshot documentSnapshot in query.Documents) {
                 QuestionBoardContainerPrefab[i] = Instantiate(Resources.Load<GameObject>("QuestionBoardBox"));
+                // GameObject newButton = Instantiate(Resources.Load<GameObject>("DeleteButton")) as GameObject;
+                // newButton.transform.SetParent(QuestionBoardContainerPrefab[i].transform, false);
+                // QuestionBoardContainerPrefab[i].FindGameObjectWithTag("DeleteButton").GetComponent<Button>().onClick.AddListener(delegate {testButton(i.ToString()); });
+
+                // GameObject newButton = Instantiate(button) as GameObject;
+                // newButton.transform.SetParent(QuestionBoardContainerPrefab[i].transform, false);
                 TextMeshProUGUI textMesh = QuestionBoardContainerPrefab[i].GetComponentInChildren<TextMeshProUGUI>();
             
     
@@ -86,6 +93,7 @@ public class QuestionBoardDAO : MonoBehaviour
                 for(int x = 0; x < QuestionBoardContainerPrefab.Length; x++)
                 {
                     var newAssignmentContainer = Instantiate(QuestionBoardContainerPrefab[x], new Vector3(0, height_offset, 0), Quaternion.identity);
+                    // buttons[x].GetComponent<Button>().onClick.AddListener(delegate {testButton(x.ToString()); });
                     newAssignmentContainer.transform.SetParent(gameObject.transform.parent, false);
                     height_offset = height_offset - margin;
                     Debug.Log("height_offset: " + height_offset);
@@ -106,8 +114,8 @@ public class QuestionBoardDAO : MonoBehaviour
         done=true;
     }
 
-    public void testButton(){
-        Debug.Log("Delete Button");
+    public void testButton(string idx){
+        Debug.Log("Delete Button" + idx);
 
     }
 

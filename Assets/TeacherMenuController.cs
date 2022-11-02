@@ -15,6 +15,11 @@ public class TeacherMenuController : MonoBehaviour
         SceneManager.LoadScene("View Questions");
     }
 
+    public void deleteQuestion()
+    {
+        SceneManager.LoadScene("Delete Question");
+    }
+
     public void backButton()
     {
         SceneManager.LoadScene("1.2 Teacher Login");
