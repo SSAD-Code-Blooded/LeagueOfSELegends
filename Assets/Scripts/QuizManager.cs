@@ -60,9 +60,12 @@ public class QuizManager : MonoBehaviour
 
     
     string userProfileLevel = userDAO.getUserProgressLevel();
+    UnityEngine.Debug.Log(userProfileLevel);
     dataFetch(userProfileLevel);
+
     totalQuestions = QnA.Count;
     currScore.text = score + "";
+    Quizpanel.SetActive(false);
     GoPanel.SetActive(false);
     generateQuestion();
 
@@ -88,6 +91,10 @@ public class QuizManager : MonoBehaviour
     public void startquiz()
     {
         StartPanel.SetActive(false);
+        Quizpanel.SetActive(true);
+        QnA.RemoveAt(currentQuestion);
+        generateQuestion();
+
 
     }
 
