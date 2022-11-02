@@ -33,6 +33,8 @@ public class QuizManager : MonoBehaviour
    float currentTime = 0f;
    float startingTime = 30f;
    bool flag=true;
+   bool quiz_started = false;
+
 
 
    int totalQuestions= 0;
@@ -74,6 +76,8 @@ public class QuizManager : MonoBehaviour
 
     void Update()
     {
+        if(quiz_started == true)
+        {
         currentTime -= 1 * Time.deltaTime;
         countdownText.text = currentTime.ToString("0");
 
@@ -85,6 +89,9 @@ public class QuizManager : MonoBehaviour
         if(currentTime <= 0){
             GameOver('T');
         }
+            
+        }
+        
         
     }
 
@@ -94,6 +101,7 @@ public class QuizManager : MonoBehaviour
         Quizpanel.SetActive(true);
         QnA.RemoveAt(currentQuestion);
         generateQuestion();
+        quiz_started = true;
 
 
     }
