@@ -14,17 +14,6 @@ public class deleteQuestionManager : MonoBehaviour
     public GameObject errorUI;
     public TMP_Text errorMessageToShow;
     public string errorMessage;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void clickDeleteQuestionButton(){
         UnityEngine.Debug.Log("FN CALLED");

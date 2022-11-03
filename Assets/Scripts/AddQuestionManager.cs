@@ -24,30 +24,25 @@ public class AddQuestionManager : MonoBehaviour
     public string questionUID;
     public int counter;
     public int counterint;
-    public string questionIncremented; 
+    public string questionIncremented;
 
-    // Start is called before the first frame update
-    void Start()
+    public GameObject errorUI;
+    public TMP_Text errorMessageToShow;
+    public string errorMessage;
+
+    public QuestionModel createQuestionData()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public QuestionModel createQuestionData(){
         string [] ansList = new string[]{ansA.text,ansB.text,ansC.text,ansD.text};
-        var ansMap = new Dictionary<string,int>(){
+        var ansMap = new Dictionary<string,int>()
+        {
             {"A",1},
             {"B",2},
             {"C",3},
             {"D",4}
         };
         
-        var questionData = new QuestionModel{
+        var questionData = new QuestionModel
+        {
             Question = question.text,
             Answers = ansList,
             CorrectAnswer = ansMap[correctAns.options[correctAns.value].text],
@@ -58,21 +53,52 @@ public class AddQuestionManager : MonoBehaviour
     
     public void clickAddQuestionButton(){
         bool writeData= true;
-        QuestionModel questionData = createQuestionData();
+        
         string worldSelection= worldDD.options[worldDD.value].text;
         string sectionSelection= sectionDD.options[sectionDD.value].text;
         string levelSelection= levelDD.options[levelDD.value].text;
+        string correctAnswer= correctAns.options[correctAns.value].text;
 
-        if (worldSelection=="SELECT WORLD"){
+        if (worldSelection=="SELECT WORLD")
+        {
             writeData=false;
         }
-        if (sectionSelection=="SELECT SECTION"){
+        if (sectionSelection=="SELECT SECTION")
+        {
             writeData=false;
         }
-        if (levelSelection=="SELECT LEVEL"){
+        if (levelSelection=="SELECT LEVEL")
+        {
             writeData=false;
         }
-        if (writeData){
+        if (correctAnswer=="SELECT ANSWER")
+        {
+            writeData=false;
+        }
+        if (question.text=="")
+        {
+            writeData=false;
+        }
+        if (ansA.text=="")
+        {
+            writeData=false;
+        }
+        if (ansB.text=="")
+        {
+            writeData=false;
+        }
+        if (ansC.text=="")
+        {
+            writeData=false;
+        }
+        if (ansD.text=="")
+        {
+            writeData=false;
+        }
+
+        if (writeData)
+        {
+            QuestionModel questionData = createQuestionData();
             UnityEngine.Debug.Log("Retrieving Counter");
             var firestore = FirebaseFirestore.DefaultInstance;
             DocumentReference docRef = firestore.Document("QnA/"+worldSelection+"/Sections/"+sectionSelection+"/difficulty/"+levelSelection);
@@ -90,24 +116,26 @@ public class AddQuestionManager : MonoBehaviour
             questionData.questionUID=questionIncremented;
             UnityEngine.Debug.Log(questionIncremented);
             QuestionDAO.setAnswers(questionData, worldSelection, sectionSelection,levelSelection,questionIncremented);
-
-            } else {
-                UnityEngine.Debug.Log(String.Format("Retrieving Counter Failed"));
             }
-            });
-
-                        
+            else 
+            {
+                errorMessage = "Retrieving Counter Failed";
+                errorUI.SetActive(true);
+                errorMessageToShow.text = errorMessage; 
+                UnityEngine.Debug.Log(String.Format(errorMessage));
+            }
+            });  
             UnityEngine.Debug.Log("Question set succesfully!");
             SceneManager.LoadScene("Teacher Menu");
         }
-        else{
-            UnityEngine.Debug.Log("Question not set!");
+        else
+        {
+            errorMessage = "Error! Make sure to fill in all the necessary information. Please try again.";
+            errorUI.SetActive(true);
+            errorMessageToShow.text = errorMessage; 
+            UnityEngine.Debug.Log(errorMessage);
         }
     }
-
-
-
-    
 }
 
 
