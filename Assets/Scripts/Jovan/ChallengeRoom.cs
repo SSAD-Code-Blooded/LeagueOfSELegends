@@ -7,26 +7,28 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using Firebase.Auth;
 
+/// This class is used to manage the scene for Challenge Room. (room creation / joining a room)
+///
+/// It manages the loading of different scenes from Challenge Lobby scene and the overall flow of room creation / room joining.
 public class ChallengeRoom : MonoBehaviourPunCallbacks
 {
-    public TMP_InputField roomNameInput;
-    public GameObject waitingpanel;
-    public TextMeshProUGUI roomN;
-    public TMP_Dropdown worldDD;
-    public TMP_Dropdown sectionDD;
-    public TMP_Dropdown levelDD;
-    public static string challengeWorld;
-    public static string challengeSection;
-    public static string challengeLevel;
-    public static Vector3 position;
-    public static int playerID;
-    public static string player1email;
-    public static string player2email;
+    public TMP_InputField roomNameInput; /**< placeholder in unity UI to get access to the roomNameInput */
+    public GameObject waitingpanel; /**< placeholder in unity UI to get access to the waitingpanel */
+    public TextMeshProUGUI roomN; /**< placeholder in unity UI to get access to the roomN */
+    public TMP_Dropdown worldDD; /**< placeholder in unity UI to get access to the worldDD */
+    public TMP_Dropdown sectionDD; /**< placeholder in unity UI to get access to the sectionDD */
+    public TMP_Dropdown levelDD; /**< placeholder in unity UI to get access to the levelDD */
+    public static string challengeWorld; /**< this declares the selected ChallengeWorld */
+    public static string challengeSection; /**< this declares the selected ChallengeSection */
+    public static string challengeLevel; /**< this declares the selected challengelevel */
+    public static int playerID; /**< this declares the playerID */
+    public static string player1email; /**< this declares the email of player 1 */
+    public static string player2email; /**< this declares the email of player 2 */
     private bool p2notyet;
-    public GameObject join_room_error_canvas;
-    public TMP_Text join_room_error_text;
+    public GameObject join_room_error_canvas; /**< placeholder in unity UI to get access to the join_room_error_canvas */
+    public TMP_Text join_room_error_text; /**< placeholder in unity UI to get access to the join_room_error_text */
 
-    private int MaxPlayersPerRoom = 2;
+    private int MaxPlayersPerRoom = 2; 
     private string user1Email;
 
     // Start is called before the first frame update
@@ -48,13 +50,10 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
             Debug.Log("This is: " + user1Email);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
+    /// This method is called whenever users wants to leave lobby to main menu.
+    ///
+    /// It loads Main Menu scene.
     public void onBackButtonToMainMenu()
     {
         PhotonNetwork.LeaveLobby();
@@ -62,12 +61,18 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
         SceneManager.LoadScene(sceneName:"3 Main Menu");
     }
 
+    /// This method is called whenever users is in the newly created room and wants to go back to Create / Join room lobby.
+    ///
+    /// It loads Create / Join room lobby.
     public void onBackButtonToCreateRoomLobby() 
     {
         PhotonNetwork.LeaveRoom();
         Debug.Log("Player has left room to create room lobby.");
     }
 
+    /// This method will be used to override OnConnectedToMaster function.
+    ///
+    /// It added the syncing of all players and initialise user 1 email and trigger join lobby.
     public override void OnConnectedToMaster()
     {
         // means if the MasterClient loads Scene B, all other clients will load Scene B as well
@@ -77,6 +82,9 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby(TypedLobby.Default);
     }
 
+    /// This method will be used to override OnJoinedLobby function.
+    ///
+    /// It allows us to see debug message when user joined lobby or is not in room.
     public override void OnJoinedLobby()
     {
         Debug.Log("Joined Lobby");
@@ -85,6 +93,10 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
             Debug.Log("Notinroom");
         }
     }
+
+    /// This method will be called when users clicks on Create Room after selecting world, section and level.
+    ///
+    /// It will create a room and print debug message to let us know if room is created successfully.
     public void OnClick_CreateRoom()
     {
         RoomOptions roomOptions = new RoomOptions() 
@@ -106,6 +118,9 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
         Debug.Log(challengeLevel + " " + challengeSection + " " + challengeWorld);
     }
 
+    /// This method will be called when users clicks on Join Room after keying in room ID
+    ///
+    /// It will bring player to the room if room ID is valid and print error message if room ID is invalid.
     public void OnClick_EnterRoom()
     {
         if (PhotonNetwork.JoinRoom(roomNameInput.text))
@@ -120,7 +135,9 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
         }
     } 
 
-
+    /// This method will be used to override OnRoomListUpdate function.
+    ///
+    /// It print out all the room available in the server.
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         Debug.Log(roomList);
@@ -141,18 +158,9 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRoom(user1Email);
     }
 
-    public static void OnClickRoom(string roomName)
-    {
-        if (PhotonNetwork.JoinRoom(roomName))
-        {
-            Debug.Log("Player Joined in the Room" + roomName);
-        }
-        else
-        {
-            Debug.Log("Failed to join in the room, please fix the error!");
-        }
-    }
-
+    /// This method will be used to override OnJoinedRoom function.
+    ///
+    /// It will do the logic flow and initialise the room details with the player details.
     public override void OnJoinedRoom()
     {
         Debug.Log("Client joined a room");
@@ -210,6 +218,9 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
         }
     }
 
+    /// This method will be used to override OnPlayerEnteredRoom function.
+    ///
+    /// It will do the logic flow and only start game when 2 players are in the room.
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         if (PhotonNetwork.CurrentRoom.PlayerCount == MaxPlayersPerRoom)
@@ -225,11 +236,12 @@ public class ChallengeRoom : MonoBehaviourPunCallbacks
         }
     }
 
-    // when leaveRoom() is called
+    /// This method will be used to override OnLeftRoom function.
+    ///
+    /// It will be called when LeaveRoom() is called. Once called, it will load Create Room / Join Room Menu.
     public override void OnLeftRoom()
     {
         SceneManager.LoadScene(sceneName:"4.1 Challenge Create Or Join Room Menu");
-
         base.OnLeftRoom();
     }
 
