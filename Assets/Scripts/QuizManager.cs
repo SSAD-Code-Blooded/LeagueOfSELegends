@@ -116,6 +116,11 @@ public class QuizManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
    }
 
+    public void backButton()
+    {
+        SceneManager.LoadScene("World");
+    }
+
     public async void dataFetch(string userProfileLevel)
     {
      FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
@@ -280,6 +285,7 @@ public class QuizManager : MonoBehaviour
         UnityEngine.Debug.Log("Out of Questions");
         GameOver('W');
     }
+    
     
 
 
