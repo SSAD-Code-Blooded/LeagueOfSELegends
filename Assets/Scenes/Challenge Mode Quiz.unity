@@ -3675,7 +3675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -302.78217, y: -14.001068}
+  m_AnchoredPosition: {x: -302.7821, y: -14.001099}
   m_SizeDelta: {x: -678.992, y: -153.902}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1691228294
@@ -3741,10 +3741,8 @@ MonoBehaviour:
   countdownText: {fileID: 738442330}
   ResultText: {fileID: 1854192380}
   score: 0
-  win_game: 0
   Quizpanel: {fileID: 1287997005}
   GoPanel: {fileID: 879756052}
-  Timer: {fileID: 1005285271}
   Waitingpanel: {fileID: 604311794}
   player1email: {fileID: 1827249754}
   player2email: {fileID: 1257099924}
@@ -4920,6 +4918,7 @@ GameObject:
   - component: {fileID: 2065785543}
   - component: {fileID: 2065785546}
   - component: {fileID: 2065785545}
+  - component: {fileID: 2065785547}
   m_Layer: 5
   m_Name: Player1Image
   m_TagString: Untagged
@@ -5015,6 +5014,37 @@ MonoBehaviour:
   spritePerFrame: 6
   loop: 1
   destroyOnEnd: 0
+--- !u!114 &2065785547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065785541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 099352893477e904f9d38c5f297e006a,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: decf66ce-02c2-4e3d-900c-82bab1fbecc0
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &2081449847
 GameObject:
   m_ObjectHideFlags: 0
