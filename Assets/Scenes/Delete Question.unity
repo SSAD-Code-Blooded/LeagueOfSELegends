@@ -955,8 +955,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.3379, y: -13.5145}
-  m_SizeDelta: {x: 823.29, y: 129.9514}
+  m_AnchoredPosition: {x: -4.3145, y: 2.8012}
+  m_SizeDelta: {x: 828.7762, y: 139.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &386472560
 MonoBehaviour:
@@ -978,16 +978,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '(ID) Question
-
-    Space
-
-    A                                   B
-
-    C                                  
-    D
-
-    Correct Answer'
+  m_text: "(ID) Question\nSpace\nA \nB\nC\nD                                   \nCorrect
+    Answer"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1ec7bd3e85494289b35a3edcf9cf399, type: 2}
   m_sharedMaterial: {fileID: -5532573021606843785, guid: f1ec7bd3e85494289b35a3edcf9cf399,
@@ -1015,8 +1007,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1051,7 +1043,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.030853232, y: -15.908817, z: -2.981903, w: 5.4562697}
+  m_margin: {x: -0.030853232, y: 0.27859882, z: -2.981903, w: -2.6374435}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2425,8 +2417,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 30.448, y: -576.53}
-  m_SizeDelta: {x: 621.6661, y: 133.66}
+  m_AnchoredPosition: {x: 30.448, y: -564.2}
+  m_SizeDelta: {x: 621.6661, y: 144.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1083046115
 GameObject:
@@ -4593,7 +4585,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Submit
+  m_text: Delete
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 794d938d455c94e25b270f36ef0fbcd9, type: 2}
   m_sharedMaterial: {fileID: 4523076596157905483, guid: 794d938d455c94e25b270f36ef0fbcd9,
