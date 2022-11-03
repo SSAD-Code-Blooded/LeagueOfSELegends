@@ -79,7 +79,8 @@ public class QuestionBoardDAO : MonoBehaviour
             
     
                 QuestionModel questionData = documentSnapshot.ConvertTo<QuestionModel>();
-                textMesh.text="(ID) Question:  " + questionData.Question+"\n"; // \n to give more space for question
+                textMesh.text="Question ID:  " + questionData.questionUID+"\n"; 
+                textMesh.text=textMesh.text+ "Question:  " + questionData.Question+"\n"; // \n to give more space for question
                 textMesh.text=textMesh.text+ "Option A:  " + questionData.Answers[0]+"\n";
                 textMesh.text=textMesh.text+ "Option B:  " + questionData.Answers[1]+"\n";
                 textMesh.text=textMesh.text+ "Option C:  " + questionData.Answers[2]+"\n";
