@@ -6,6 +6,9 @@ using Firebase.Extensions;
 using Firebase.Firestore;
 using TMPro;
 
+/// This class is used to manage the data retrieval and rendering of leaderboard scene.
+///
+/// It pull out data and prepare it for rendering on unity UIUX.
 public class LeaderboardDAO : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -13,9 +16,6 @@ public class LeaderboardDAO : MonoBehaviour
     private int height_offset = -180;
     private int margin = 340;
     private bool done = true;
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     void Update()
@@ -60,8 +60,7 @@ public class LeaderboardDAO : MonoBehaviour
                 
                 i=i+1;    
                 };
-                // height_offset = -200;
-                // margin = 340;
+
                 for(int x = 0; x < LeaderboardContainerPrefab.Length; x++)
                 {
                     var newAssignmentContainer = Instantiate(LeaderboardContainerPrefab[x], new Vector3(0, height_offset, 0), Quaternion.identity);
