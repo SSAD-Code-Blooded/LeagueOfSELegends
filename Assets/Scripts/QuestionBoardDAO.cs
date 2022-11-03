@@ -27,6 +27,10 @@ public class QuestionBoardDAO : MonoBehaviour
     public TMP_Dropdown worldDD;
     public TMP_Dropdown sectionDD;
     public TMP_Dropdown levelDD;
+    public GameObject errorUI;
+    public TMP_Text errorMessageToShow;
+    public string errorMessage;
+
     private int height_offset = -275;
     private int margin = 555;
     private int limit = 20;
@@ -105,10 +109,37 @@ public class QuestionBoardDAO : MonoBehaviour
         
     }
 
-    public void fetchQuestions(){
+    public void fetchQuestions()
+    {
+        string worldSelection= worldDD.options[worldDD.value].text;
+        string sectionSelection= sectionDD.options[sectionDD.value].text;
+        string levelSelection= levelDD.options[levelDD.value].text;
+        bool fetchData= true;
+        if (worldSelection=="SELECT WORLD")
+        {
+            fetchData=false;
+        }
+        if (sectionSelection=="SELECT SECTION")
+        {
+            fetchData=false;
+        }
+        if (levelSelection=="SELECT LEVEL")
+        {
+            fetchData=false;
+        }
+        if (fetchData)
+        {
             SceneManager.LoadScene("View Questions");
             QuestionChoice.setDifficulty(levelDD.options[levelDD.value].text);
             Debug.Log("level: " + questionLevel);
+        }
+        else
+        {
+            errorMessage = "Error! Make sure to fill in all the necessary information. Please try again.";
+            errorUI.SetActive(true);
+            errorMessageToShow.text = errorMessage; 
+            Debug.Log(errorMessage);
+        }
     }
 
     public void setDone(){
