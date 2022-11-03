@@ -3,19 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// This class is used to manage music.
+///
+/// It ensures the background music is playing throughout.
 public class MusicNoDestroy : MonoBehaviour
 {
-    // // Start is called before the first frame update
-    // void Start()
-    // {
-        
-    // }
-
-    // // Update is called once per frame
-    // void Update()
-    // {
-    
-    // }
 
     private void Awake()
     {

@@ -8,13 +8,11 @@ using UnityEngine.UI;
 /// It manages the changing of button's colour when player click on it like turning it red when wrong answer is clicked.
 public class ChallengeAnswersScript : MonoBehaviour
 {
-    public bool isCorrect = false;
-    public ChallengeQuizManager challengeQuizManager;
-    public GameObject thisbutton;
+    public bool isCorrect = false; /**< a boolean variable to check if answer is correct. True if correct. False if wrong */
+    public ChallengeQuizManager challengeQuizManager; /**< placeholder in unity UI to get access to ChallengeQuizManager script */
+    public GameObject thisbutton; /**< placeholder in unity UI to get access to the button being clicked */
 
-    /// This method is a helper function called after user answered correctly.
-    ///
-    /// It changes button's colour to white after player answers correctly.
+
     IEnumerator CExecuteAfterTime(float time)
     {
      yield return new WaitForSeconds(time);
@@ -22,9 +20,7 @@ public class ChallengeAnswersScript : MonoBehaviour
      challengeQuizManager.correct();
     }
     
-    /// This method is a helper function called after user answered wrongly.
-    ///
-    ///  It changes button's colour to white after player answers wrongly.
+
     IEnumerator WExecuteAfterTime(float time)
     {
      yield return new WaitForSeconds(time);

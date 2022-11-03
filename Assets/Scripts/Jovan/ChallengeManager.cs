@@ -19,7 +19,7 @@ public class ChallengeManager : MonoBehaviour
 
     /// This method is called whenever user clicks on back to Challenge Menu Scene.
     ///
-    /// It manages the changing of button's colour when player click on it like turning it red when wrong answer is clicked.
+    /// It brings user to Challenge Menu Scene.
     public void onClickBackToChallengeMenu()
     {
         SceneManager.LoadScene("4 Challenge Menu");
