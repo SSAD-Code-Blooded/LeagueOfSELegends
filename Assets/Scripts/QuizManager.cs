@@ -66,12 +66,13 @@ public class QuizManager : MonoBehaviour
     string userProfileLevel = userDAO.getUserProgressLevel();
     UnityEngine.Debug.Log(userProfileLevel);
     dataFetch(userProfileLevel);
+    generateQuestion();
 
     totalQuestions = QnA.Count;
     currScore.text = score + "";
     Quizpanel.SetActive(false);
     GoPanel.SetActive(false);
-    generateQuestion();
+    
 
    } //!< Function that runs when the scene is loaded.
 
