@@ -1,4 +1,3 @@
-
 using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,41 +9,46 @@ using Firebase.Extensions;
 using Firebase.Auth;
 using System.Linq;
 
+/****************************************************//**
+ *  ... Quiz Manager- fetches data for the quiz page UI
+ ******************************************************/
+
 public class QuizManager : MonoBehaviour
 {
-   public int maxHealth = 100;
-   public int currentPlayerHealth;
-   public int currentMonsterHealth;
-   public HealthBar playerHealthBar;
-   public HealthBar monsterHealthBar;
+   public int maxHealth = 100; /**< Maximum Health of player/monster character */
+   public int currentPlayerHealth; /**< Current Health of the Player */
+   public int currentMonsterHealth; /**< Current Health of the Monster */
+   public HealthBar playerHealthBar; /**< HealthBar object for Player */
+   public HealthBar monsterHealthBar; /**< HealthBar object for Monster */
 
-   public int userScore;
+   public int userScore; /** User's Score */
 
-   public List<QuestionsAndAnswers> QnA;
-   public GameObject[] options;
-   public int currentQuestion;
+   public List<QuestionsAndAnswers> QnA; /**< List of Questions and Answers */
+   public GameObject[] options; /**< An array of GameObjects for the options */
+   public int currentQuestion; /**< The current question number */
 
-   public Text QuestionTxt;
-   public Text ScoreTxt;
-   public Text currScore;
-   public Text countdownText;
-   public Text ResultText;
+   public Text QuestionTxt; /**< Text of the Question */
+   public Text ScoreTxt; /**< Text that displays the score */
+   public Text currScore; /**< Current socre of the player */
+   public Text countdownText; /**< Text that displays time remaining */
+   public Text ResultText; /**< Text displaying result (win/loss) */
 
-   float currentTime = 0f;
-   float startingTime = 30f;
-   bool flag=true;
+   float currentTime = 0f; /**< Current Time remaining */
+   float startingTime = 30f; /**< Initializing starting time to 30 seconds */
+   bool flag=true; 
+   bool quiz_started = false; /**< Whether the quiz has begun */
 
 
-   int totalQuestions= 0;
-   public int score = 0;
-   public int win_game;
+   int totalQuestions= 0; /**< Total questions */
+   public int score = 0; /**< Score */
+   public int win_game; /**< Wherher tou won or lost the game */
 
-   public GameObject Quizpanel;
-   public GameObject GoPanel;
-   public GameObject StartPanel;
-   public GameObject Timer;
+   public GameObject Quizpanel; /**< Game Object for the Quiz Panel with Questions*/
+   public GameObject GoPanel; /**< Game Object for the Game Over Panel */
+   public GameObject StartPanel; /**< Game Object for the Start Dialog Panel*/
+   public GameObject Timer; /**< Game Object for the Countdown Timer */
 
-   public Dictionary<string, object> questionBank;
+   public Dictionary<string, object> questionBank; /**< Dictionary containing the Questions*/
 
 //    public QuestionDAO questionDAO;
 
@@ -60,17 +64,22 @@ public class QuizManager : MonoBehaviour
 
     
     string userProfileLevel = userDAO.getUserProgressLevel();
+    UnityEngine.Debug.Log(userProfileLevel);
     dataFetch(userProfileLevel);
+
     totalQuestions = QnA.Count;
     currScore.text = score + "";
+    Quizpanel.SetActive(false);
     GoPanel.SetActive(false);
     generateQuestion();
 
-   }
+   } //!< Function that runs when the scene is loaded.
 
 
     void Update()
     {
+        if(quiz_started == true)
+        {
         currentTime -= 1 * Time.deltaTime;
         countdownText.text = currentTime.ToString("0");
 
@@ -82,12 +91,20 @@ public class QuizManager : MonoBehaviour
         if(currentTime <= 0){
             GameOver('T');
         }
+            
+        }
+        
         
     }
 
     public void startquiz()
     {
         StartPanel.SetActive(false);
+        Quizpanel.SetActive(true);
+        QnA.RemoveAt(currentQuestion);
+        generateQuestion();
+        quiz_started = true;
+
 
     }
 
