@@ -978,8 +978,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "(ID) Question\nSpace\nA \nB\nC\nD                                   \nCorrect
-    Answer"
+  m_text: ' '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1ec7bd3e85494289b35a3edcf9cf399, type: 2}
   m_sharedMaterial: {fileID: -5532573021606843785, guid: f1ec7bd3e85494289b35a3edcf9cf399,
@@ -1600,6 +1599,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94c9351eea1942989fb0f21ca1d9aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldDD: {fileID: 759633977}
+  sectionDD: {fileID: 1859280970}
+  levelDD: {fileID: 1722953934}
+  questionid: {fileID: 829909827}
+  displayQuestion: {fileID: 386472560}
 --- !u!4 &539167165
 Transform:
   m_ObjectHideFlags: 0
