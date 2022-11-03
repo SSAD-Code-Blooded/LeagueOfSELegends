@@ -13,63 +13,62 @@ using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 
+/// This class is used to manage the scene for Challenge.
+///
+/// It manages the loading of different scenes from Challenge Quiz scenes and the overall flow.
 public class ChallengeQuizManager : MonoBehaviourPun
 {
-    private string level = ChallengeRoom.challengeLevel;
-    private string section = ChallengeRoom.challengeSection;
-    private string world = ChallengeRoom.challengeWorld;
+    private string level = ChallengeRoom.challengeLevel; /**< this helps us get the challenge level keyed in by user */
+    private string section = ChallengeRoom.challengeSection; /**< this helps us get the challenge section keyed in by user */
+    private string world = ChallengeRoom.challengeWorld; /**< this helps us get the challenge world keyed in by user */
 
-    public int maxHealth = 100;
-    public int player1Health;
-    public int player2Health;
-    public HealthBar player1HealthBar;
-    public HealthBar player2HealthBar;
+    public int maxHealth = 100; /**< this is the max health possible for players */
+    public int player1Health; /**< this stores the health for player 1 */
+    public int player2Health; /**< this stores the health for player 2 */
+    public HealthBar player1HealthBar; /**< this stores the healthbar for player 2 */
+    public HealthBar player2HealthBar; /**< this stores the healthbar for player 2 */
 
-    public List<QuestionsAndAnswers> QnA;
+    public List<QuestionsAndAnswers> QnA; /**< this stores the list of QNA */
     public GameObject[] options;
-    public int currentQuestion;
+    public int currentQuestion; /**< this stores current question */
 
-    public Text QuestionTxt;
-    public Text ScoreTxt;
-    public Text OpponentScoreTxt;
-    public Text currScore;
-    public Text countdownText;
-    public Text ResultText;
+    public Text QuestionTxt; /**< placeholder in unity UI to get access to the QuestionTxt */
+    public Text ScoreTxt; /**< placeholder in unity UI to get access to ScoreTxt */
+    public Text OpponentScoreTxt; /**< placeholder in unity UI to get access to OpponentScoreTxt */
+    public Text currScore; /**< placeholder in unity UI to get access to currScore */
+    public Text countdownText; /**< placeholder in unity UI to get access to countdownText */
+    public Text ResultText; /**< placeholder in unity UI to get access to ResultText */
 
-    float currentTime = 0f;
-    float startingTime = 30f;
+    public int score = 0; /**< it initialise score to be 0 */
 
-    int totalQuestions= 0;
-    public int score = 0;
-    public int win_game;
+    public GameObject Quizpanel; /**< placeholder in unity UI to get access to Quizpanel */
+    public GameObject GoPanel; /**< placeholder in unity UI to get access to GoPanel */
+    public GameObject Waitingpanel; /**< placeholder in unity UI to get access to Waitingpanel */
 
-    public GameObject Quizpanel;
-    public GameObject GoPanel;
-    public GameObject Timer;
-    public GameObject Waitingpanel;
+    public TextMeshProUGUI player1email; /**< placeholder in unity UI to get access to player1email text box */
+    public TextMeshProUGUI player2email; /**< placeholder in unity UI to get access to player2email text box */
 
-    public TextMeshProUGUI player1email; // to show in the UIUX
-    public TextMeshProUGUI player2email; // to show in the UIUX
+    private string player1emailtext; /**< this stores the email for player 1 */
+    private string player2emailtext; /**< this stores the email for player 2 */
 
-    private string player1emailtext;
-    private string player2emailtext;
+    private int player1Score = 0; /**< this initialise the score for player 1 */
+    private int player2Score = 0; /**< this initialise the score for player 2 */
 
-    private int player1Score = 0;
-    private int player2Score = 0;
+    private string player1ScoreString; /**< this declares the score for player 1 */
+    private string player2ScoreString; /**< this declares the score for player 2 */
 
-    private string player1ScoreString;
-    private string player2ScoreString;
+    private string player1Done; /**< this declares whether player 1 is done */
+    private string player2Done; /**< this declares whether player 2 is done */
 
-    private string player1Done;
-    private string player2Done;
+    PhotonView pv; 
 
-    PhotonView pv;
+    public Dictionary<string, object> questionBank; /**< this stores the question bank as a dictionary */
 
-    public Dictionary<string, object> questionBank;
-
-    private bool finishUpdate = false;
+    private bool finishUpdate = false; /**< this boolean variable tells us if player's win has been updated in firebase */
     
-
+    /// This method is called whenever Challenge Scene is loaded.
+    ///
+    /// It set up the variables and canvas, etc when the scene is first loaded.
     private void Start()
     {
         // initialise Health. Char already initialised.
@@ -78,13 +77,9 @@ public class ChallengeQuizManager : MonoBehaviourPun
         player1HealthBar.SetMaxHealth(maxHealth);
         player2HealthBar.SetMaxHealth(maxHealth);
         finishUpdate = true;
-    
-        currentTime = startingTime;
         
         // get data from firebase
         dataFetch(world,level);
-
-        totalQuestions = QnA.Count; // no idea what is this for
 
         currScore.text = score + "";
 
@@ -130,6 +125,9 @@ public class ChallengeQuizManager : MonoBehaviourPun
         }        
     }
 
+    /// This method is called in every new frame.
+    ///
+    /// It does the necessary checks and updates.
     void Update()
     {
         dataFetch(world,level);
@@ -239,11 +237,17 @@ public class ChallengeQuizManager : MonoBehaviourPun
                 }
     }
     
+    /// This method is called whenever both players have finished the challenge and wants to go back to Challenge Lobby.
+    ///
+    /// It loads the Challenge Lobby scene.
     public void onClickButtonToBackAfterCompletingChallenge()
     { 
         SceneManager.LoadScene(sceneName:"4.1 Challenge Create Or Join Room Menu");
     }
 
+    /// This method is called whenever we need to fetch data from firebase for the quiz.
+    ///
+    /// It return question bank
     public async void dataFetch(string world, string difficulty)
     {
         int count=0;
@@ -297,7 +301,10 @@ public class ChallengeQuizManager : MonoBehaviourPun
     );
     }
 
-    void GameOver(char Result)
+    /// This method is called whenever Game is over.
+    ///
+    /// It tells user the score in the UIUX.
+    public void GameOver(char Result)
     {    
         ScoreTxt.text = "Your score: " + score.ToString() + "";
         if (ChallengeRoom.playerID == 1)
@@ -327,6 +334,9 @@ public class ChallengeQuizManager : MonoBehaviourPun
         }
     }
 
+    /// This method is called whenever player get an answer correct.
+    ///
+    /// It tells user that he got the question correct in UIUX. (enemy take damage)
     public void correct()
     {
         if (ChallengeRoom.playerID == 1)
@@ -347,6 +357,9 @@ public class ChallengeQuizManager : MonoBehaviourPun
         generateQuestion();
     }
 
+    /// This method is called whenever player get an answer wrong.
+    ///
+    /// It tells user that he got the question wrong in UIUX. (player take damage)
     public void wrong()
     {
         QnA.RemoveAt(currentQuestion);
@@ -354,8 +367,10 @@ public class ChallengeQuizManager : MonoBehaviourPun
         generateQuestion();
     }
 
-
-    void TakeDamage(int damage, string player)
+    /// This is a helper method to change the health bar in UIUX.
+    ///
+    /// It decreases the appropriate player's health bar.
+    public void TakeDamage(int damage, string player)
     {
         if (player == "P2")
         {
@@ -384,8 +399,11 @@ public class ChallengeQuizManager : MonoBehaviourPun
             updateScore();
         }
     }
-
-    void SetAnswers()
+    
+    /// This is a helper method to initialise the answers.
+    ///
+    /// It set the appropriate answer as the correct one.
+    public void SetAnswers()
     {
         for (int i = 0; i < options.Length; i++)
         {
@@ -399,7 +417,10 @@ public class ChallengeQuizManager : MonoBehaviourPun
         }
     }
 
-    void generateQuestion()
+    /// This is a helper method to generate the questions.
+    ///
+    /// It helps to show the question on UIUX.
+    public void generateQuestion()
     {
         if(QnA.Count > 0)
         {
@@ -415,7 +436,11 @@ public class ChallengeQuizManager : MonoBehaviourPun
             updateScore();
         }
     }
-    void updateScore()
+
+    /// This is a helper method to initialise player 1 and 2's score.
+    ///
+    /// It update the score of player 1 and 2.
+    public void updateScore()
     {
         ExitGames.Client.Photon.Hashtable LatestRoomInfo = new ExitGames.Client.Photon.Hashtable();
         if (ChallengeRoom.playerID == 1)
