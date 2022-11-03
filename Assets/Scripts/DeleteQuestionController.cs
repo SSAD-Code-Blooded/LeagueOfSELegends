@@ -9,6 +9,11 @@ public class DeleteQuestionController : MonoBehaviour
     {
         SceneManager.LoadScene("Teacher Menu");
     }
+
+    public void onClickToCloseErrorUI()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
 
 
