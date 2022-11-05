@@ -19,71 +19,35 @@ using TMPro;
 public struct QuestionModel
 {
     [FirestoreProperty]
-    public string Question {get; set;}
+    public string Question {get; set;} /**< String value of Question */
 
     [FirestoreProperty]
-    public string[] Answers {get; set;}
+    public string[] Answers {get; set;}/**< Array of Strings, each element consisting a possible Answer to the Question */
 
     [FirestoreProperty]
-    public int CorrectAnswer{get;set;}
+    public int CorrectAnswer{get;set;} /**< Integer that indicates Correct Answer  */
 
     [FirestoreProperty]
-    public string questionUID{get;set;}
+    public string questionUID{get;set;}/**< String that indicates Unique Question ID  */
 
-}
+} /**< Firestore Data to reference each Question in a struct data type */
 
-
+///
+/// Data Access Object that performs Question Related Database Operations 
+///
 public class QuestionDAO
-{   
-
-    // Start is called before the first frame update
-    // void Start()
-    // {   
-    //     Dictionary<string,string> questionDict;
-    //     // String question1=getQuestion("Planning","Requirement Analysis","Easy","Q1");
-    //     // UnityEngine.Debug.Log(question1);
-    //     // UnityEngine.Debug.Log(question1.CorrectAnswer);
-        
-
-    // }
-
-    // // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
-
-    // public var retrieveCounter(String world, String section, String difficulty){
-    //     UnityEngine.Debug.Log("Retrieving Counter");
-    //     var firestore = FirebaseFirestore.DefaultInstance;
-    //     DocumentReference docRef = firestore.Document("QnA/"+world+"/Sections/"+section+"/difficulty/"+difficulty);
-    //     docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
-    //     {
-    //     DocumentSnapshot snapshot = task.Result;
-    //     if (snapshot.Exists) {
-    //         Dictionary<string, object> city = snapshot.ToDictionary();
-    //     foreach (KeyValuePair<string, object> pair in city) {
-    //         var counter = pair.Value;
-    //         UnityEngine.Debug.Log(counter.ToString());
-    // }
-        
-        // CounterModel counterData=snapshot.ConvertTo<CounterModel>();
-        // int counter = counterData.counterValue;
-        // counter=counter+1;
-        // UnityEngine.Debug.Log(counter.ToString());
-    //     } else {
-    //         UnityEngine.Debug.Log(String.Format("Retrieving Counter Failed"));
-    //     }
-    //     });
-
-    //     return counter
-
-    // }
-    
+{    
+    ///
+    /// Function to Update Counter in Firebase
+    ///
     public static void updateCounter(String world, String section, String difficulty, int counterint){
         var firestore = FirebaseFirestore.DefaultInstance;
         firestore.Document("QnA/"+world+"/Sections/"+section+"/difficulty/"+difficulty).UpdateAsync("counter",counterint);
     }
+
+    ///
+    /// Function to Create Question in Firebase
+    ///
     public static void setAnswers(QuestionModel questionData, String world, String section, String difficulty, String questionId){
         string question = questionId;
         var firestore = FirebaseFirestore.DefaultInstance;
@@ -91,6 +55,9 @@ public class QuestionDAO
         UnityEngine.Debug.Log("Question write succesfully!");
     }
 
+    ///
+    /// Function to Delete Question in Firebase
+    ///
     public static void deleteQuestion(String questionid, String world, String section, String difficulty){
         var firestore = FirebaseFirestore.DefaultInstance;
         firestore.Document("QnA/"+world+"/Sections/"+section+"/difficulty/"+difficulty+"/Questions/"+questionid).DeleteAsync();
@@ -98,28 +65,6 @@ public class QuestionDAO
 
     }
 
-   
 
-    // public String getQuestion(String world, String section, String difficulty,String question){
-    //     var firestore = FirebaseFirestore.DefaultInstance;
-    //     var _listener=firestore.Document("QnA/"+world+"/Sections/"+section+"/Difficulty/"+difficulty+"/Questions/"+question).Listen(snapshot=>{
-    //         // Assert.IsNull(task.Exception);
-    //     if (snapshot.exist){
-    //         var qnData = snapshot.ConvertTo<QuestionModel>();
-    //     UnityEngine.Debug.Log(qnData.Question);
-    //     var question = new Dictionary(){
-    //         {"Question",qnData.Question},
-    //         {"Answers",qnData.Answers},
-    //         {"CorrectAnswer",qnData.CorrectAnswer},
-    //     };
-    //     return qnData.Question.ToString();
-    //     }
-    //     else{
-    //         return " ";
-    //     }
-        
-
-    // });
-    // }
     
 }

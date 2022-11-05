@@ -8,6 +8,9 @@ using Firebase.Firestore;
 using Firebase.Extensions;
 using TMPro;
 
+///
+/// Geting User Data from Firebase, gets username, email, matriculation number and number of challenge mode wins
+///
 public class getUserData : MonoBehaviour
 {
     public TMP_Text userInformation;

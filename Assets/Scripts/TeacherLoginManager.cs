@@ -12,15 +12,18 @@ using Firebase.Firestore;
 
 [FirestoreData]
 
-public struct TeacherData
+public struct TeacherData 
 {
     [FirestoreProperty]
-    public string role {get; set;}
+    public string role {get; set;} /**<String that indicates if Account is for Teacher  */
 
     [FirestoreProperty]
-    public string EmailAddress {get; set;}
-}
+    public string EmailAddress {get; set;}  /**< String that stores Teacher's Email  */
+} /**< Firestore Data to reference Teacher Sign In Data in Firebase  */
 
+///
+/// Manages Teacher's Login
+///
 public class TeacherLoginManager : MonoBehaviour
 {   
 
@@ -51,7 +54,10 @@ public class TeacherLoginManager : MonoBehaviour
             }
         });
     }
-
+    
+    ///
+    /// Verifies if entered credentials is a Teacher account, Signs Teacher in or returns error message accordingly
+    ///
     public void OnClickSignIn(){
 
         UnityEngine.Debug.Log("Clicked SignIn");
@@ -98,6 +104,10 @@ public class TeacherLoginManager : MonoBehaviour
         return;
         }
     }
+
+    ///
+    ///Closes Log In Error User Interface 
+    ///
     public void onClickToCloseErrorUI(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

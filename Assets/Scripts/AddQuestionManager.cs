@@ -10,26 +10,31 @@ using System;
 
 [FirestoreData]
 public struct CounterModel
-{   [FirestoreProperty]
-    public Dictionary<string,object> collection{get;set;}
-
+{   
     [FirestoreProperty]
-    public int counterValue {get; set;}
-}
+    public int counterValue {get; set;} /**< Integer Counter Value used to set Question ID*/
+} /**< Firestore Data referencing Firebase to refer to Database's counter values*/
 
+///
+///Allows Teacher to specifiying - World, Section, Difficulty and Question ID and Add question to Firebase by Calling Question Data Access Object
+///
 public class AddQuestionManager : MonoBehaviour
 {
-    public TMP_InputField question,ansA,ansB,ansC,ansD;
-    public TMP_Dropdown worldDD,sectionDD,levelDD,correctAns;
-    public string questionUID;
-    public int counter;
-    public int counterint;
-    public string questionIncremented;
+    public TMP_InputField question,ansA,ansB,ansC,ansD;  /**< User Interface input field for the 4 Options for Question*/
+    public TMP_Dropdown worldDD,sectionDD,levelDD,correctAns; /**< User Interface Dropdown for World, Section, Level and Correct Answer*/
+    public string questionUID; /**< User Interface input field for Question ID*/
+    public int counter; /**< Integer Value for Counter*/
+    public int counterint; /**< Final Integer Value for Counter after Processing*/
+    public string questionIncremented; /**< String Value representing QuestionID */
 
-    public GameObject errorUI;
-    public TMP_Text errorMessageToShow;
-    public string errorMessage;
+    public GameObject errorUI;/**< User Interface of Error Message */
+    public TMP_Text errorMessageToShow;/**< User Interface Text field for displaying of Error Message */
+    public string errorMessage;/**< String value of Error Message */
 
+    ///
+    /// Creating Question Model of struct data type to add Question into Firebase,
+    /// with each member of the struct representing a field in the Question Document in Database
+    ///
     public QuestionModel createQuestionData()
     {
         string [] ansList = new string[]{ansA.text,ansB.text,ansC.text,ansD.text};
@@ -50,7 +55,10 @@ public class AddQuestionManager : MonoBehaviour
         };
         return questionData;
     }
-    
+
+    ///
+    ///Adding of Question into Database by setting relevant fields and calling Question DAO (Data Access Object)
+    ///
     public void clickAddQuestionButton(){
         bool writeData= true;
         
@@ -137,33 +145,3 @@ public class AddQuestionManager : MonoBehaviour
         }
     }
 }
-
-
-//  public int retrieveCounter(String world, String section, String difficulty){
-    //     UnityEngine.Debug.Log("Retrieving Counter");
-    //     var firestore = FirebaseFirestore.DefaultInstance;
-    //     DocumentReference docRef = firestore.Document("QnA/"+world+"/Sections/"+section+"/difficulty/"+difficulty);
-    //     docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
-    //     {
-    //     DocumentSnapshot snapshot = task.Result;
-    //     if (snapshot.Exists) {
-    //     Dictionary<string, object> city = snapshot.ToDictionary();
-    //     foreach (KeyValuePair<string, object> pair in city) {
-    //         var counter = pair.Value;
-    //         string counterstring =counter.ToString();
-    //         int counterint=int.Parse(counterstring);
-    //         counterint=counterint+1;
-    //         UnityEngine.Debug.Log(counterint.ToString());}
-
-    //     // CounterModel counterData=snapshot.ConvertTo<CounterModel>();
-    //     // int counter = counterData.counterValue;
-    //     // counter=counter+1;
-    //     // UnityEngine.Debug.Log(counter.ToString());
-
-    //     } else {
-    //         UnityEngine.Debug.Log(String.Format("Retrieving Counter Failed"));
-    //     }
-    //     });
-
-    //     return counter;
-    //     }

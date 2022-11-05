@@ -5,6 +5,9 @@ using UnityEngine.Events;
 using Firebase;
 using Firebase.Analytics;
 
+///
+///Initialising Firebase within the Game
+///
 public class Firebaseinit : MonoBehaviour
 {
     public UnityEvent onFirebaseLoaded = new UnityEvent();

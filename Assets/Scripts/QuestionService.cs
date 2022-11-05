@@ -5,9 +5,14 @@ using Firebase.Auth;
 using Firebase.Extensions;
 using Firebase.Firestore;
 
+///
+/// Question Service performs score related functions namely calculating user's progress, story mode and challenge mode  score 
+///
 public static class QuestionService
 {
-    
+    ///
+    /// Updates User's Progress accordingly based on StoryMode Score- User can either advance to the next level, or be placed back to the level before 
+    ///
     public static string calculateProgressLevel(int StoryModeScore)
     {
         if (StoryModeScore < 2){
@@ -21,6 +26,9 @@ public static class QuestionService
         }
     }
 
+    ///
+    /// Calculates the score of the User in story Mode
+    ///
     public static int calculateScore(int currentScore,char result){
         
         if (result=='W'){
@@ -35,7 +43,9 @@ public static class QuestionService
         }
     }
 
-
+    ///
+    ///Calls User Data Access Object to Update the new calculated Story Mode Score, and Story Mode Progress Level
+    ///
     public static void storyModeUpdate(char result){  
         DocumentReference docRef = userDAO.getUserDoc();
         docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
@@ -61,6 +71,9 @@ public static class QuestionService
         return;
     }
 
+    ///
+    ///Calls User Data Access Object to Update the Challenge Mode Wins by + 1 
+    ///
     public static void challengeModeUpdate(string email){  
         FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
         DocumentReference docRef = db.Document("Users/"+email);

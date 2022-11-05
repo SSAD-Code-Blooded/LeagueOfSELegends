@@ -6,25 +6,31 @@ using UnityEngine.SceneManagement;
 using Firebase.Firestore;
 using Firebase.Extensions;
 
+///
+///Allows Teacher to delete question from Firebase by specifiying - World, Section, Difficulty and Question ID 
+///
 public class deleteQuestionManager : MonoBehaviour
-{   public TMP_Dropdown worldDD,sectionDD,levelDD;
-    public TMP_InputField questionid;
-    public  TMP_Text displayQuestion; 
+{   public TMP_Dropdown worldDD,sectionDD,levelDD; /**< User Interface Drop Down for World, Section and Level*/
+    public TMP_InputField questionid; /**< User Interface input field for Question ID*/
+    public  TMP_Text displayQuestion;   /**< User Interface Text field for displaying of Retrieved Question for Verification before Deleting*/
 
-    public GameObject errorUI;
-    public TMP_Text errorMessageToShow;
-    public string errorMessage;
+    public GameObject errorUI;  /**< User Interface of Error Message */
+    public TMP_Text errorMessageToShow;/**< User Interface Text field for displaying of Error Message */
+    public string errorMessage;/**< String value of Error Message */
 
+    ///
+    ///Takes in Section, World, Level and Question ID and calls the QuestionDAO to delete question
+    ///
     public void clickDeleteQuestionButton(){
         UnityEngine.Debug.Log("FN CALLED");
-        bool delData= true;
-        string worldSelection= worldDD.options[worldDD.value].text;
-        string sectionSelection= sectionDD.options[sectionDD.value].text;
-        string levelSelection= levelDD.options[levelDD.value].text;
-        string questionidSelection=questionid.text;
+        bool delData= true; 
+        string worldSelection= worldDD.options[worldDD.value].text; 
+        string sectionSelection= sectionDD.options[sectionDD.value].text; 
+        string levelSelection= levelDD.options[levelDD.value].text; 
+        string questionidSelection=questionid.text; 
 
         if (worldSelection=="SELECT WORLD"){
-            delData=false;
+            delData=false; 
         }
         if (sectionSelection=="SELECT SECTION"){
             delData=false;
@@ -51,9 +57,12 @@ public class deleteQuestionManager : MonoBehaviour
         
     }
 
+    ///
+    /// Retrieves and displays question that the Teacher intends to delete from the database for confirmation
+    ///
     public void retrieveQuestion(){
-        string worldSelection= worldDD.options[worldDD.value].text;
-        string sectionSelection= sectionDD.options[sectionDD.value].text;
+        string worldSelection= worldDD.options[worldDD.value].text; 
+        string sectionSelection= sectionDD.options[sectionDD.value].text; 
         string levelSelection= levelDD.options[levelDD.value].text;
         string questionidSelection=questionid.text;
         bool fetchData = true;

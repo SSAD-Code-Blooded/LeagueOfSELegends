@@ -12,38 +12,41 @@ using Firebase.Firestore;
 
 [FirestoreData]
 
+/**< Stores User Data in struct data type */
 public struct UserData
 {
     [FirestoreProperty]
-    public string UserName {get; set;}
+    public string UserName {get; set;} /**< String value of Username */
 
     [FirestoreProperty]
-    public string EmailAddress {get; set;}
+    public string EmailAddress {get; set;} /**< String value of Email Address */
 
     [FirestoreProperty]
-    public string MatriculationNo {get;set;}
+    public string MatriculationNo {get;set;} /**< String value of Matriculation Number */
 
     [FirestoreProperty]
-    public string UserProgressLevel {get;set;}
+    public string UserProgressLevel {get;set;} /**< String value of User Progress Level*/
 
     [FirestoreProperty]
-    public int ChallengeModeWins {get;set;}
+    public int ChallengeModeWins {get;set;} /**< Integer value of Number of Challenge mode wins*/
 
     [FirestoreProperty]
-    public int StoryModeScore {get;set;}
+    public int StoryModeScore {get;set;}  /**< Integer value of Story Mode Score*/
 }
 
+///
+///Manages and Verifies Login and Creation of Student into the Game
+///
 public class LoginManager : MonoBehaviour
 {   
 
-    public TMP_InputField email, password,username,matricNumber;
-    public GameObject errorUI;
-    public TMP_Text errorMessageToShow;
-    public string errorMessage;
-    public Button signInButton,registerButton;
+    public TMP_InputField email, password,username,matricNumber; /**< User Interface input field for email, password, username and matriculation number*/
+    public GameObject errorUI; /**< User Interface of Error Message */
+    public TMP_Text errorMessageToShow;/**< User Interface Text field for displaying of Error Message */
+    public string errorMessage; /**< String value of Error Message */
+    public Button signInButton,registerButton;/**< Button for Singning In and Registration */
 
     
-    // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Started");
@@ -64,20 +67,12 @@ public class LoginManager : MonoBehaviour
         });
         userDAO.setUserProgressLevel();
 
-        // registerButton.onClick.AddListener(()=>
-        // {
-        //     var userData = new UserData{
-        //         UserName = username.text,
-        //         EmailAddress = email.text,
-        //         MatriculationNo = matricNumber.text,
-        //         UserProgressLevel = "Easy",
-        //         ChallengeModeWins = 0
-        //     };
-        //     var firestore = FirebaseFirestore.DefaultInstance;
-        //     firestore.Document("Users/"+email.text).SetAsync(userData);
-        // });
     }
 
+
+    ///
+    /// Verifies if entered credentials is a student account, Signs student in or returns error message accordingly
+    ///
     public void OnClickSignIn(){
 
         Debug.Log("Clicked SignIn");
@@ -115,6 +110,10 @@ public class LoginManager : MonoBehaviour
         return;
         }
     }
+
+    ///
+    /// Creates New User Student Account
+    ///
     public void OnClickSignUp(){
         Debug.Log("Clicked Signup");
         SignUp();
@@ -180,53 +179,30 @@ public class LoginManager : MonoBehaviour
         return;
         }
 
-
-
-
-        // bool signupStatus=true;
-        // string errorMessage="";
-        // FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task => {
-        //     if (task.IsCanceled) {
-        //         Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
-        //         signupStatus=false;
-        //         errorMessage = task.Exception.InnerExceptions[0].Message;
-        //     }
-        //     if (task.IsFaulted) {
-        //         Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
-        //         signupStatus=false;
-        //         errorMessage = task.Exception.InnerExceptions[0].Message;
-        //     }
-        //     if (signupStatus){
-        //         // Firebase user has been created.
-        //         Debug.Log("Signup Successful");
-        //         Firebase.Auth.FirebaseUser newUser = task.Result;
-        //         Debug.LogFormat("User signed up successfully: {0} ({1})",
-        //         newUser.DisplayName, newUser.UserId);
-        //     }else{
-        //         Debug.LogError("error: "+errorMessage);
-        //         errorUI.SetActive(true);
-        //         errorMessageToShow.text = errorMessage;
-        //     }
-
-
-        //     }
-        // );
-        
-        // return;
     }
 
+    ///
+    /// Back Button to Enter Type of User Page
+    ///
     public void onClickBackToUserSelection(){
         SceneManager.LoadScene("1 User Selection");
     }
 
+    ///
+    /// Opens Student Registration User Interface
+    ///
     public void onClickToSignupScene(){
         SceneManager.LoadScene("2 Student Register");
     }
-
+    
+    ///
+    /// Closes Login Error User Interface
+    ///
     public void onClickToCloseErrorUI(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    ///Opens Student Login Scene
     public void onClickToStudentLoginScene(){
         SceneManager.LoadScene("1.1 Student Login");
     }

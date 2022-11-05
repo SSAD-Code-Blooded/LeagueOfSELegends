@@ -5,12 +5,17 @@ using Firebase.Auth;
 using Firebase.Extensions;
 using Firebase.Firestore;
 using System.Threading.Tasks;
+
+///
+/// Data Access Object that performs User Related Database Operations 
+///
 public static class userDAO 
 {
-    public static string userProfileLevel;
+    public static string userProfileLevel; /**<String that indicates User's Progress Level  */
 
-    
-    
+    ///
+    ///Create Firebance Document Reference to specific User 
+    ///
     public static DocumentReference getUserDoc(){
         FirebaseUser currentuser = Firebase.Auth.FirebaseAuth.DefaultInstance.CurrentUser;
         string userEmail=currentuser.Email;
@@ -19,12 +24,20 @@ public static class userDAO
         DocumentReference docRef = db.Document("Users/"+userEmail);
         return docRef; 
     }
+
+    ///
+    ///Update's User's Progress Level
+    ///
     public static void updateUserProgressLevel(string userProgressLevel){
         DocumentReference docRef = getUserDoc();
         docRef.UpdateAsync("UserProgressLevel", userProgressLevel).ContinueWith(task => {
             UnityEngine.Debug.Log($"Updated userProgressLevel to {userProgressLevel}!");
         }); 
     }
+    
+    ///
+    /// Retrieve's User's Progress Level 
+    ///
     public static void setUserProgressLevel(){
         DocumentReference docRef = getUserDoc();
         docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
@@ -44,10 +57,17 @@ public static class userDAO
         });
         return;
     }
+
+    ///
+    ///Returns User's Progress Level 
+    ///
     public static string getUserProgressLevel(){
         return userProfileLevel;
     }
 
+    ///
+    /// Retrieve's Story Mode Score From Database
+    ///
     public static int getStoryModeScore(){
         int score=0;
         bool updated=false;
@@ -81,7 +101,9 @@ public static class userDAO
         return score;  
     }
 
-    
+    ///
+    ///Performs operation of writing Story Mode Score to the Database 
+    ///
     public static void setStoryModeScore(int storyModeScore){
         
         
