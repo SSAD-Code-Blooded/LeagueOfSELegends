@@ -3,30 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// Takes and handles input and movement for a player character
+/// This class is used to manage the player sprite while in World scene.
+///
+/// It manages player movement while in World scene.
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 1f;
-    public float collisionOffset = 0.05f;
-    public ContactFilter2D movementFilter;
-    // public SwordAttack swordAttack;
+    public float moveSpeed = 1f; /**< variable to set player movespeed */
+    public float collisionOffset = 0.05f; /**< variable to set width of collision contact */
+    public ContactFilter2D movementFilter; /**< manages collision along with 2D collider */
 
-    Vector2 movementInput;
-    SpriteRenderer spriteRenderer;
-    Rigidbody2D rb;
-    Animator animator;
-    List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+    Vector2 movementInput; /**< unity placeholder for movementInput */
+    SpriteRenderer spriteRenderer; /**< unity placeholder for SpriteRenderer */
+    Rigidbody2D rb; /**< unity placeholder for Rigidbody2D */
+    Animator animator; /**< unity placeholder for Animator */
+    List<RaycastHit2D> castCollisions = new List<RaycastHit2D>(); /**< unity placeholder for RaycastHit2D */
 
-    bool canMove = true;
+    bool canMove = true; /**< boolean to set if player is moving already */
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>(); /**< fetch Rigidbody2D from scene */
+        animator = GetComponent<Animator>(); /**< fetch Animator from scene */
+        spriteRenderer = GetComponent<SpriteRenderer>(); /**< fetch SpriteRenderer from scene */
     }
 
+    /// This method is called whenever users inputs a directional key.
+    ///
+    /// It updates isMoving status and checks whether the sprite should be flipped horizontally.
     private void FixedUpdate() {
         if(canMove) {
             // If movement input is not 0, try to move
@@ -56,6 +60,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// This method is called whenever users inputs a directional key.
+    ///
+    /// It renders the moving animation and next location of the Player.
     private bool TryMove(Vector2 direction) {
         if(direction != Vector2.zero) {
             // Check for potential collisions
@@ -78,33 +85,30 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    /// This method is called whenever users inputs a directional key.
+    ///
+    /// It gets the current movementValue of the player.
     void OnMove(InputValue movementValue) {
         movementInput = movementValue.Get<Vector2>();
     }
 
+    /// This method is called whenever users clicks on the screen.
+    ///
+    /// It triggers the swordAttack animation.
     void OnFire() {
         animator.SetTrigger("swordAttack");
     }
 
-    // public void SwordAttack() {
-    //     LockMovement();
-
-    //     if(spriteRenderer.flipX == true){
-    //         swordAttack.AttackLeft();
-    //     } else {
-    //         swordAttack.AttackRight();
-    //     }
-    // }
-
-    // public void EndSwordAttack() {
-    //     UnlockMovement();
-    //     swordAttack.StopAttack();
-    // }
-
+    /// This method is called to prevent movement animation.
+    ///
+    /// It is set when user is rendering attack animation.
     public void LockMovement() {
         canMove = false;
     }
 
+    /// This method is called to allow movement animation.
+    ///
+    /// It is set when user has finished attack animation.
     public void UnlockMovement() {
         canMove = true;
     }
