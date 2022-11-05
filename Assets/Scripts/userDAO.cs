@@ -19,7 +19,12 @@ public static class userDAO
         DocumentReference docRef = db.Document("Users/"+userEmail);
         return docRef; 
     }
-
+    public static void updateUserProgressLevel(string userProgressLevel){
+        DocumentReference docRef = getUserDoc();
+        docRef.UpdateAsync("UserProgressLevel", userProgressLevel).ContinueWith(task => {
+            UnityEngine.Debug.Log($"Updated userProgressLevel to {userProgressLevel}!");
+        }); 
+    }
     public static void setUserProgressLevel(){
         DocumentReference docRef = getUserDoc();
         docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
@@ -29,6 +34,7 @@ public static class userDAO
         {
             var userData = snapshot.ConvertTo<UserData>();
             userProfileLevel = userData.UserProgressLevel;
+            UnityEngine.Debug.Log("UserLevel Retrieved");
         }
         else
         {
@@ -75,12 +81,7 @@ public static class userDAO
         return score;  
     }
 
-    public static void setUserProgressLevel(string userProgressLevel){
-        DocumentReference docRef = getUserDoc();
-        docRef.UpdateAsync("UserProgressLevel", userProgressLevel).ContinueWith(task => {
-            UnityEngine.Debug.Log($"Updated userProgressLevel to {userProgressLevel}!");
-        }); 
-    }
+    
     public static void setStoryModeScore(int storyModeScore){
         
         

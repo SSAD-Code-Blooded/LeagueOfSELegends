@@ -48,9 +48,9 @@ public static class QuestionService
             int userScore=userData.StoryModeScore;
             int updatedScore = calculateScore(userScore,result);
             string newProgressLevel = calculateProgressLevel(updatedScore);
-            userDAO.setUserProgressLevel(newProgressLevel);
+            userDAO.updateUserProgressLevel(newProgressLevel);
             userDAO.setStoryModeScore(updatedScore);
-            userDAO.setUserProgressLevel();
+            userDAO.userProfileLevel = newProgressLevel;
         }
         else
         {

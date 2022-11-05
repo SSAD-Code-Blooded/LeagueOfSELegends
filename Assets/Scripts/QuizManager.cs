@@ -54,7 +54,7 @@ public class QuizManager : MonoBehaviour
 
    private void Start()
    {
-
+    
     currentPlayerHealth = maxHealth;
     currentMonsterHealth = maxHealth;
     playerHealthBar.SetMaxHealth(maxHealth);
@@ -112,9 +112,12 @@ public class QuizManager : MonoBehaviour
    public void retry()
    {
         string userProfileLevel = userDAO.getUserProgressLevel();
+        UnityEngine.Debug.Log("Fetching question from: "+userProfileLevel);
         dataFetch(userProfileLevel);
+        QnA.Clear();
         generateQuestion();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // SceneManager.LoadScene("Story Mode Quiz"); 
    }
 
     public void backButton()
