@@ -1,0 +1,283 @@
+\hypertarget{class_challenge_quiz_manager}{}\doxysection{Challenge\+Quiz\+Manager Class Reference}
+\label{class_challenge_quiz_manager}\index{ChallengeQuizManager@{ChallengeQuizManager}}
+Inheritance diagram for Challenge\+Quiz\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_challenge_quiz_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_challenge_quiz_manager_a2ce35f9f3121df776ca2b548f7950c4f}{on\+Click\+Button\+To\+Back\+After\+Completing\+Challenge}} ()
+\item 
+async void \mbox{\hyperlink{class_challenge_quiz_manager_a9c1ae5a3a7506eff81cdc75b5941460b}{data\+Fetch}} (string world, string difficulty)
+\item 
+void \mbox{\hyperlink{class_challenge_quiz_manager_afe478d14d5a1df0a82e2f9dc30236991}{Game\+Over}} (char Result)
+\item 
+void \mbox{\hyperlink{class_challenge_quiz_manager_a3e0ef36b741a05e986b7132b09d16dcb}{correct}} ()
+\item 
+void \mbox{\hyperlink{class_challenge_quiz_manager_ae509b50b58b87ca7a480b9d1efbefd54}{wrong}} ()
+\item 
+void \mbox{\hyperlink{class_challenge_quiz_manager_a4be8738140e366cfafec485a105f07b8}{Take\+Damage}} (int damage, string player)
+\item 
+void \mbox{\hyperlink{class_challenge_quiz_manager_a61548eda022e3d04d2d1739114c6d8d6}{Set\+Answers}} ()
+\item 
+void \mbox{\hyperlink{class_challenge_quiz_manager_a295290493ee0582ef2adada8324a2d74}{generate\+Question}} ()
+\item 
+void \mbox{\hyperlink{class_challenge_quiz_manager_a96eb008de7973f2d8eba6e19174f6fe1}{update\+Score}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_challenge_quiz_manager_a5bf41d41858a438d426eb30d00894da0}{max\+Health}} = 100
+\item 
+int \mbox{\hyperlink{class_challenge_quiz_manager_a03229dc3dd0ca0528773adba5cafb88e}{player1\+Health}}
+\item 
+int \mbox{\hyperlink{class_challenge_quiz_manager_ab7dab787f5b007571780af400035a7c3}{player2\+Health}}
+\item 
+\mbox{\hyperlink{class_health_bar}{Health\+Bar}} \mbox{\hyperlink{class_challenge_quiz_manager_a1dc9d916e0e30378b08c2942f62f872f}{player1\+Health\+Bar}}
+\item 
+\mbox{\hyperlink{class_health_bar}{Health\+Bar}} \mbox{\hyperlink{class_challenge_quiz_manager_aa0eacf26dc8dee5a0928d8d2d1d96870}{player2\+Health\+Bar}}
+\item 
+List$<$ \mbox{\hyperlink{class_questions_and_answers}{Questions\+And\+Answers}} $>$ \mbox{\hyperlink{class_challenge_quiz_manager_a70869e6f30467f2e8c7d9b7d70e65daf}{QnA}}
+\item 
+\mbox{\Hypertarget{class_challenge_quiz_manager_a1bbcdc3399e5e430042cecb0ae01fee7}\label{class_challenge_quiz_manager_a1bbcdc3399e5e430042cecb0ae01fee7}} 
+Game\+Object\mbox{[}$\,$\mbox{]} {\bfseries options}
+\item 
+int \mbox{\hyperlink{class_challenge_quiz_manager_a261be434e7891db153fd166930486c51}{current\+Question}}
+\item 
+Text \mbox{\hyperlink{class_challenge_quiz_manager_af32a2c698f9f879276817ad6d2272aba}{Question\+Txt}}
+\item 
+Text \mbox{\hyperlink{class_challenge_quiz_manager_ae61117aceb168feec8fcd28fc2cf6d5e}{Score\+Txt}}
+\item 
+Text \mbox{\hyperlink{class_challenge_quiz_manager_a848d85fa325a25156411bce0063b12be}{Opponent\+Score\+Txt}}
+\item 
+Text \mbox{\hyperlink{class_challenge_quiz_manager_a5191665c963a0bd8f7c33975c9754a34}{curr\+Score}}
+\item 
+Text \mbox{\hyperlink{class_challenge_quiz_manager_a6226632c3c66519c4850da2b9944f514}{countdown\+Text}}
+\item 
+Text \mbox{\hyperlink{class_challenge_quiz_manager_a6de673f855a0188101bb33afa888acc4}{Result\+Text}}
+\item 
+int \mbox{\hyperlink{class_challenge_quiz_manager_a8fb2328b4ad319481f3951c7a1a47c5b}{score}} = 0
+\item 
+Game\+Object \mbox{\hyperlink{class_challenge_quiz_manager_a82f264c851a2bb2b7d1fd8ecabfce1ae}{Quizpanel}}
+\item 
+Game\+Object \mbox{\hyperlink{class_challenge_quiz_manager_a83d7bb2237f11fc5daf96329d0bc82f0}{Go\+Panel}}
+\item 
+Game\+Object \mbox{\hyperlink{class_challenge_quiz_manager_ad300360a37f269d6b20e614782107227}{Waitingpanel}}
+\item 
+Text\+Mesh\+Pro\+UGUI \mbox{\hyperlink{class_challenge_quiz_manager_ae321c4a770a4d9a865f66a960597112c}{player1email}}
+\item 
+Text\+Mesh\+Pro\+UGUI \mbox{\hyperlink{class_challenge_quiz_manager_a1a39fc5fe654df7212ea01a542177aac}{player2email}}
+\item 
+Dictionary$<$ string, object $>$ \mbox{\hyperlink{class_challenge_quiz_manager_ad3ffa98b2af78bbf85daa67f49f301b4}{question\+Bank}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is used to manage the scene for Challenge.
+
+It manages the loading of different scenes from Challenge Quiz scenes and the overall flow. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_challenge_quiz_manager_a3e0ef36b741a05e986b7132b09d16dcb}\label{class_challenge_quiz_manager_a3e0ef36b741a05e986b7132b09d16dcb}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!correct@{correct}}
+\index{correct@{correct}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{correct()}{correct()}}
+{\footnotesize\ttfamily void Challenge\+Quiz\+Manager.\+correct (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method is called whenever player get an answer correct.
+
+It tells user that he got the question correct in UIUX. (enemy take damage) \mbox{\Hypertarget{class_challenge_quiz_manager_a9c1ae5a3a7506eff81cdc75b5941460b}\label{class_challenge_quiz_manager_a9c1ae5a3a7506eff81cdc75b5941460b}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!dataFetch@{dataFetch}}
+\index{dataFetch@{dataFetch}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{dataFetch()}{dataFetch()}}
+{\footnotesize\ttfamily async void Challenge\+Quiz\+Manager.\+data\+Fetch (\begin{DoxyParamCaption}\item[{string}]{world,  }\item[{string}]{difficulty }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method is called whenever we need to fetch data from firebase for the quiz.
+
+It return question bank \mbox{\Hypertarget{class_challenge_quiz_manager_afe478d14d5a1df0a82e2f9dc30236991}\label{class_challenge_quiz_manager_afe478d14d5a1df0a82e2f9dc30236991}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!GameOver@{GameOver}}
+\index{GameOver@{GameOver}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{GameOver()}{GameOver()}}
+{\footnotesize\ttfamily void Challenge\+Quiz\+Manager.\+Game\+Over (\begin{DoxyParamCaption}\item[{char}]{Result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method is called whenever Game is over.
+
+It tells user the score in the UIUX. \mbox{\Hypertarget{class_challenge_quiz_manager_a295290493ee0582ef2adada8324a2d74}\label{class_challenge_quiz_manager_a295290493ee0582ef2adada8324a2d74}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!generateQuestion@{generateQuestion}}
+\index{generateQuestion@{generateQuestion}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{generateQuestion()}{generateQuestion()}}
+{\footnotesize\ttfamily void Challenge\+Quiz\+Manager.\+generate\+Question (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This is a helper method to generate the questions.
+
+It helps to show the question on UIUX. \mbox{\Hypertarget{class_challenge_quiz_manager_a2ce35f9f3121df776ca2b548f7950c4f}\label{class_challenge_quiz_manager_a2ce35f9f3121df776ca2b548f7950c4f}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!onClickButtonToBackAfterCompletingChallenge@{onClickButtonToBackAfterCompletingChallenge}}
+\index{onClickButtonToBackAfterCompletingChallenge@{onClickButtonToBackAfterCompletingChallenge}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{onClickButtonToBackAfterCompletingChallenge()}{onClickButtonToBackAfterCompletingChallenge()}}
+{\footnotesize\ttfamily void Challenge\+Quiz\+Manager.\+on\+Click\+Button\+To\+Back\+After\+Completing\+Challenge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method is called whenever both players have finished the challenge and wants to go back to Challenge Lobby.
+
+It loads the Challenge Lobby scene. \mbox{\Hypertarget{class_challenge_quiz_manager_a61548eda022e3d04d2d1739114c6d8d6}\label{class_challenge_quiz_manager_a61548eda022e3d04d2d1739114c6d8d6}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!SetAnswers@{SetAnswers}}
+\index{SetAnswers@{SetAnswers}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{SetAnswers()}{SetAnswers()}}
+{\footnotesize\ttfamily void Challenge\+Quiz\+Manager.\+Set\+Answers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This is a helper method to initialise the answers.
+
+It set the appropriate answer as the correct one. \mbox{\Hypertarget{class_challenge_quiz_manager_a4be8738140e366cfafec485a105f07b8}\label{class_challenge_quiz_manager_a4be8738140e366cfafec485a105f07b8}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!TakeDamage@{TakeDamage}}
+\index{TakeDamage@{TakeDamage}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{TakeDamage()}{TakeDamage()}}
+{\footnotesize\ttfamily void Challenge\+Quiz\+Manager.\+Take\+Damage (\begin{DoxyParamCaption}\item[{int}]{damage,  }\item[{string}]{player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This is a helper method to change the health bar in UIUX.
+
+It decreases the appropriate player\textquotesingle{}s health bar. \mbox{\Hypertarget{class_challenge_quiz_manager_a96eb008de7973f2d8eba6e19174f6fe1}\label{class_challenge_quiz_manager_a96eb008de7973f2d8eba6e19174f6fe1}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!updateScore@{updateScore}}
+\index{updateScore@{updateScore}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{updateScore()}{updateScore()}}
+{\footnotesize\ttfamily void Challenge\+Quiz\+Manager.\+update\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This is a helper method to initialise player 1 and 2\textquotesingle{}s score.
+
+It update the score of player 1 and 2. \mbox{\Hypertarget{class_challenge_quiz_manager_ae509b50b58b87ca7a480b9d1efbefd54}\label{class_challenge_quiz_manager_ae509b50b58b87ca7a480b9d1efbefd54}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!wrong@{wrong}}
+\index{wrong@{wrong}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{wrong()}{wrong()}}
+{\footnotesize\ttfamily void Challenge\+Quiz\+Manager.\+wrong (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method is called whenever player get an answer wrong.
+
+It tells user that he got the question wrong in UIUX. (player take damage) 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_challenge_quiz_manager_a6226632c3c66519c4850da2b9944f514}\label{class_challenge_quiz_manager_a6226632c3c66519c4850da2b9944f514}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!countdownText@{countdownText}}
+\index{countdownText@{countdownText}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{countdownText}{countdownText}}
+{\footnotesize\ttfamily Text Challenge\+Quiz\+Manager.\+countdown\+Text}
+
+placeholder in unity UI to get access to countdown\+Text \mbox{\Hypertarget{class_challenge_quiz_manager_a261be434e7891db153fd166930486c51}\label{class_challenge_quiz_manager_a261be434e7891db153fd166930486c51}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!currentQuestion@{currentQuestion}}
+\index{currentQuestion@{currentQuestion}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{currentQuestion}{currentQuestion}}
+{\footnotesize\ttfamily int Challenge\+Quiz\+Manager.\+current\+Question}
+
+this stores current question \mbox{\Hypertarget{class_challenge_quiz_manager_a5191665c963a0bd8f7c33975c9754a34}\label{class_challenge_quiz_manager_a5191665c963a0bd8f7c33975c9754a34}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!currScore@{currScore}}
+\index{currScore@{currScore}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{currScore}{currScore}}
+{\footnotesize\ttfamily Text Challenge\+Quiz\+Manager.\+curr\+Score}
+
+placeholder in unity UI to get access to curr\+Score \mbox{\Hypertarget{class_challenge_quiz_manager_a83d7bb2237f11fc5daf96329d0bc82f0}\label{class_challenge_quiz_manager_a83d7bb2237f11fc5daf96329d0bc82f0}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!GoPanel@{GoPanel}}
+\index{GoPanel@{GoPanel}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{GoPanel}{GoPanel}}
+{\footnotesize\ttfamily Game\+Object Challenge\+Quiz\+Manager.\+Go\+Panel}
+
+placeholder in unity UI to get access to Go\+Panel \mbox{\Hypertarget{class_challenge_quiz_manager_a5bf41d41858a438d426eb30d00894da0}\label{class_challenge_quiz_manager_a5bf41d41858a438d426eb30d00894da0}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!maxHealth@{maxHealth}}
+\index{maxHealth@{maxHealth}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{maxHealth}{maxHealth}}
+{\footnotesize\ttfamily int Challenge\+Quiz\+Manager.\+max\+Health = 100}
+
+this is the max health possible for players \mbox{\Hypertarget{class_challenge_quiz_manager_a848d85fa325a25156411bce0063b12be}\label{class_challenge_quiz_manager_a848d85fa325a25156411bce0063b12be}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!OpponentScoreTxt@{OpponentScoreTxt}}
+\index{OpponentScoreTxt@{OpponentScoreTxt}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{OpponentScoreTxt}{OpponentScoreTxt}}
+{\footnotesize\ttfamily Text Challenge\+Quiz\+Manager.\+Opponent\+Score\+Txt}
+
+placeholder in unity UI to get access to Opponent\+Score\+Txt \mbox{\Hypertarget{class_challenge_quiz_manager_ae321c4a770a4d9a865f66a960597112c}\label{class_challenge_quiz_manager_ae321c4a770a4d9a865f66a960597112c}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!player1email@{player1email}}
+\index{player1email@{player1email}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{player1email}{player1email}}
+{\footnotesize\ttfamily Text\+Mesh\+Pro\+UGUI Challenge\+Quiz\+Manager.\+player1email}
+
+placeholder in unity UI to get access to player1email text box \mbox{\Hypertarget{class_challenge_quiz_manager_a03229dc3dd0ca0528773adba5cafb88e}\label{class_challenge_quiz_manager_a03229dc3dd0ca0528773adba5cafb88e}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!player1Health@{player1Health}}
+\index{player1Health@{player1Health}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{player1Health}{player1Health}}
+{\footnotesize\ttfamily int Challenge\+Quiz\+Manager.\+player1\+Health}
+
+this stores the health for player 1 \mbox{\Hypertarget{class_challenge_quiz_manager_a1dc9d916e0e30378b08c2942f62f872f}\label{class_challenge_quiz_manager_a1dc9d916e0e30378b08c2942f62f872f}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!player1HealthBar@{player1HealthBar}}
+\index{player1HealthBar@{player1HealthBar}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{player1HealthBar}{player1HealthBar}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_health_bar}{Health\+Bar}} Challenge\+Quiz\+Manager.\+player1\+Health\+Bar}
+
+this stores the healthbar for player 2 \mbox{\Hypertarget{class_challenge_quiz_manager_a1a39fc5fe654df7212ea01a542177aac}\label{class_challenge_quiz_manager_a1a39fc5fe654df7212ea01a542177aac}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!player2email@{player2email}}
+\index{player2email@{player2email}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{player2email}{player2email}}
+{\footnotesize\ttfamily Text\+Mesh\+Pro\+UGUI Challenge\+Quiz\+Manager.\+player2email}
+
+placeholder in unity UI to get access to player2email text box \mbox{\Hypertarget{class_challenge_quiz_manager_ab7dab787f5b007571780af400035a7c3}\label{class_challenge_quiz_manager_ab7dab787f5b007571780af400035a7c3}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!player2Health@{player2Health}}
+\index{player2Health@{player2Health}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{player2Health}{player2Health}}
+{\footnotesize\ttfamily int Challenge\+Quiz\+Manager.\+player2\+Health}
+
+this stores the health for player 2 \mbox{\Hypertarget{class_challenge_quiz_manager_aa0eacf26dc8dee5a0928d8d2d1d96870}\label{class_challenge_quiz_manager_aa0eacf26dc8dee5a0928d8d2d1d96870}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!player2HealthBar@{player2HealthBar}}
+\index{player2HealthBar@{player2HealthBar}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{player2HealthBar}{player2HealthBar}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_health_bar}{Health\+Bar}} Challenge\+Quiz\+Manager.\+player2\+Health\+Bar}
+
+this stores the healthbar for player 2 \mbox{\Hypertarget{class_challenge_quiz_manager_a70869e6f30467f2e8c7d9b7d70e65daf}\label{class_challenge_quiz_manager_a70869e6f30467f2e8c7d9b7d70e65daf}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!QnA@{QnA}}
+\index{QnA@{QnA}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{QnA}{QnA}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_questions_and_answers}{Questions\+And\+Answers}}$>$ Challenge\+Quiz\+Manager.\+QnA}
+
+this stores the list of QNA \mbox{\Hypertarget{class_challenge_quiz_manager_ad3ffa98b2af78bbf85daa67f49f301b4}\label{class_challenge_quiz_manager_ad3ffa98b2af78bbf85daa67f49f301b4}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!questionBank@{questionBank}}
+\index{questionBank@{questionBank}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{questionBank}{questionBank}}
+{\footnotesize\ttfamily Dictionary$<$string, object$>$ Challenge\+Quiz\+Manager.\+question\+Bank}
+
+this stores the question bank as a dictionary \mbox{\Hypertarget{class_challenge_quiz_manager_af32a2c698f9f879276817ad6d2272aba}\label{class_challenge_quiz_manager_af32a2c698f9f879276817ad6d2272aba}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!QuestionTxt@{QuestionTxt}}
+\index{QuestionTxt@{QuestionTxt}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{QuestionTxt}{QuestionTxt}}
+{\footnotesize\ttfamily Text Challenge\+Quiz\+Manager.\+Question\+Txt}
+
+placeholder in unity UI to get access to the Question\+Txt \mbox{\Hypertarget{class_challenge_quiz_manager_a82f264c851a2bb2b7d1fd8ecabfce1ae}\label{class_challenge_quiz_manager_a82f264c851a2bb2b7d1fd8ecabfce1ae}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!Quizpanel@{Quizpanel}}
+\index{Quizpanel@{Quizpanel}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{Quizpanel}{Quizpanel}}
+{\footnotesize\ttfamily Game\+Object Challenge\+Quiz\+Manager.\+Quizpanel}
+
+placeholder in unity UI to get access to Quizpanel \mbox{\Hypertarget{class_challenge_quiz_manager_a6de673f855a0188101bb33afa888acc4}\label{class_challenge_quiz_manager_a6de673f855a0188101bb33afa888acc4}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!ResultText@{ResultText}}
+\index{ResultText@{ResultText}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{ResultText}{ResultText}}
+{\footnotesize\ttfamily Text Challenge\+Quiz\+Manager.\+Result\+Text}
+
+placeholder in unity UI to get access to Result\+Text \mbox{\Hypertarget{class_challenge_quiz_manager_a8fb2328b4ad319481f3951c7a1a47c5b}\label{class_challenge_quiz_manager_a8fb2328b4ad319481f3951c7a1a47c5b}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!score@{score}}
+\index{score@{score}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily int Challenge\+Quiz\+Manager.\+score = 0}
+
+it initialise score to be 0 \mbox{\Hypertarget{class_challenge_quiz_manager_ae61117aceb168feec8fcd28fc2cf6d5e}\label{class_challenge_quiz_manager_ae61117aceb168feec8fcd28fc2cf6d5e}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!ScoreTxt@{ScoreTxt}}
+\index{ScoreTxt@{ScoreTxt}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{ScoreTxt}{ScoreTxt}}
+{\footnotesize\ttfamily Text Challenge\+Quiz\+Manager.\+Score\+Txt}
+
+placeholder in unity UI to get access to Score\+Txt \mbox{\Hypertarget{class_challenge_quiz_manager_ad300360a37f269d6b20e614782107227}\label{class_challenge_quiz_manager_ad300360a37f269d6b20e614782107227}} 
+\index{ChallengeQuizManager@{ChallengeQuizManager}!Waitingpanel@{Waitingpanel}}
+\index{Waitingpanel@{Waitingpanel}!ChallengeQuizManager@{ChallengeQuizManager}}
+\doxysubsubsection{\texorpdfstring{Waitingpanel}{Waitingpanel}}
+{\footnotesize\ttfamily Game\+Object Challenge\+Quiz\+Manager.\+Waitingpanel}
+
+placeholder in unity UI to get access to Waitingpanel 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Challenge\+Quiz\+Manager.\+cs\end{DoxyCompactItemize}

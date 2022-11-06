@@ -1,0 +1,137 @@
+\hypertarget{class_add_question_manager}{}\doxysection{Add\+Question\+Manager Class Reference}
+\label{class_add_question_manager}\index{AddQuestionManager@{AddQuestionManager}}
+Inheritance diagram for Add\+Question\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_add_question_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_question_model}{Question\+Model}} \mbox{\hyperlink{class_add_question_manager_afa6961017df6b61a557fccbbf023091a}{create\+Question\+Data}} ()
+\item 
+void \mbox{\hyperlink{class_add_question_manager_a2683cb8c7c924f7618cf73f5733614c3}{click\+Add\+Question\+Button}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_add_question_manager_a5ba059628b31094c4057297e762956be}\label{class_add_question_manager_a5ba059628b31094c4057297e762956be}} 
+TMP\+\_\+\+Input\+Field {\bfseries question}
+\item 
+\mbox{\Hypertarget{class_add_question_manager_afb6b616902568196e14b77b209ad70fa}\label{class_add_question_manager_afb6b616902568196e14b77b209ad70fa}} 
+TMP\+\_\+\+Input\+Field {\bfseries ansA}
+\item 
+\mbox{\Hypertarget{class_add_question_manager_ac865f7c1e064192364e2e48ddef5113f}\label{class_add_question_manager_ac865f7c1e064192364e2e48ddef5113f}} 
+TMP\+\_\+\+Input\+Field {\bfseries ansB}
+\item 
+\mbox{\Hypertarget{class_add_question_manager_a21faffe5564de9adfa3c66da3e409098}\label{class_add_question_manager_a21faffe5564de9adfa3c66da3e409098}} 
+TMP\+\_\+\+Input\+Field {\bfseries ansC}
+\item 
+TMP\+\_\+\+Input\+Field \mbox{\hyperlink{class_add_question_manager_a9a9f5a30589afcfb1c27ba7036bffec0}{ansD}}
+\item 
+\mbox{\Hypertarget{class_add_question_manager_a95d094da45de159daef25c600b6ee1f8}\label{class_add_question_manager_a95d094da45de159daef25c600b6ee1f8}} 
+TMP\+\_\+\+Dropdown {\bfseries world\+DD}
+\item 
+\mbox{\Hypertarget{class_add_question_manager_a68b312b75449eac7dac7a829b069617b}\label{class_add_question_manager_a68b312b75449eac7dac7a829b069617b}} 
+TMP\+\_\+\+Dropdown {\bfseries section\+DD}
+\item 
+\mbox{\Hypertarget{class_add_question_manager_a52e2518d04d44203e44240e4b208f0de}\label{class_add_question_manager_a52e2518d04d44203e44240e4b208f0de}} 
+TMP\+\_\+\+Dropdown {\bfseries level\+DD}
+\item 
+TMP\+\_\+\+Dropdown \mbox{\hyperlink{class_add_question_manager_a84ac079be38e4ab39f790a72dd653bfd}{correct\+Ans}}
+\item 
+string \mbox{\hyperlink{class_add_question_manager_a5380f40d6223bcef3c75687ef423b939}{question\+UID}}
+\item 
+int \mbox{\hyperlink{class_add_question_manager_a4553ef5f999fe27822b3d6eb48e5a50f}{counter}}
+\item 
+int \mbox{\hyperlink{class_add_question_manager_a7da72faf4f521757adab13fb6f9e288d}{counterint}}
+\item 
+string \mbox{\hyperlink{class_add_question_manager_a487549b4fe24bc755c20c42f94cabcb3}{question\+Incremented}}
+\item 
+Game\+Object \mbox{\hyperlink{class_add_question_manager_a340f4635c2501b825f48bdf7bd2bd4f6}{error\+UI}}
+\item 
+TMP\+\_\+\+Text \mbox{\hyperlink{class_add_question_manager_afaad4f8eb0c97c53915aa29c55605f4a}{error\+Message\+To\+Show}}
+\item 
+string \mbox{\hyperlink{class_add_question_manager_aa19d3a9f7355d7f683ea45856b9506a1}{error\+Message}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\texorpdfstring{$<$}{<} Firestore Data referencing Firebase to refer to Database\textquotesingle{}s counter values Allows Teacher to specifiying -\/ World, Section, Difficulty and Question ID and Add question to Firebase by Calling Question Data Access Object 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_add_question_manager_a2683cb8c7c924f7618cf73f5733614c3}\label{class_add_question_manager_a2683cb8c7c924f7618cf73f5733614c3}} 
+\index{AddQuestionManager@{AddQuestionManager}!clickAddQuestionButton@{clickAddQuestionButton}}
+\index{clickAddQuestionButton@{clickAddQuestionButton}!AddQuestionManager@{AddQuestionManager}}
+\doxysubsubsection{\texorpdfstring{clickAddQuestionButton()}{clickAddQuestionButton()}}
+{\footnotesize\ttfamily void Add\+Question\+Manager.\+click\+Add\+Question\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Adding of Question into Database by setting relevant fields and calling Question DAO (Data Access Object) \mbox{\Hypertarget{class_add_question_manager_afa6961017df6b61a557fccbbf023091a}\label{class_add_question_manager_afa6961017df6b61a557fccbbf023091a}} 
+\index{AddQuestionManager@{AddQuestionManager}!createQuestionData@{createQuestionData}}
+\index{createQuestionData@{createQuestionData}!AddQuestionManager@{AddQuestionManager}}
+\doxysubsubsection{\texorpdfstring{createQuestionData()}{createQuestionData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_question_model}{Question\+Model}} Add\+Question\+Manager.\+create\+Question\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Creating Question Model of struct data type to add Question into Firebase, with each member of the struct representing a field in the Question Document in Database 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_add_question_manager_a9a9f5a30589afcfb1c27ba7036bffec0}\label{class_add_question_manager_a9a9f5a30589afcfb1c27ba7036bffec0}} 
+\index{AddQuestionManager@{AddQuestionManager}!ansD@{ansD}}
+\index{ansD@{ansD}!AddQuestionManager@{AddQuestionManager}}
+\doxysubsubsection{\texorpdfstring{ansD}{ansD}}
+{\footnotesize\ttfamily TMP\+\_\+\+Input\+Field Add\+Question\+Manager.\+ansD}
+
+User Interface input field for the 4 Options for Question \mbox{\Hypertarget{class_add_question_manager_a84ac079be38e4ab39f790a72dd653bfd}\label{class_add_question_manager_a84ac079be38e4ab39f790a72dd653bfd}} 
+\index{AddQuestionManager@{AddQuestionManager}!correctAns@{correctAns}}
+\index{correctAns@{correctAns}!AddQuestionManager@{AddQuestionManager}}
+\doxysubsubsection{\texorpdfstring{correctAns}{correctAns}}
+{\footnotesize\ttfamily TMP\+\_\+\+Dropdown Add\+Question\+Manager.\+correct\+Ans}
+
+User Interface Dropdown for World, Section, Level and Correct Answer \mbox{\Hypertarget{class_add_question_manager_a4553ef5f999fe27822b3d6eb48e5a50f}\label{class_add_question_manager_a4553ef5f999fe27822b3d6eb48e5a50f}} 
+\index{AddQuestionManager@{AddQuestionManager}!counter@{counter}}
+\index{counter@{counter}!AddQuestionManager@{AddQuestionManager}}
+\doxysubsubsection{\texorpdfstring{counter}{counter}}
+{\footnotesize\ttfamily int Add\+Question\+Manager.\+counter}
+
+Integer Value for Counter \mbox{\Hypertarget{class_add_question_manager_a7da72faf4f521757adab13fb6f9e288d}\label{class_add_question_manager_a7da72faf4f521757adab13fb6f9e288d}} 
+\index{AddQuestionManager@{AddQuestionManager}!counterint@{counterint}}
+\index{counterint@{counterint}!AddQuestionManager@{AddQuestionManager}}
+\doxysubsubsection{\texorpdfstring{counterint}{counterint}}
+{\footnotesize\ttfamily int Add\+Question\+Manager.\+counterint}
+
+Final Integer Value for Counter after Processing \mbox{\Hypertarget{class_add_question_manager_aa19d3a9f7355d7f683ea45856b9506a1}\label{class_add_question_manager_aa19d3a9f7355d7f683ea45856b9506a1}} 
+\index{AddQuestionManager@{AddQuestionManager}!errorMessage@{errorMessage}}
+\index{errorMessage@{errorMessage}!AddQuestionManager@{AddQuestionManager}}
+\doxysubsubsection{\texorpdfstring{errorMessage}{errorMessage}}
+{\footnotesize\ttfamily string Add\+Question\+Manager.\+error\+Message}
+
+String value of Error Message \mbox{\Hypertarget{class_add_question_manager_afaad4f8eb0c97c53915aa29c55605f4a}\label{class_add_question_manager_afaad4f8eb0c97c53915aa29c55605f4a}} 
+\index{AddQuestionManager@{AddQuestionManager}!errorMessageToShow@{errorMessageToShow}}
+\index{errorMessageToShow@{errorMessageToShow}!AddQuestionManager@{AddQuestionManager}}
+\doxysubsubsection{\texorpdfstring{errorMessageToShow}{errorMessageToShow}}
+{\footnotesize\ttfamily TMP\+\_\+\+Text Add\+Question\+Manager.\+error\+Message\+To\+Show}
+
+User Interface Text field for displaying of Error Message \mbox{\Hypertarget{class_add_question_manager_a340f4635c2501b825f48bdf7bd2bd4f6}\label{class_add_question_manager_a340f4635c2501b825f48bdf7bd2bd4f6}} 
+\index{AddQuestionManager@{AddQuestionManager}!errorUI@{errorUI}}
+\index{errorUI@{errorUI}!AddQuestionManager@{AddQuestionManager}}
+\doxysubsubsection{\texorpdfstring{errorUI}{errorUI}}
+{\footnotesize\ttfamily Game\+Object Add\+Question\+Manager.\+error\+UI}
+
+User Interface of Error Message \mbox{\Hypertarget{class_add_question_manager_a487549b4fe24bc755c20c42f94cabcb3}\label{class_add_question_manager_a487549b4fe24bc755c20c42f94cabcb3}} 
+\index{AddQuestionManager@{AddQuestionManager}!questionIncremented@{questionIncremented}}
+\index{questionIncremented@{questionIncremented}!AddQuestionManager@{AddQuestionManager}}
+\doxysubsubsection{\texorpdfstring{questionIncremented}{questionIncremented}}
+{\footnotesize\ttfamily string Add\+Question\+Manager.\+question\+Incremented}
+
+String Value representing Question\+ID \mbox{\Hypertarget{class_add_question_manager_a5380f40d6223bcef3c75687ef423b939}\label{class_add_question_manager_a5380f40d6223bcef3c75687ef423b939}} 
+\index{AddQuestionManager@{AddQuestionManager}!questionUID@{questionUID}}
+\index{questionUID@{questionUID}!AddQuestionManager@{AddQuestionManager}}
+\doxysubsubsection{\texorpdfstring{questionUID}{questionUID}}
+{\footnotesize\ttfamily string Add\+Question\+Manager.\+question\+UID}
+
+User Interface input field for Question ID 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Add\+Question\+Manager.\+cs\end{DoxyCompactItemize}

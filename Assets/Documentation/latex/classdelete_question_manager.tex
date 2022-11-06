@@ -1,0 +1,98 @@
+\hypertarget{classdelete_question_manager}{}\doxysection{delete\+Question\+Manager Class Reference}
+\label{classdelete_question_manager}\index{deleteQuestionManager@{deleteQuestionManager}}
+Inheritance diagram for delete\+Question\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classdelete_question_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classdelete_question_manager_a484548c75e3fecdeefcf425a709a495f}{click\+Delete\+Question\+Button}} ()
+\item 
+void \mbox{\hyperlink{classdelete_question_manager_a309b3258bceaef503c19b67648eb57cf}{retrieve\+Question}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdelete_question_manager_a151f940283814aa6ef9d79b85f52f837}\label{classdelete_question_manager_a151f940283814aa6ef9d79b85f52f837}} 
+TMP\+\_\+\+Dropdown {\bfseries world\+DD}
+\item 
+\mbox{\Hypertarget{classdelete_question_manager_af99f5e72c0aa29c57bb80f4e2d846f23}\label{classdelete_question_manager_af99f5e72c0aa29c57bb80f4e2d846f23}} 
+TMP\+\_\+\+Dropdown {\bfseries section\+DD}
+\item 
+TMP\+\_\+\+Dropdown \mbox{\hyperlink{classdelete_question_manager_afa06d911c9b4e2a6e10f15fd3b5ff3c5}{level\+DD}}
+\item 
+TMP\+\_\+\+Input\+Field \mbox{\hyperlink{classdelete_question_manager_ab0d1a0ce6e689c53c865f09c52b0b4d1}{questionid}}
+\item 
+TMP\+\_\+\+Text \mbox{\hyperlink{classdelete_question_manager_a417ace127955002707f1375d8d15b184}{display\+Question}}
+\item 
+Game\+Object \mbox{\hyperlink{classdelete_question_manager_afd87079c23b6c18f9b5414ff68e5700a}{error\+UI}}
+\item 
+TMP\+\_\+\+Text \mbox{\hyperlink{classdelete_question_manager_a88cecbe19ccda5ac7ae4494e328cedd3}{error\+Message\+To\+Show}}
+\item 
+string \mbox{\hyperlink{classdelete_question_manager_a097fc986c196efb86fe2e3318fc0a970}{error\+Message}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Allows Teacher to delete question from Firebase by specifiying -\/ World, Section, Difficulty and Question ID 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdelete_question_manager_a484548c75e3fecdeefcf425a709a495f}\label{classdelete_question_manager_a484548c75e3fecdeefcf425a709a495f}} 
+\index{deleteQuestionManager@{deleteQuestionManager}!clickDeleteQuestionButton@{clickDeleteQuestionButton}}
+\index{clickDeleteQuestionButton@{clickDeleteQuestionButton}!deleteQuestionManager@{deleteQuestionManager}}
+\doxysubsubsection{\texorpdfstring{clickDeleteQuestionButton()}{clickDeleteQuestionButton()}}
+{\footnotesize\ttfamily void delete\+Question\+Manager.\+click\+Delete\+Question\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Takes in Section, World, Level and Question ID and calls the \mbox{\hyperlink{class_question_d_a_o}{Question\+DAO}} to delete question \mbox{\Hypertarget{classdelete_question_manager_a309b3258bceaef503c19b67648eb57cf}\label{classdelete_question_manager_a309b3258bceaef503c19b67648eb57cf}} 
+\index{deleteQuestionManager@{deleteQuestionManager}!retrieveQuestion@{retrieveQuestion}}
+\index{retrieveQuestion@{retrieveQuestion}!deleteQuestionManager@{deleteQuestionManager}}
+\doxysubsubsection{\texorpdfstring{retrieveQuestion()}{retrieveQuestion()}}
+{\footnotesize\ttfamily void delete\+Question\+Manager.\+retrieve\+Question (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Retrieves and displays question that the Teacher intends to delete from the database for confirmation 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdelete_question_manager_a417ace127955002707f1375d8d15b184}\label{classdelete_question_manager_a417ace127955002707f1375d8d15b184}} 
+\index{deleteQuestionManager@{deleteQuestionManager}!displayQuestion@{displayQuestion}}
+\index{displayQuestion@{displayQuestion}!deleteQuestionManager@{deleteQuestionManager}}
+\doxysubsubsection{\texorpdfstring{displayQuestion}{displayQuestion}}
+{\footnotesize\ttfamily TMP\+\_\+\+Text delete\+Question\+Manager.\+display\+Question}
+
+User Interface Text field for displaying of Retrieved Question for Verification before Deleting \mbox{\Hypertarget{classdelete_question_manager_a097fc986c196efb86fe2e3318fc0a970}\label{classdelete_question_manager_a097fc986c196efb86fe2e3318fc0a970}} 
+\index{deleteQuestionManager@{deleteQuestionManager}!errorMessage@{errorMessage}}
+\index{errorMessage@{errorMessage}!deleteQuestionManager@{deleteQuestionManager}}
+\doxysubsubsection{\texorpdfstring{errorMessage}{errorMessage}}
+{\footnotesize\ttfamily string delete\+Question\+Manager.\+error\+Message}
+
+String value of Error Message \mbox{\Hypertarget{classdelete_question_manager_a88cecbe19ccda5ac7ae4494e328cedd3}\label{classdelete_question_manager_a88cecbe19ccda5ac7ae4494e328cedd3}} 
+\index{deleteQuestionManager@{deleteQuestionManager}!errorMessageToShow@{errorMessageToShow}}
+\index{errorMessageToShow@{errorMessageToShow}!deleteQuestionManager@{deleteQuestionManager}}
+\doxysubsubsection{\texorpdfstring{errorMessageToShow}{errorMessageToShow}}
+{\footnotesize\ttfamily TMP\+\_\+\+Text delete\+Question\+Manager.\+error\+Message\+To\+Show}
+
+User Interface Text field for displaying of Error Message \mbox{\Hypertarget{classdelete_question_manager_afd87079c23b6c18f9b5414ff68e5700a}\label{classdelete_question_manager_afd87079c23b6c18f9b5414ff68e5700a}} 
+\index{deleteQuestionManager@{deleteQuestionManager}!errorUI@{errorUI}}
+\index{errorUI@{errorUI}!deleteQuestionManager@{deleteQuestionManager}}
+\doxysubsubsection{\texorpdfstring{errorUI}{errorUI}}
+{\footnotesize\ttfamily Game\+Object delete\+Question\+Manager.\+error\+UI}
+
+User Interface of Error Message \mbox{\Hypertarget{classdelete_question_manager_afa06d911c9b4e2a6e10f15fd3b5ff3c5}\label{classdelete_question_manager_afa06d911c9b4e2a6e10f15fd3b5ff3c5}} 
+\index{deleteQuestionManager@{deleteQuestionManager}!levelDD@{levelDD}}
+\index{levelDD@{levelDD}!deleteQuestionManager@{deleteQuestionManager}}
+\doxysubsubsection{\texorpdfstring{levelDD}{levelDD}}
+{\footnotesize\ttfamily TMP\+\_\+\+Dropdown delete\+Question\+Manager.\+level\+DD}
+
+User Interface Drop Down for World, Section and Level \mbox{\Hypertarget{classdelete_question_manager_ab0d1a0ce6e689c53c865f09c52b0b4d1}\label{classdelete_question_manager_ab0d1a0ce6e689c53c865f09c52b0b4d1}} 
+\index{deleteQuestionManager@{deleteQuestionManager}!questionid@{questionid}}
+\index{questionid@{questionid}!deleteQuestionManager@{deleteQuestionManager}}
+\doxysubsubsection{\texorpdfstring{questionid}{questionid}}
+{\footnotesize\ttfamily TMP\+\_\+\+Input\+Field delete\+Question\+Manager.\+questionid}
+
+User Interface input field for Question ID 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+delete\+Question\+Manager.\+cs\end{DoxyCompactItemize}

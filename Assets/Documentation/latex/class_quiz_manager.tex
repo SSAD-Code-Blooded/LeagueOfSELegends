@@ -1,0 +1,250 @@
+\hypertarget{class_quiz_manager}{}\doxysection{Quiz\+Manager Class Reference}
+\label{class_quiz_manager}\index{QuizManager@{QuizManager}}
+Inheritance diagram for Quiz\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_quiz_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_quiz_manager_af20c750c914c7366f306d73a9cbb31d3}{startquiz}} ()
+\item 
+void \mbox{\hyperlink{class_quiz_manager_a3e6a15cb097fc1f7d677dc7d11cd1e38}{retry}} ()
+\item 
+void \mbox{\hyperlink{class_quiz_manager_afe7cd3e8fc0e3e5453e1629258698e92}{back\+Button}} ()
+\item 
+async void \mbox{\hyperlink{class_quiz_manager_aacbdcddf2e0519eee527a70ec3ff52f4}{data\+Fetch}} (string user\+Profile\+Level)
+\item 
+void \mbox{\hyperlink{class_quiz_manager_a0c71b65b60d031f0f74e28a7325024c1}{correct}} ()
+\item 
+void \mbox{\hyperlink{class_quiz_manager_aa8f852880523ee9a62c5a76f2bd3fa4f}{wrong}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_quiz_manager_adb66addc3c33e6cfaba659d6962f4697}{max\+Health}} = 100
+\item 
+int \mbox{\hyperlink{class_quiz_manager_aed0388d63f99a4ec49734787af933083}{current\+Player\+Health}}
+\item 
+int \mbox{\hyperlink{class_quiz_manager_adce8ba91491b7c25193cc9505e4fbccc}{current\+Monster\+Health}}
+\item 
+\mbox{\hyperlink{class_health_bar}{Health\+Bar}} \mbox{\hyperlink{class_quiz_manager_adccad02e8a05afd0efd7257f4d37ba56}{player\+Health\+Bar}}
+\item 
+\mbox{\hyperlink{class_health_bar}{Health\+Bar}} \mbox{\hyperlink{class_quiz_manager_ae1f9582272deb9a21364ddc8ba3f9491}{monster\+Health\+Bar}}
+\item 
+\mbox{\hyperlink{class_loading_bar}{Loading\+Bar}} \mbox{\hyperlink{class_quiz_manager_aa8153fadec2fd9bfcc28eb495dfd2358}{loading\+Bar}}
+\item 
+\mbox{\Hypertarget{class_quiz_manager_a40c676b198c0520ddb1e776bcdcb242c}\label{class_quiz_manager_a40c676b198c0520ddb1e776bcdcb242c}} 
+Button {\bfseries Start\+Button}
+\item 
+\mbox{\Hypertarget{class_quiz_manager_abbc5b826fa8191296403cec01ea11ccb}\label{class_quiz_manager_abbc5b826fa8191296403cec01ea11ccb}} 
+int {\bfseries user\+Score}
+\item 
+List$<$ \mbox{\hyperlink{class_questions_and_answers}{Questions\+And\+Answers}} $>$ \mbox{\hyperlink{class_quiz_manager_af0d6f0cb91e180b1208d556f40a34045}{QnA}}
+\item 
+Game\+Object\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_quiz_manager_aec30d10a1fca25d5a5e1197f7cdac54e}{options}}
+\item 
+int \mbox{\hyperlink{class_quiz_manager_acfb017b561d4ac52226260f02b2eba46}{current\+Question}}
+\item 
+Text \mbox{\hyperlink{class_quiz_manager_a8696d4ff146b3c28ff09f7f0a92c0455}{Question\+Txt}}
+\item 
+Text \mbox{\hyperlink{class_quiz_manager_a030a60fe70e6bf69e2a3e1acb6e63019}{Score\+Txt}}
+\item 
+Text \mbox{\hyperlink{class_quiz_manager_af7b881623f020bdc44b759e38eff301d}{curr\+Score}}
+\item 
+Text \mbox{\hyperlink{class_quiz_manager_a92eda7e821cf7c5ca388de0dc9016624}{countdown\+Text}}
+\item 
+Text \mbox{\hyperlink{class_quiz_manager_ad06dc973a819f835437b6a72b68547c9}{Result\+Text}}
+\item 
+int \mbox{\hyperlink{class_quiz_manager_a7bfdc24f256c78bf50dfe2e96fe6852f}{score}} = 0
+\item 
+int \mbox{\hyperlink{class_quiz_manager_aed207c7766bf22db53bde9fe73eadd02}{win\+\_\+game}}
+\item 
+Game\+Object \mbox{\hyperlink{class_quiz_manager_a77abb15e5d2a920f6affb6a272cdadc0}{Quizpanel}}
+\item 
+Game\+Object \mbox{\hyperlink{class_quiz_manager_aa5b43e03b602e4b1d593916539d06d12}{Go\+Panel}}
+\item 
+Game\+Object \mbox{\hyperlink{class_quiz_manager_a0855258e6ef344123e787f97d2b17065}{Start\+Panel}}
+\item 
+Game\+Object \mbox{\hyperlink{class_quiz_manager_a6072cfdd19b29d0a78b8cc89d2b08df5}{Timer}}
+\item 
+Dictionary$<$ string, object $>$ \mbox{\hyperlink{class_quiz_manager_adf928d77c6716259b91c30aab68bd114}{question\+Bank}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+... Quiz Manager-\/ fetches data for the quiz page UI 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_quiz_manager_afe7cd3e8fc0e3e5453e1629258698e92}\label{class_quiz_manager_afe7cd3e8fc0e3e5453e1629258698e92}} 
+\index{QuizManager@{QuizManager}!backButton@{backButton}}
+\index{backButton@{backButton}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{backButton()}{backButton()}}
+{\footnotesize\ttfamily void Quiz\+Manager.\+back\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+this method activates the back button \mbox{\Hypertarget{class_quiz_manager_a0c71b65b60d031f0f74e28a7325024c1}\label{class_quiz_manager_a0c71b65b60d031f0f74e28a7325024c1}} 
+\index{QuizManager@{QuizManager}!correct@{correct}}
+\index{correct@{correct}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{correct()}{correct()}}
+{\footnotesize\ttfamily void Quiz\+Manager.\+correct (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+method called when correct answer is clicked \mbox{\Hypertarget{class_quiz_manager_aacbdcddf2e0519eee527a70ec3ff52f4}\label{class_quiz_manager_aacbdcddf2e0519eee527a70ec3ff52f4}} 
+\index{QuizManager@{QuizManager}!dataFetch@{dataFetch}}
+\index{dataFetch@{dataFetch}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{dataFetch()}{dataFetch()}}
+{\footnotesize\ttfamily async void Quiz\+Manager.\+data\+Fetch (\begin{DoxyParamCaption}\item[{string}]{user\+Profile\+Level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+method used to fetch questions from firebase using the current progress level of the user \mbox{\Hypertarget{class_quiz_manager_a3e6a15cb097fc1f7d677dc7d11cd1e38}\label{class_quiz_manager_a3e6a15cb097fc1f7d677dc7d11cd1e38}} 
+\index{QuizManager@{QuizManager}!retry@{retry}}
+\index{retry@{retry}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{retry()}{retry()}}
+{\footnotesize\ttfamily void Quiz\+Manager.\+retry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+method called upon retry at Game\+Over panel \mbox{\Hypertarget{class_quiz_manager_af20c750c914c7366f306d73a9cbb31d3}\label{class_quiz_manager_af20c750c914c7366f306d73a9cbb31d3}} 
+\index{QuizManager@{QuizManager}!startquiz@{startquiz}}
+\index{startquiz@{startquiz}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{startquiz()}{startquiz()}}
+{\footnotesize\ttfamily void Quiz\+Manager.\+startquiz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+once the start button is pressed, this function is called \mbox{\Hypertarget{class_quiz_manager_aa8f852880523ee9a62c5a76f2bd3fa4f}\label{class_quiz_manager_aa8f852880523ee9a62c5a76f2bd3fa4f}} 
+\index{QuizManager@{QuizManager}!wrong@{wrong}}
+\index{wrong@{wrong}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{wrong()}{wrong()}}
+{\footnotesize\ttfamily void Quiz\+Manager.\+wrong (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+method called when wrong answer is clicked 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_quiz_manager_a92eda7e821cf7c5ca388de0dc9016624}\label{class_quiz_manager_a92eda7e821cf7c5ca388de0dc9016624}} 
+\index{QuizManager@{QuizManager}!countdownText@{countdownText}}
+\index{countdownText@{countdownText}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{countdownText}{countdownText}}
+{\footnotesize\ttfamily Text Quiz\+Manager.\+countdown\+Text}
+
+Text that displays time remaining \mbox{\Hypertarget{class_quiz_manager_adce8ba91491b7c25193cc9505e4fbccc}\label{class_quiz_manager_adce8ba91491b7c25193cc9505e4fbccc}} 
+\index{QuizManager@{QuizManager}!currentMonsterHealth@{currentMonsterHealth}}
+\index{currentMonsterHealth@{currentMonsterHealth}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{currentMonsterHealth}{currentMonsterHealth}}
+{\footnotesize\ttfamily int Quiz\+Manager.\+current\+Monster\+Health}
+
+Current Health of the Monster \mbox{\Hypertarget{class_quiz_manager_aed0388d63f99a4ec49734787af933083}\label{class_quiz_manager_aed0388d63f99a4ec49734787af933083}} 
+\index{QuizManager@{QuizManager}!currentPlayerHealth@{currentPlayerHealth}}
+\index{currentPlayerHealth@{currentPlayerHealth}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{currentPlayerHealth}{currentPlayerHealth}}
+{\footnotesize\ttfamily int Quiz\+Manager.\+current\+Player\+Health}
+
+Current Health of the Player \mbox{\Hypertarget{class_quiz_manager_acfb017b561d4ac52226260f02b2eba46}\label{class_quiz_manager_acfb017b561d4ac52226260f02b2eba46}} 
+\index{QuizManager@{QuizManager}!currentQuestion@{currentQuestion}}
+\index{currentQuestion@{currentQuestion}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{currentQuestion}{currentQuestion}}
+{\footnotesize\ttfamily int Quiz\+Manager.\+current\+Question}
+
+The current question number \mbox{\Hypertarget{class_quiz_manager_af7b881623f020bdc44b759e38eff301d}\label{class_quiz_manager_af7b881623f020bdc44b759e38eff301d}} 
+\index{QuizManager@{QuizManager}!currScore@{currScore}}
+\index{currScore@{currScore}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{currScore}{currScore}}
+{\footnotesize\ttfamily Text Quiz\+Manager.\+curr\+Score}
+
+Current socre of the player \mbox{\Hypertarget{class_quiz_manager_aa5b43e03b602e4b1d593916539d06d12}\label{class_quiz_manager_aa5b43e03b602e4b1d593916539d06d12}} 
+\index{QuizManager@{QuizManager}!GoPanel@{GoPanel}}
+\index{GoPanel@{GoPanel}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{GoPanel}{GoPanel}}
+{\footnotesize\ttfamily Game\+Object Quiz\+Manager.\+Go\+Panel}
+
+Game Object for the Game Over Panel \mbox{\Hypertarget{class_quiz_manager_aa8153fadec2fd9bfcc28eb495dfd2358}\label{class_quiz_manager_aa8153fadec2fd9bfcc28eb495dfd2358}} 
+\index{QuizManager@{QuizManager}!loadingBar@{loadingBar}}
+\index{loadingBar@{loadingBar}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{loadingBar}{loadingBar}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_loading_bar}{Loading\+Bar}} Quiz\+Manager.\+loading\+Bar}
+
+\mbox{\hyperlink{class_loading_bar}{Loading\+Bar}} object for Loading page \mbox{\Hypertarget{class_quiz_manager_adb66addc3c33e6cfaba659d6962f4697}\label{class_quiz_manager_adb66addc3c33e6cfaba659d6962f4697}} 
+\index{QuizManager@{QuizManager}!maxHealth@{maxHealth}}
+\index{maxHealth@{maxHealth}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{maxHealth}{maxHealth}}
+{\footnotesize\ttfamily int Quiz\+Manager.\+max\+Health = 100}
+
+Maximum Health of player/monster character \mbox{\Hypertarget{class_quiz_manager_ae1f9582272deb9a21364ddc8ba3f9491}\label{class_quiz_manager_ae1f9582272deb9a21364ddc8ba3f9491}} 
+\index{QuizManager@{QuizManager}!monsterHealthBar@{monsterHealthBar}}
+\index{monsterHealthBar@{monsterHealthBar}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{monsterHealthBar}{monsterHealthBar}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_health_bar}{Health\+Bar}} Quiz\+Manager.\+monster\+Health\+Bar}
+
+\mbox{\hyperlink{class_health_bar}{Health\+Bar}} object for Monster \mbox{\Hypertarget{class_quiz_manager_aec30d10a1fca25d5a5e1197f7cdac54e}\label{class_quiz_manager_aec30d10a1fca25d5a5e1197f7cdac54e}} 
+\index{QuizManager@{QuizManager}!options@{options}}
+\index{options@{options}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{options}{options}}
+{\footnotesize\ttfamily Game\+Object \mbox{[}$\,$\mbox{]} Quiz\+Manager.\+options}
+
+An array of Game\+Objects for the options \mbox{\Hypertarget{class_quiz_manager_adccad02e8a05afd0efd7257f4d37ba56}\label{class_quiz_manager_adccad02e8a05afd0efd7257f4d37ba56}} 
+\index{QuizManager@{QuizManager}!playerHealthBar@{playerHealthBar}}
+\index{playerHealthBar@{playerHealthBar}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{playerHealthBar}{playerHealthBar}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_health_bar}{Health\+Bar}} Quiz\+Manager.\+player\+Health\+Bar}
+
+\mbox{\hyperlink{class_health_bar}{Health\+Bar}} object for Player \mbox{\Hypertarget{class_quiz_manager_af0d6f0cb91e180b1208d556f40a34045}\label{class_quiz_manager_af0d6f0cb91e180b1208d556f40a34045}} 
+\index{QuizManager@{QuizManager}!QnA@{QnA}}
+\index{QnA@{QnA}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{QnA}{QnA}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_questions_and_answers}{Questions\+And\+Answers}}$>$ Quiz\+Manager.\+QnA}
+
+User\textquotesingle{}s Score List of Questions and Answers \mbox{\Hypertarget{class_quiz_manager_adf928d77c6716259b91c30aab68bd114}\label{class_quiz_manager_adf928d77c6716259b91c30aab68bd114}} 
+\index{QuizManager@{QuizManager}!questionBank@{questionBank}}
+\index{questionBank@{questionBank}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{questionBank}{questionBank}}
+{\footnotesize\ttfamily Dictionary$<$string, object$>$ Quiz\+Manager.\+question\+Bank}
+
+Dictionary containing the Questions \mbox{\Hypertarget{class_quiz_manager_a8696d4ff146b3c28ff09f7f0a92c0455}\label{class_quiz_manager_a8696d4ff146b3c28ff09f7f0a92c0455}} 
+\index{QuizManager@{QuizManager}!QuestionTxt@{QuestionTxt}}
+\index{QuestionTxt@{QuestionTxt}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{QuestionTxt}{QuestionTxt}}
+{\footnotesize\ttfamily Text Quiz\+Manager.\+Question\+Txt}
+
+Text of the Question \mbox{\Hypertarget{class_quiz_manager_a77abb15e5d2a920f6affb6a272cdadc0}\label{class_quiz_manager_a77abb15e5d2a920f6affb6a272cdadc0}} 
+\index{QuizManager@{QuizManager}!Quizpanel@{Quizpanel}}
+\index{Quizpanel@{Quizpanel}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{Quizpanel}{Quizpanel}}
+{\footnotesize\ttfamily Game\+Object Quiz\+Manager.\+Quizpanel}
+
+Game Object for the Quiz Panel with Questions \mbox{\Hypertarget{class_quiz_manager_ad06dc973a819f835437b6a72b68547c9}\label{class_quiz_manager_ad06dc973a819f835437b6a72b68547c9}} 
+\index{QuizManager@{QuizManager}!ResultText@{ResultText}}
+\index{ResultText@{ResultText}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{ResultText}{ResultText}}
+{\footnotesize\ttfamily Text Quiz\+Manager.\+Result\+Text}
+
+Text displaying result (win/loss) \mbox{\Hypertarget{class_quiz_manager_a7bfdc24f256c78bf50dfe2e96fe6852f}\label{class_quiz_manager_a7bfdc24f256c78bf50dfe2e96fe6852f}} 
+\index{QuizManager@{QuizManager}!score@{score}}
+\index{score@{score}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily int Quiz\+Manager.\+score = 0}
+
+Score \mbox{\Hypertarget{class_quiz_manager_a030a60fe70e6bf69e2a3e1acb6e63019}\label{class_quiz_manager_a030a60fe70e6bf69e2a3e1acb6e63019}} 
+\index{QuizManager@{QuizManager}!ScoreTxt@{ScoreTxt}}
+\index{ScoreTxt@{ScoreTxt}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{ScoreTxt}{ScoreTxt}}
+{\footnotesize\ttfamily Text Quiz\+Manager.\+Score\+Txt}
+
+Text that displays the score \mbox{\Hypertarget{class_quiz_manager_a0855258e6ef344123e787f97d2b17065}\label{class_quiz_manager_a0855258e6ef344123e787f97d2b17065}} 
+\index{QuizManager@{QuizManager}!StartPanel@{StartPanel}}
+\index{StartPanel@{StartPanel}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{StartPanel}{StartPanel}}
+{\footnotesize\ttfamily Game\+Object Quiz\+Manager.\+Start\+Panel}
+
+Game Object for the Start Dialog Panel \mbox{\Hypertarget{class_quiz_manager_a6072cfdd19b29d0a78b8cc89d2b08df5}\label{class_quiz_manager_a6072cfdd19b29d0a78b8cc89d2b08df5}} 
+\index{QuizManager@{QuizManager}!Timer@{Timer}}
+\index{Timer@{Timer}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{Timer}{Timer}}
+{\footnotesize\ttfamily Game\+Object Quiz\+Manager.\+Timer}
+
+Game Object for the Countdown Timer \mbox{\Hypertarget{class_quiz_manager_aed207c7766bf22db53bde9fe73eadd02}\label{class_quiz_manager_aed207c7766bf22db53bde9fe73eadd02}} 
+\index{QuizManager@{QuizManager}!win\_game@{win\_game}}
+\index{win\_game@{win\_game}!QuizManager@{QuizManager}}
+\doxysubsubsection{\texorpdfstring{win\_game}{win\_game}}
+{\footnotesize\ttfamily int Quiz\+Manager.\+win\+\_\+game}
+
+Wherher tou won or lost the game 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Quiz\+Manager.\+cs\end{DoxyCompactItemize}

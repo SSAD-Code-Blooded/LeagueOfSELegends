@@ -1,0 +1,40 @@
+\hypertarget{class_question_d_a_o}{}\doxysection{Question\+DAO Class Reference}
+\label{class_question_d_a_o}\index{QuestionDAO@{QuestionDAO}}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_question_d_a_o_abdccee4613abb8f859b7924255b8aa74}{update\+Counter}} (String world, String section, String difficulty, int counterint)
+\item 
+static void \mbox{\hyperlink{class_question_d_a_o_a6de3a4873498ce645c20f82e9e613f6b}{set\+Answers}} (\mbox{\hyperlink{struct_question_model}{Question\+Model}} question\+Data, String world, String section, String difficulty, String question\+Id)
+\item 
+static void \mbox{\hyperlink{class_question_d_a_o_a5559e992dfbc7d067938e709e5bb5b86}{delete\+Question}} (String questionid, String world, String section, String difficulty)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\texorpdfstring{$<$}{<} Firestore Data to reference each Question in a struct data type Data Access Object that performs Question Related Database Operations 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_question_d_a_o_a5559e992dfbc7d067938e709e5bb5b86}\label{class_question_d_a_o_a5559e992dfbc7d067938e709e5bb5b86}} 
+\index{QuestionDAO@{QuestionDAO}!deleteQuestion@{deleteQuestion}}
+\index{deleteQuestion@{deleteQuestion}!QuestionDAO@{QuestionDAO}}
+\doxysubsubsection{\texorpdfstring{deleteQuestion()}{deleteQuestion()}}
+{\footnotesize\ttfamily static void Question\+DAO.\+delete\+Question (\begin{DoxyParamCaption}\item[{String}]{questionid,  }\item[{String}]{world,  }\item[{String}]{section,  }\item[{String}]{difficulty }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Function to Delete Question in Firebase \mbox{\Hypertarget{class_question_d_a_o_a6de3a4873498ce645c20f82e9e613f6b}\label{class_question_d_a_o_a6de3a4873498ce645c20f82e9e613f6b}} 
+\index{QuestionDAO@{QuestionDAO}!setAnswers@{setAnswers}}
+\index{setAnswers@{setAnswers}!QuestionDAO@{QuestionDAO}}
+\doxysubsubsection{\texorpdfstring{setAnswers()}{setAnswers()}}
+{\footnotesize\ttfamily static void Question\+DAO.\+set\+Answers (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_question_model}{Question\+Model}}}]{question\+Data,  }\item[{String}]{world,  }\item[{String}]{section,  }\item[{String}]{difficulty,  }\item[{String}]{question\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Function to Create Question in Firebase \mbox{\Hypertarget{class_question_d_a_o_abdccee4613abb8f859b7924255b8aa74}\label{class_question_d_a_o_abdccee4613abb8f859b7924255b8aa74}} 
+\index{QuestionDAO@{QuestionDAO}!updateCounter@{updateCounter}}
+\index{updateCounter@{updateCounter}!QuestionDAO@{QuestionDAO}}
+\doxysubsubsection{\texorpdfstring{updateCounter()}{updateCounter()}}
+{\footnotesize\ttfamily static void Question\+DAO.\+update\+Counter (\begin{DoxyParamCaption}\item[{String}]{world,  }\item[{String}]{section,  }\item[{String}]{difficulty,  }\item[{int}]{counterint }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Function to Update Counter in Firebase 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Question\+DAO.\+cs\end{DoxyCompactItemize}

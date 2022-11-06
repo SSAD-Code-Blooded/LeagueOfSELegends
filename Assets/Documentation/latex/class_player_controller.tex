@@ -1,0 +1,74 @@
+\hypertarget{class_player_controller}{}\doxysection{Player\+Controller Class Reference}
+\label{class_player_controller}\index{PlayerController@{PlayerController}}
+Inheritance diagram for Player\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_player_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_player_controller_a28a5d54f665c9a3bd89a8443dcc4143a}{Lock\+Movement}} ()
+\item 
+void \mbox{\hyperlink{class_player_controller_a7269c55bad3c6df341666660b39fc940}{Unlock\+Movement}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_player_controller_abb12e85ca1b12efdbc8684bff2e19c4c}{move\+Speed}} = 1f
+\item 
+float \mbox{\hyperlink{class_player_controller_af93ba4373facd86d69acc95d33cd9a45}{collision\+Offset}} = 0.\+05f
+\item 
+Contact\+Filter2D \mbox{\hyperlink{class_player_controller_a550d60e15fb40e209320f6df71914854}{movement\+Filter}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is used to manage the player sprite while in World scene.
+
+It manages player movement while in World scene. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_controller_a28a5d54f665c9a3bd89a8443dcc4143a}\label{class_player_controller_a28a5d54f665c9a3bd89a8443dcc4143a}} 
+\index{PlayerController@{PlayerController}!LockMovement@{LockMovement}}
+\index{LockMovement@{LockMovement}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{LockMovement()}{LockMovement()}}
+{\footnotesize\ttfamily void Player\+Controller.\+Lock\+Movement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method is called to prevent movement animation.
+
+It is set when user is rendering attack animation. \mbox{\Hypertarget{class_player_controller_a7269c55bad3c6df341666660b39fc940}\label{class_player_controller_a7269c55bad3c6df341666660b39fc940}} 
+\index{PlayerController@{PlayerController}!UnlockMovement@{UnlockMovement}}
+\index{UnlockMovement@{UnlockMovement}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{UnlockMovement()}{UnlockMovement()}}
+{\footnotesize\ttfamily void Player\+Controller.\+Unlock\+Movement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method is called to allow movement animation.
+
+It is set when user has finished attack animation. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_player_controller_af93ba4373facd86d69acc95d33cd9a45}\label{class_player_controller_af93ba4373facd86d69acc95d33cd9a45}} 
+\index{PlayerController@{PlayerController}!collisionOffset@{collisionOffset}}
+\index{collisionOffset@{collisionOffset}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{collisionOffset}{collisionOffset}}
+{\footnotesize\ttfamily float Player\+Controller.\+collision\+Offset = 0.\+05f}
+
+variable to set width of collision contact \mbox{\Hypertarget{class_player_controller_a550d60e15fb40e209320f6df71914854}\label{class_player_controller_a550d60e15fb40e209320f6df71914854}} 
+\index{PlayerController@{PlayerController}!movementFilter@{movementFilter}}
+\index{movementFilter@{movementFilter}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{movementFilter}{movementFilter}}
+{\footnotesize\ttfamily Contact\+Filter2D Player\+Controller.\+movement\+Filter}
+
+manages collision along with 2D collider \mbox{\Hypertarget{class_player_controller_abb12e85ca1b12efdbc8684bff2e19c4c}\label{class_player_controller_abb12e85ca1b12efdbc8684bff2e19c4c}} 
+\index{PlayerController@{PlayerController}!moveSpeed@{moveSpeed}}
+\index{moveSpeed@{moveSpeed}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{moveSpeed}{moveSpeed}}
+{\footnotesize\ttfamily float Player\+Controller.\+move\+Speed = 1f}
+
+variable to set player movespeed 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Player\+Controller.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,245 @@
+\hypertarget{class_challenge_room}{}\doxysection{Challenge\+Room Class Reference}
+\label{class_challenge_room}\index{ChallengeRoom@{ChallengeRoom}}
+Inheritance diagram for Challenge\+Room\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_challenge_room}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_challenge_room_a10487bed5333fae7e50666599dcc7018}{on\+Back\+Button\+To\+Main\+Menu}} ()
+\item 
+void \mbox{\hyperlink{class_challenge_room_aeea95f676c8b3e4856ffdb585c9b5d49}{on\+Back\+Button\+To\+Create\+Room\+Lobby}} ()
+\item 
+override void \mbox{\hyperlink{class_challenge_room_a5993ca2c55c60dd5b6aea5c481b495ac}{On\+Connected\+To\+Master}} ()
+\item 
+override void \mbox{\hyperlink{class_challenge_room_aa87e6675470fc4ec2073d0ecdb6c3310}{On\+Joined\+Lobby}} ()
+\item 
+void \mbox{\hyperlink{class_challenge_room_adde4deac71d333ac8d5a027917fd8ee2}{On\+Click\+\_\+\+Create\+Room}} ()
+\item 
+void \mbox{\hyperlink{class_challenge_room_ae90198729968d267a1b4da5170ba1b68}{On\+Click\+\_\+\+Enter\+Room}} ()
+\item 
+override void \mbox{\hyperlink{class_challenge_room_a8f8943ed4ef28afedf361b1c76d391d8}{On\+Room\+List\+Update}} (List$<$ Room\+Info $>$ room\+List)
+\item 
+override void \mbox{\hyperlink{class_challenge_room_adfd581ee104585ae6e57bf17aa8e9c8d}{On\+Joined\+Room}} ()
+\item 
+override void \mbox{\hyperlink{class_challenge_room_a1db283da7bfa89e1d97d808586d38de6}{On\+Player\+Entered\+Room}} (Player new\+Player)
+\item 
+override void \mbox{\hyperlink{class_challenge_room_aab66434b15f0ff4d83658f01784f3879}{On\+Left\+Room}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TMP\+\_\+\+Input\+Field \mbox{\hyperlink{class_challenge_room_a56faf1cdb1bcc09cdde0c21bdf031654}{room\+Name\+Input}}
+\item 
+Game\+Object \mbox{\hyperlink{class_challenge_room_a8f41e246f3f8fa1782357aa52a99db1d}{waitingpanel}}
+\item 
+Text\+Mesh\+Pro\+UGUI \mbox{\hyperlink{class_challenge_room_ab426e7d7fff93f3a84d219b41e106dbb}{roomN}}
+\item 
+TMP\+\_\+\+Dropdown \mbox{\hyperlink{class_challenge_room_a627089dee6dc5ffa33023d1131a5ae75}{world\+DD}}
+\item 
+TMP\+\_\+\+Dropdown \mbox{\hyperlink{class_challenge_room_abec18068f5470fcd7959b10c5f72ec78}{section\+DD}}
+\item 
+TMP\+\_\+\+Dropdown \mbox{\hyperlink{class_challenge_room_a07208b3c815caef979a77bb48dc0ecc3}{level\+DD}}
+\item 
+Game\+Object \mbox{\hyperlink{class_challenge_room_a45a6e249fd9c4ec2023fdd9c2c9eba48}{join\+\_\+room\+\_\+error\+\_\+canvas}}
+\item 
+TMP\+\_\+\+Text \mbox{\hyperlink{class_challenge_room_aefbaa03e97d927cda74a3bbee1df02be}{join\+\_\+room\+\_\+error\+\_\+text}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_challenge_room_a5698651a2397839f0ab83a1224d2cb13}{challenge\+World}}
+\item 
+static string \mbox{\hyperlink{class_challenge_room_a829672cc3f9840d4fcace9826c87ba09}{challenge\+Section}}
+\item 
+static string \mbox{\hyperlink{class_challenge_room_a9ad0777a4d2c0e08d81faa0b5a8c2adb}{challenge\+Level}}
+\item 
+static int \mbox{\hyperlink{class_challenge_room_a82429c9a86b3816200b349f0ba819fe1}{player\+ID}}
+\item 
+static string \mbox{\hyperlink{class_challenge_room_a4744a88933466bfcf5d0b569207182b6}{player1email}}
+\item 
+static string \mbox{\hyperlink{class_challenge_room_a41e332f89197b2a3a4835990e2aeceab}{player2email}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is used to manage the scene for Challenge Room. (room creation / joining a room)
+
+It manages the loading of different scenes from Challenge Lobby scene and the overall flow of room creation / room joining. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_challenge_room_aeea95f676c8b3e4856ffdb585c9b5d49}\label{class_challenge_room_aeea95f676c8b3e4856ffdb585c9b5d49}} 
+\index{ChallengeRoom@{ChallengeRoom}!onBackButtonToCreateRoomLobby@{onBackButtonToCreateRoomLobby}}
+\index{onBackButtonToCreateRoomLobby@{onBackButtonToCreateRoomLobby}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{onBackButtonToCreateRoomLobby()}{onBackButtonToCreateRoomLobby()}}
+{\footnotesize\ttfamily void Challenge\+Room.\+on\+Back\+Button\+To\+Create\+Room\+Lobby (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method is called whenever users is in the newly created room and wants to go back to Create / Join room lobby.
+
+It loads Create / Join room lobby. \mbox{\Hypertarget{class_challenge_room_a10487bed5333fae7e50666599dcc7018}\label{class_challenge_room_a10487bed5333fae7e50666599dcc7018}} 
+\index{ChallengeRoom@{ChallengeRoom}!onBackButtonToMainMenu@{onBackButtonToMainMenu}}
+\index{onBackButtonToMainMenu@{onBackButtonToMainMenu}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{onBackButtonToMainMenu()}{onBackButtonToMainMenu()}}
+{\footnotesize\ttfamily void Challenge\+Room.\+on\+Back\+Button\+To\+Main\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method is called whenever users wants to leave lobby to main menu.
+
+It loads Main Menu scene. \mbox{\Hypertarget{class_challenge_room_adde4deac71d333ac8d5a027917fd8ee2}\label{class_challenge_room_adde4deac71d333ac8d5a027917fd8ee2}} 
+\index{ChallengeRoom@{ChallengeRoom}!OnClick\_CreateRoom@{OnClick\_CreateRoom}}
+\index{OnClick\_CreateRoom@{OnClick\_CreateRoom}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{OnClick\_CreateRoom()}{OnClick\_CreateRoom()}}
+{\footnotesize\ttfamily void Challenge\+Room.\+On\+Click\+\_\+\+Create\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method will be called when users clicks on Create Room after selecting world, section and level.
+
+It will create a room and print debug message to let us know if room is created successfully. \mbox{\Hypertarget{class_challenge_room_ae90198729968d267a1b4da5170ba1b68}\label{class_challenge_room_ae90198729968d267a1b4da5170ba1b68}} 
+\index{ChallengeRoom@{ChallengeRoom}!OnClick\_EnterRoom@{OnClick\_EnterRoom}}
+\index{OnClick\_EnterRoom@{OnClick\_EnterRoom}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{OnClick\_EnterRoom()}{OnClick\_EnterRoom()}}
+{\footnotesize\ttfamily void Challenge\+Room.\+On\+Click\+\_\+\+Enter\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method will be called when users clicks on Join Room after keying in room ID
+
+It will bring player to the room if room ID is valid and print error message if room ID is invalid. \mbox{\Hypertarget{class_challenge_room_a5993ca2c55c60dd5b6aea5c481b495ac}\label{class_challenge_room_a5993ca2c55c60dd5b6aea5c481b495ac}} 
+\index{ChallengeRoom@{ChallengeRoom}!OnConnectedToMaster@{OnConnectedToMaster}}
+\index{OnConnectedToMaster@{OnConnectedToMaster}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{OnConnectedToMaster()}{OnConnectedToMaster()}}
+{\footnotesize\ttfamily override void Challenge\+Room.\+On\+Connected\+To\+Master (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method will be used to override On\+Connected\+To\+Master function.
+
+It added the syncing of all players and initialise user 1 email and trigger join lobby. \mbox{\Hypertarget{class_challenge_room_aa87e6675470fc4ec2073d0ecdb6c3310}\label{class_challenge_room_aa87e6675470fc4ec2073d0ecdb6c3310}} 
+\index{ChallengeRoom@{ChallengeRoom}!OnJoinedLobby@{OnJoinedLobby}}
+\index{OnJoinedLobby@{OnJoinedLobby}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{OnJoinedLobby()}{OnJoinedLobby()}}
+{\footnotesize\ttfamily override void Challenge\+Room.\+On\+Joined\+Lobby (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method will be used to override On\+Joined\+Lobby function.
+
+It allows us to see debug message when user joined lobby or is not in room. \mbox{\Hypertarget{class_challenge_room_adfd581ee104585ae6e57bf17aa8e9c8d}\label{class_challenge_room_adfd581ee104585ae6e57bf17aa8e9c8d}} 
+\index{ChallengeRoom@{ChallengeRoom}!OnJoinedRoom@{OnJoinedRoom}}
+\index{OnJoinedRoom@{OnJoinedRoom}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{OnJoinedRoom()}{OnJoinedRoom()}}
+{\footnotesize\ttfamily override void Challenge\+Room.\+On\+Joined\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method will be used to override On\+Joined\+Room function.
+
+It will do the logic flow and initialise the room details with the player details. \mbox{\Hypertarget{class_challenge_room_aab66434b15f0ff4d83658f01784f3879}\label{class_challenge_room_aab66434b15f0ff4d83658f01784f3879}} 
+\index{ChallengeRoom@{ChallengeRoom}!OnLeftRoom@{OnLeftRoom}}
+\index{OnLeftRoom@{OnLeftRoom}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{OnLeftRoom()}{OnLeftRoom()}}
+{\footnotesize\ttfamily override void Challenge\+Room.\+On\+Left\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method will be used to override On\+Left\+Room function.
+
+It will be called when Leave\+Room() is called. Once called, it will load Create Room / Join Room Menu. \mbox{\Hypertarget{class_challenge_room_a1db283da7bfa89e1d97d808586d38de6}\label{class_challenge_room_a1db283da7bfa89e1d97d808586d38de6}} 
+\index{ChallengeRoom@{ChallengeRoom}!OnPlayerEnteredRoom@{OnPlayerEnteredRoom}}
+\index{OnPlayerEnteredRoom@{OnPlayerEnteredRoom}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{OnPlayerEnteredRoom()}{OnPlayerEnteredRoom()}}
+{\footnotesize\ttfamily override void Challenge\+Room.\+On\+Player\+Entered\+Room (\begin{DoxyParamCaption}\item[{Player}]{new\+Player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method will be used to override On\+Player\+Entered\+Room function.
+
+It will do the logic flow and only start game when 2 players are in the room. \mbox{\Hypertarget{class_challenge_room_a8f8943ed4ef28afedf361b1c76d391d8}\label{class_challenge_room_a8f8943ed4ef28afedf361b1c76d391d8}} 
+\index{ChallengeRoom@{ChallengeRoom}!OnRoomListUpdate@{OnRoomListUpdate}}
+\index{OnRoomListUpdate@{OnRoomListUpdate}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{OnRoomListUpdate()}{OnRoomListUpdate()}}
+{\footnotesize\ttfamily override void Challenge\+Room.\+On\+Room\+List\+Update (\begin{DoxyParamCaption}\item[{List$<$ Room\+Info $>$}]{room\+List }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method will be used to override On\+Room\+List\+Update function.
+
+It print out all the room available in the server. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_challenge_room_a9ad0777a4d2c0e08d81faa0b5a8c2adb}\label{class_challenge_room_a9ad0777a4d2c0e08d81faa0b5a8c2adb}} 
+\index{ChallengeRoom@{ChallengeRoom}!challengeLevel@{challengeLevel}}
+\index{challengeLevel@{challengeLevel}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{challengeLevel}{challengeLevel}}
+{\footnotesize\ttfamily string Challenge\+Room.\+challenge\+Level\hspace{0.3cm}{\ttfamily [static]}}
+
+this declares the selected challengelevel \mbox{\Hypertarget{class_challenge_room_a829672cc3f9840d4fcace9826c87ba09}\label{class_challenge_room_a829672cc3f9840d4fcace9826c87ba09}} 
+\index{ChallengeRoom@{ChallengeRoom}!challengeSection@{challengeSection}}
+\index{challengeSection@{challengeSection}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{challengeSection}{challengeSection}}
+{\footnotesize\ttfamily string Challenge\+Room.\+challenge\+Section\hspace{0.3cm}{\ttfamily [static]}}
+
+this declares the selected Challenge\+Section \mbox{\Hypertarget{class_challenge_room_a5698651a2397839f0ab83a1224d2cb13}\label{class_challenge_room_a5698651a2397839f0ab83a1224d2cb13}} 
+\index{ChallengeRoom@{ChallengeRoom}!challengeWorld@{challengeWorld}}
+\index{challengeWorld@{challengeWorld}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{challengeWorld}{challengeWorld}}
+{\footnotesize\ttfamily string Challenge\+Room.\+challenge\+World\hspace{0.3cm}{\ttfamily [static]}}
+
+this declares the selected Challenge\+World \mbox{\Hypertarget{class_challenge_room_a45a6e249fd9c4ec2023fdd9c2c9eba48}\label{class_challenge_room_a45a6e249fd9c4ec2023fdd9c2c9eba48}} 
+\index{ChallengeRoom@{ChallengeRoom}!join\_room\_error\_canvas@{join\_room\_error\_canvas}}
+\index{join\_room\_error\_canvas@{join\_room\_error\_canvas}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{join\_room\_error\_canvas}{join\_room\_error\_canvas}}
+{\footnotesize\ttfamily Game\+Object Challenge\+Room.\+join\+\_\+room\+\_\+error\+\_\+canvas}
+
+placeholder in unity UI to get access to the join\+\_\+room\+\_\+error\+\_\+canvas \mbox{\Hypertarget{class_challenge_room_aefbaa03e97d927cda74a3bbee1df02be}\label{class_challenge_room_aefbaa03e97d927cda74a3bbee1df02be}} 
+\index{ChallengeRoom@{ChallengeRoom}!join\_room\_error\_text@{join\_room\_error\_text}}
+\index{join\_room\_error\_text@{join\_room\_error\_text}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{join\_room\_error\_text}{join\_room\_error\_text}}
+{\footnotesize\ttfamily TMP\+\_\+\+Text Challenge\+Room.\+join\+\_\+room\+\_\+error\+\_\+text}
+
+placeholder in unity UI to get access to the join\+\_\+room\+\_\+error\+\_\+text \mbox{\Hypertarget{class_challenge_room_a07208b3c815caef979a77bb48dc0ecc3}\label{class_challenge_room_a07208b3c815caef979a77bb48dc0ecc3}} 
+\index{ChallengeRoom@{ChallengeRoom}!levelDD@{levelDD}}
+\index{levelDD@{levelDD}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{levelDD}{levelDD}}
+{\footnotesize\ttfamily TMP\+\_\+\+Dropdown Challenge\+Room.\+level\+DD}
+
+placeholder in unity UI to get access to the level\+DD \mbox{\Hypertarget{class_challenge_room_a4744a88933466bfcf5d0b569207182b6}\label{class_challenge_room_a4744a88933466bfcf5d0b569207182b6}} 
+\index{ChallengeRoom@{ChallengeRoom}!player1email@{player1email}}
+\index{player1email@{player1email}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{player1email}{player1email}}
+{\footnotesize\ttfamily string Challenge\+Room.\+player1email\hspace{0.3cm}{\ttfamily [static]}}
+
+this declares the email of player 1 \mbox{\Hypertarget{class_challenge_room_a41e332f89197b2a3a4835990e2aeceab}\label{class_challenge_room_a41e332f89197b2a3a4835990e2aeceab}} 
+\index{ChallengeRoom@{ChallengeRoom}!player2email@{player2email}}
+\index{player2email@{player2email}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{player2email}{player2email}}
+{\footnotesize\ttfamily string Challenge\+Room.\+player2email\hspace{0.3cm}{\ttfamily [static]}}
+
+this declares the email of player 2 \mbox{\Hypertarget{class_challenge_room_a82429c9a86b3816200b349f0ba819fe1}\label{class_challenge_room_a82429c9a86b3816200b349f0ba819fe1}} 
+\index{ChallengeRoom@{ChallengeRoom}!playerID@{playerID}}
+\index{playerID@{playerID}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{playerID}{playerID}}
+{\footnotesize\ttfamily int Challenge\+Room.\+player\+ID\hspace{0.3cm}{\ttfamily [static]}}
+
+this declares the player\+ID \mbox{\Hypertarget{class_challenge_room_ab426e7d7fff93f3a84d219b41e106dbb}\label{class_challenge_room_ab426e7d7fff93f3a84d219b41e106dbb}} 
+\index{ChallengeRoom@{ChallengeRoom}!roomN@{roomN}}
+\index{roomN@{roomN}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{roomN}{roomN}}
+{\footnotesize\ttfamily Text\+Mesh\+Pro\+UGUI Challenge\+Room.\+roomN}
+
+placeholder in unity UI to get access to the roomN \mbox{\Hypertarget{class_challenge_room_a56faf1cdb1bcc09cdde0c21bdf031654}\label{class_challenge_room_a56faf1cdb1bcc09cdde0c21bdf031654}} 
+\index{ChallengeRoom@{ChallengeRoom}!roomNameInput@{roomNameInput}}
+\index{roomNameInput@{roomNameInput}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{roomNameInput}{roomNameInput}}
+{\footnotesize\ttfamily TMP\+\_\+\+Input\+Field Challenge\+Room.\+room\+Name\+Input}
+
+placeholder in unity UI to get access to the room\+Name\+Input \mbox{\Hypertarget{class_challenge_room_abec18068f5470fcd7959b10c5f72ec78}\label{class_challenge_room_abec18068f5470fcd7959b10c5f72ec78}} 
+\index{ChallengeRoom@{ChallengeRoom}!sectionDD@{sectionDD}}
+\index{sectionDD@{sectionDD}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{sectionDD}{sectionDD}}
+{\footnotesize\ttfamily TMP\+\_\+\+Dropdown Challenge\+Room.\+section\+DD}
+
+placeholder in unity UI to get access to the section\+DD \mbox{\Hypertarget{class_challenge_room_a8f41e246f3f8fa1782357aa52a99db1d}\label{class_challenge_room_a8f41e246f3f8fa1782357aa52a99db1d}} 
+\index{ChallengeRoom@{ChallengeRoom}!waitingpanel@{waitingpanel}}
+\index{waitingpanel@{waitingpanel}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{waitingpanel}{waitingpanel}}
+{\footnotesize\ttfamily Game\+Object Challenge\+Room.\+waitingpanel}
+
+placeholder in unity UI to get access to the waitingpanel \mbox{\Hypertarget{class_challenge_room_a627089dee6dc5ffa33023d1131a5ae75}\label{class_challenge_room_a627089dee6dc5ffa33023d1131a5ae75}} 
+\index{ChallengeRoom@{ChallengeRoom}!worldDD@{worldDD}}
+\index{worldDD@{worldDD}!ChallengeRoom@{ChallengeRoom}}
+\doxysubsubsection{\texorpdfstring{worldDD}{worldDD}}
+{\footnotesize\ttfamily TMP\+\_\+\+Dropdown Challenge\+Room.\+world\+DD}
+
+placeholder in unity UI to get access to the world\+DD 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Challenge\+Room.\+cs\end{DoxyCompactItemize}
