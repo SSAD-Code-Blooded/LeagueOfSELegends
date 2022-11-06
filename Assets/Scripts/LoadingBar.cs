@@ -6,10 +6,14 @@ using UnityEngine.UI;
 
 public class LoadingBar : MonoBehaviour
 {
-    private Slider slider;
-    public float FillSpeed = 0.5f;
-    private float targetProgress = 0;
-    public bool flag = false;
+    private Slider slider; /**< Slider object that controls loading*/
+    public float FillSpeed = 0.3f; /**< Speed of loading*/
+    private float targetProgress = 0; /**< target progress of loading*/
+    public bool flag = false; /**< flag for loading done*/
+
+    ///
+    /// slider initiation
+    ///
 
     private void Awake()
     {
@@ -37,10 +41,18 @@ public class LoadingBar : MonoBehaviour
         
     }
 
+    ///
+    /// Increases the loading bar progress
+    ///
+
     public void IncrementProgress(float newProgress)
     {
         targetProgress = slider.value + newProgress;
     }
+
+    ///
+    /// function is called when loading is complete
+    ///
 
     public void loadingDone()
     {

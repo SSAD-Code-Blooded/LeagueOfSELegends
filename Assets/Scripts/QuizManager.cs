@@ -55,6 +55,10 @@ public class QuizManager : MonoBehaviour
 
 //    public QuestionDAO questionDAO;
 
+    ///
+    /// function called at scene start
+    ///
+
    private void Start()
    {
     
@@ -77,7 +81,11 @@ public class QuizManager : MonoBehaviour
     GoPanel.SetActive(false);
     
 
-   } //!< Function that runs when the scene is loaded.
+   } 
+
+    ///
+    /// function called once every frame
+    ///
 
 
     void Update()
@@ -108,6 +116,10 @@ public class QuizManager : MonoBehaviour
         
     }
 
+    ///
+    /// once the start button is pressed, this function is called
+    ///
+
     public void startquiz()
     {
         StartPanel.SetActive(false);
@@ -118,6 +130,10 @@ public class QuizManager : MonoBehaviour
 
 
     }
+
+    ///
+    /// method called upon retry at GameOver panel
+    ///
 
    public void retry()
    {
@@ -130,10 +146,18 @@ public class QuizManager : MonoBehaviour
         // SceneManager.LoadScene("Story Mode Quiz"); 
    }
 
+    ///
+    /// this method activates the back button
+    ///
+
     public void backButton()
     {
         SceneManager.LoadScene("World");
     }
+
+    ///
+    /// method used to fetch questions from firebase using the current progress level of the user
+    ///
 
     public async void dataFetch(string userProfileLevel)
     {
@@ -181,6 +205,10 @@ public class QuizManager : MonoBehaviour
         
     }
 
+    ///
+    /// method called when the game is over, with a win/loss result
+    ///
+
     void GameOver(char Result)
    {
     Timer.SetActive(false);
@@ -220,6 +248,9 @@ public class QuizManager : MonoBehaviour
 
 
    }
+    ///
+    /// method called when correct answer is clicked
+    ///
 
    public void correct()
    {
@@ -230,6 +261,9 @@ public class QuizManager : MonoBehaviour
         generateQuestion();
 
    }
+    ///
+    /// method called when wrong answer is clicked
+    ///
 
    public void wrong()
    {
@@ -238,6 +272,10 @@ public class QuizManager : MonoBehaviour
         TakeDamage(20, 'P');
         generateQuestion();
    }
+
+    ///
+    /// the fucntion that defines damage to a character upon correct/wrong answer
+    ///
 
 
    void TakeDamage(int damage, char character)
@@ -269,8 +307,9 @@ public class QuizManager : MonoBehaviour
     }
    }
 
-
-
+    ///
+    /// function called to set correct and wrong answers
+    ///
    void SetAnswers()
    {
     for (int i = 0; i < options.Length; i++)
@@ -284,6 +323,10 @@ public class QuizManager : MonoBehaviour
         }
     }
    }
+
+    ///
+    /// method called to generate the new question
+    ///
 
    void generateQuestion()
    {

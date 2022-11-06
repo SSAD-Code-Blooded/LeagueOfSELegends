@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MuteAudio : MonoBehaviour
 {
+    ///
+    /// mutes the game when clicked
+    ///
     public void MuteToggle(bool muted)
     {
         if(muted)

@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class CountdownTimer : MonoBehaviour
 {
 
-    float currentTime = 0f;
-    float startingTime = 30f;
+    float currentTime = 0f; /**< the time remaining*/
+    float startingTime = 30f; /**< initialised timer value*/
 
     public Text countdownText;
 
