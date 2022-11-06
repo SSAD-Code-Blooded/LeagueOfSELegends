@@ -20,6 +20,9 @@ public class QuizManager : MonoBehaviour
    public int currentMonsterHealth; /**< Current Health of the Monster */
    public HealthBar playerHealthBar; /**< HealthBar object for Player */
    public HealthBar monsterHealthBar; /**< HealthBar object for Monster */
+   public LoadingBar loadingBar; /**< LoadingBar object for Loading page */
+   public Button StartButton;
+   
 
    public int userScore; /** User's Score */
 
@@ -59,7 +62,6 @@ public class QuizManager : MonoBehaviour
     currentMonsterHealth = maxHealth;
     playerHealthBar.SetMaxHealth(maxHealth);
     monsterHealthBar.SetMaxHealth(maxHealth);
-
     currentTime = startingTime;
 
     
@@ -70,6 +72,7 @@ public class QuizManager : MonoBehaviour
 
     totalQuestions = QnA.Count;
     currScore.text = score + "";
+    StartButton.gameObject.SetActive(false);
     Quizpanel.SetActive(false);
     GoPanel.SetActive(false);
     
@@ -78,7 +81,14 @@ public class QuizManager : MonoBehaviour
 
 
     void Update()
-    {
+    {   
+        if(loadingBar.flag == true)
+        {
+            loadingBar.gameObject.SetActive(false);
+            StartButton.gameObject.SetActive(true);
+
+
+        }
         if(quiz_started == true)
         {
         currentTime -= 1 * Time.deltaTime;
